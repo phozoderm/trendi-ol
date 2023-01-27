@@ -1,1 +1,20 @@
-
+.btn-primary {
+    --bs-btn-bg: #f27a21;
+    --bs-btn-border-color:#f27a21;
+    --bs-btn-hover-bg:#ed8e47;
+    --bs-btn-hover-border-color:#ed8e47;
+}
+.btn-secondary{
+    --bs-btn-bg: #fff;
+    --bs-btn-border-color:#e6e6e6;
+    --bs-btn-hover-bg:#fafafa;
+    --bs-btn-hover-border-color:#fafafa;
+    --bs-btn-hover-color: #000;
+    --bs-btn-color:#000
+}
+.btn-link{
+    --bs-btn-color:#000
+}
+.card{
+    --bs-card-border-radius:0
+}
