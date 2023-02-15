@@ -24,8 +24,10 @@
 .tab{
     width: 370px;
 }
-.forget-password{
-    font-size: 14px;
+.sign-up-page-text{
+    font-size: 12px;
+    line-height: normal;
+    margin-left: 10px;
 }
 .bi-google{
     color: #ffffff;
@@ -45,7 +47,7 @@
     width: 30px;
     height: 30px;
 }
-.login-page-sign-in{
+.login-page-sign-up{
     font-size: 12px;
     line-height: 14px;
 }

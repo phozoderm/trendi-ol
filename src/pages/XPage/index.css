@@ -1,0 +1,25 @@
+.search-button{
+    width:600px;
+}
+.nav1{
+    font-size: 12px;
+}
+.nav2{
+    font-size: 13px;
+}
+.nav3{
+    font-size: 14px;
+}
+.icon{
+    font-size: 16px;
+}
+.card{
+    width: 370px;
+}
+.tab{
+    width: 370px;
+}
+.navbar-xpage{
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+}

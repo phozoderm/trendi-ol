@@ -1,3 +1,9 @@
+@font-face {
+    font-family:'source_sans_proregular';
+    src:url('https://cdn.dsmcdn.com/web/production/fonts-sourcesanspro-regular-web-font.woff2') format('woff');
+    font-weight:normal;
+    font-style:normal;
+}
 .btn-primary {
     --bs-btn-bg: #f27a21;
     --bs-btn-border-color:#f27a21;
@@ -12,9 +18,32 @@
     --bs-btn-hover-color: #000;
     --bs-btn-color:#000
 }
+.btn-warning{
+    --bs-btn-bg: #f2f2f2;
+    --bs-btn-border-color:#e6e6e6;
+    --bs-btn-color:#666;
+    --bs-btn-active-bg: #f2f2f2;
+    --bs-btn-active-border-color: #f27a21;
+    --bs-btn-active-color: #f27a21;
+}
 .btn-link{
-    --bs-btn-color:#000
+    --bs-btn-color: #333333;
+    --bs-btn-hover-color: #333333;
 }
 .card{
-    --bs-card-border-radius:0
+    --bs-card-border-radius:0;
+}
+:root{
+    --bs-body-font-size: 14px;
+    --bs-body-font-family: source_sans_proregular;
+    --bs-body-bg: #fafafa
+}
+.form-check-input{
+    border: 2px solid #999999;
+    width: 20px;
+    height: 20px;
+}
+.form-check-input:checked{
+    background-color: #f27a21;
+    border: 2px solid #f27a21;
 }
