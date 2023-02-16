@@ -11,7 +11,7 @@ export function SignUpPage() {
 
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
-            <h1 className='w-25 mb-3 text-center'>Merhaba,</h1>
+            <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
             <label className='label mb-3'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</label>
             <div className='tab'>
                 <Nav variant="tabs" defaultActiveKey="uyelik" className='w-100 tabs'>
@@ -24,9 +24,6 @@ export function SignUpPage() {
                 </Nav>
             </div>
             <Card className='card border-top-0'>
-                {/*<Card.Header className='w-100 d-flex justify-content-center'>*/}
-
-                {/*</Card.Header>*/}
                 <Card.Body>
                     <Form className='w-100'>
                         <Form.Group>
@@ -65,15 +62,15 @@ export function SignUpPage() {
                         </div>
                     </Form>
                     <div className='w-100 d-flex justify-content-between mt-3'>
-                        <Button type='button' variant='secondary' className='d-flex flex-row'>
-                            <div className='facebook-icon d-flex justify-content-center align-items-center me-3'><i
+                        <Button type='button' variant='secondary' className='d-flex flex-row sign-button'>
+                            <div className='facebook-icon d-flex justify-content-center align-items-center me-2'><i
                                 className="bi bi-facebook"/></div>
                             <div className='d-flex flex-column login-page-sign-up'>
                                 Facebook <Form.Text>ile kaydol</Form.Text>
                             </div>
                         </Button>
-                        <Button type='button' variant='secondary' className='d-flex flex-row'>
-                            <div className='google-icon d-flex justify-content-center align-items-center me-3'><i
+                        <Button type='button' variant='secondary' className='d-flex flex-row sign-button1'>
+                            <div className='google-icon d-flex justify-content-center align-items-center me-2'><i
                                 className="bi bi-google"/></div>
                             <div className='d-flex flex-column login-page-sign-up'>
                                 Google <Form.Text>ile kaydol</Form.Text>

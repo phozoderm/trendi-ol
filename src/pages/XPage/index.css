@@ -23,3 +23,22 @@
     background-color: #ffffff;
     border-bottom: 1px solid #e8e8e8;
 }
+.x-page-footer{
+    background-color: black;
+}
+.social-media{
+    padding-right: 0;
+}
+.social-media1{
+    padding-right: 0;
+    padding-left: 8px;
+}
+.footer-x{
+    background-color: #2d2d2d;
+    color: white;
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
+.container-white{
+    height: 30px;
+}

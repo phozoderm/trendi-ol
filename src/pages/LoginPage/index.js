@@ -9,7 +9,7 @@ export function LoginPage() {
 
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
-            <h1 className='w-25 mb-3 text-center'>Merhaba,</h1>
+            <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
             <label className='label mb-3'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</label>
             <div className='tab'>
                 <Nav variant="tabs" defaultActiveKey="giris" className='w-100 tabs'>
@@ -39,15 +39,15 @@ export function LoginPage() {
                         <Button type='submit' className='w-100 mt-2'>GİRİŞ YAP</Button>
                     </Form>
                     <div className='w-100 d-flex justify-content-between mt-3'>
-                        <Button type='button' variant='secondary' className='d-flex flex-row'>
-                            <div className='facebook-icon d-flex justify-content-center align-items-center me-3'><i
+                        <Button type='button' variant='secondary' className='d-flex flex-row sign-button'>
+                            <div className='facebook-icon d-flex justify-content-center align-items-center me-2'><i
                                 className="bi bi-facebook"/></div>
                             <div className='d-flex flex-column login-page-sign-in'>
                                 Facebook <Form.Text>ile giriş yap</Form.Text>
                             </div>
                         </Button>
-                        <Button type='button' variant='secondary' className='d-flex flex-row'>
-                            <div className='google-icon d-flex justify-content-center align-items-center me-3'><i
+                        <Button type='button' variant='secondary' className='d-flex flex-row sign-button1'>
+                            <div className='google-icon d-flex justify-content-center align-items-center me-2'><i
                                 className="bi bi-google"/></div>
                             <div className='d-flex flex-column login-page-sign-in'>
                                 Google <Form.Text>ile giriş yap</Form.Text>

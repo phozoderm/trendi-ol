@@ -9,14 +9,20 @@
     --bs-btn-border-color:#f27a21;
     --bs-btn-hover-bg:#ed8e47;
     --bs-btn-hover-border-color:#ed8e47;
+    --bs-btn-active-bg:#ed8e47;
+    --bs-btn-active-border-color: #ed8e47;
+
 }
 .btn-secondary{
     --bs-btn-bg: #fff;
     --bs-btn-border-color:#e6e6e6;
     --bs-btn-hover-bg:#fafafa;
     --bs-btn-hover-border-color:#fafafa;
-    --bs-btn-hover-color: #000;
-    --bs-btn-color:#000
+    --bs-btn-active-bg: #ffffff;
+    --bs-btn-active-border-color: #fafafa;
+    --bs-btn-active-color: #000000;
+    --bs-btn-hover-color: #000000;
+    --bs-btn-color:#000000;
 }
 .btn-warning{
     --bs-btn-bg: #f2f2f2;
@@ -34,7 +40,7 @@
     --bs-card-border-radius:0;
 }
 :root{
-    --bs-body-font-size: 14px;
+    --bs-body-font-size: 12px;
     --bs-body-font-family: source_sans_proregular;
     --bs-body-bg: #fafafa
 }
@@ -46,4 +52,25 @@
 .form-check-input:checked{
     background-color: #f27a21;
     border: 2px solid #f27a21;
+}
+.form-check-input::shadow{
+    border: 1px solid white;
+}
+.form-control{
+    background-color: #fafafa;
+}
+.nav{
+    --bs-nav-link-color: #f27a21;
+    --bs-nav-link-hover-color: #f27a21;
+}
+.list-group{
+    --bs-list-group-color: #ffffff;
+    --bs-list-group-bg: #000000;
+    --bs-list-group-border-width:0;
+    --bs-list-group-active-bg: #000000;
+}
+.list-group-item:hover{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
 }
