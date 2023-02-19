@@ -1,0 +1,24 @@
+.home-page-card {
+    height: 225px;
+    width: 383px;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    border-width: 0;
+}
+.home-page-button {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    background-color: black;
+    border: 1px solid black;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+.button-bottom-title{
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 50%;
+    text-align: left;
+}

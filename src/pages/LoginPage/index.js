@@ -21,7 +21,7 @@ export function LoginPage() {
                     </Nav.Item>
                 </Nav>
             </div>
-            <Card className='card border-top-0'>
+            <Card className='login-sign-up-card border-top-0'>
                 {/*<Card.Header className='w-100 d-flex justify-content-center'>*/}
 
                 {/*</Card.Header>*/}

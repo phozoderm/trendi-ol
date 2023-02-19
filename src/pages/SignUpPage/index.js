@@ -23,7 +23,7 @@ export function SignUpPage() {
                     </Nav.Item>
                 </Nav>
             </div>
-            <Card className='card border-top-0'>
+            <Card className='login-sign-up-card border-top-0'>
                 <Card.Body>
                     <Form className='w-100'>
                         <Form.Group>

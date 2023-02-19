@@ -15,7 +15,6 @@ import './index.css'
 import {useMemo, useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Backdrop from "bootstrap/js/src/util/backdrop";
 import Button from "react-bootstrap/Button";
 
 // console.log('before data is created')
@@ -91,7 +90,7 @@ export function XPage() {
     }, [])
 
     function myFunction() {
-        navigate('/')
+        navigate('/home')
     }
 
     return (
@@ -174,6 +173,7 @@ export function XPage() {
                             {trendiOlList.map((trendiOl) => (
                                 <ListGroup.Item href={trendiOl.href}>
                                     {trendiOl.name}
+                                    {/*<a href={trendiOl.href}>{trendiOl.name}</a>*/}
                                 </ListGroup.Item>
                             ))}
                             <div className='d-flex flex-row'>
