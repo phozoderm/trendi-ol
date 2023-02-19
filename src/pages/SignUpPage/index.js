@@ -4,10 +4,15 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './index.css'
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import ToggleButton from "react-bootstrap/ToggleButton";
+import {useState} from "react";
 
 export function SignUpPage() {
+
+    const [selectedGender, setSelectedGender] = useState(null);
+
+    // function onSignUpSubmit(e){
+    //     e.preventDefault()
+    // }
 
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
@@ -37,14 +42,26 @@ export function SignUpPage() {
                                 ve rakam
                                 içermelidir.</Form.Text>
                         </Form.Group>
-                        <ToggleButtonGroup type="radio" name="options" className='w-100 mt-3'>
-                            <ToggleButton id="tbg-radio-1" value={1} variant='warning'>
+                        {/*<ToggleButtonGroup type="radio" name="options" className='w-100 mt-3'>*/}
+                        {/*    <ToggleButton id="tbg-radio-1" value={1} variant='warning'>*/}
+                        {/*        Kadın*/}
+                        {/*    </ToggleButton>*/}
+                        {/*    <ToggleButton id="tbg-radio-2" value={2} variant='warning'>*/}
+                        {/*        Erkek*/}
+                        {/*    </ToggleButton>*/}
+                        {/*</ToggleButtonGroup>*/}
+                        <div className='d-flex justify-content-between mt-3'>
+                            <Button
+                                className={`w-50 ${(selectedGender === 'female' ? 'gender-button-selected' : 'gender-button')}`}
+                                onClick={() => setSelectedGender('female')}>
                                 Kadın
-                            </ToggleButton>
-                            <ToggleButton id="tbg-radio-2" value={2} variant='warning'>
+                            </Button>
+                            <Button
+                                className={`w-50 ${(selectedGender === 'male' ? 'gender-button-selected' : 'gender-button')}`}
+                                onClick={() => setSelectedGender('male')}>
                                 Erkek
-                            </ToggleButton>
-                        </ToggleButtonGroup>
+                            </Button>
+                        </div>
                         <Button type='submit' className='w-100 mt-3 mb-1'>ÜYE OL</Button>
                         <Form.Text>Üye Ol'a basarak Üyelik Koşullarını kabul ediyorum.</Form.Text>
                         <div className='d-flex flex-column mt-3'>

@@ -155,7 +155,7 @@ export function XPage() {
                     <div>
                         <Nav className='nav3'>
                             {categoryList.map((category) => (
-                                <Nav.Link href={category.href} className='text-black me-3'>
+                                <Nav.Link key={category.name} href={category.href} className='text-black me-3'>
                                     {category.name}
                                 </Nav.Link>
                             ))}
@@ -171,7 +171,7 @@ export function XPage() {
                         <ListGroup className='pt-5'>
                             <ListGroup.Item><h5>Trendi-ol</h5></ListGroup.Item>
                             {trendiOlList.map((trendiOl) => (
-                                <ListGroup.Item href={trendiOl.href}>
+                                <ListGroup.Item key={trendiOl.name} href={trendiOl.href}>
                                     {trendiOl.name}
                                     {/*<a href={trendiOl.href}>{trendiOl.name}</a>*/}
                                 </ListGroup.Item>
@@ -212,7 +212,7 @@ export function XPage() {
                         <ListGroup className='pt-5'>
                             <ListGroup.Item><h5>About Us</h5></ListGroup.Item>
                             {aboutUs.map((about) => (
-                                <ListGroup.Item href={about.href}>
+                                <ListGroup.Item key={about.name} href={about.href}>
                                     {about.name}
                                 </ListGroup.Item>
                             ))}
@@ -243,7 +243,7 @@ export function XPage() {
                         <ListGroup className='pt-5'>
                             <ListGroup.Item><h5>Kampanyalar</h5></ListGroup.Item>
                             {campaigns.map((campaign) => (
-                                <ListGroup.Item href={campaign.href}>
+                                <ListGroup.Item key={campaign.name} href={campaign.href}>
                                     {campaign.name}
                                 </ListGroup.Item>
                             ))}
@@ -267,7 +267,7 @@ export function XPage() {
                         <ListGroup className='pt-5'>
                             <ListGroup.Item><h5>Yardım</h5></ListGroup.Item>
                             {help.map((help) => (
-                                <ListGroup.Item href={help.href}>
+                                <ListGroup.Item key={help.name} href={help.href}>
                                     {help.name}
                                 </ListGroup.Item>
                             ))}

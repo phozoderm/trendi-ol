@@ -1,25 +1,12 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
-
-import './index.css'
-import {useState} from "react";
 import {HomeSalesItemComponent} from "../../components/HomeSalesItemComponent";
-
+import './index.css'
 
 export function HomePage() {
-    const [isHovering, setIsHovering] = useState(false);
 
-    const handleMouseOver = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseOut = () => {
-        setIsHovering(false);
-    };
     return (
         <>
             <Container>
