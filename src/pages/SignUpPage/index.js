@@ -5,14 +5,61 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
+import {InputGroup} from "react-bootstrap";
 
 export function SignUpPage() {
 
     const [selectedGender, setSelectedGender] = useState(null);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked1, setIsChecked1] = useState(false)
 
-    // function onSignUpSubmit(e){
-    //     e.preventDefault()
-    // }
+    const validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value)
+    }
+    const handleChangePassword = (event) => {
+        setPassword(event.target.value)
+    }
+    const handleChangeBoxes = (event) => {
+        setIsChecked(event.target.checked)
+    }
+    const handleChangeBoxes1 = (event) => {
+        setIsChecked1(event.target.checked)
+    }
+
+    function callSignUpPostAPI() {
+        console.log('api cagirildi!')
+    }
+
+    function onSignUpSubmit(e) {
+        e.preventDefault()
+        if (!validateEmail(email)) {
+            console.log('Invalid Error')
+            return;
+        }
+        if (password.length < 7) {
+            console.log('Password must be at least 7 chars long')
+            return;
+        }
+        if (!selectedGender) {
+            console.log('Please choose a gender!')
+            return;
+        }
+        if (!isChecked) {
+            console.log('Please check boxes')
+            return;
+        }
+        if (!isChecked1) {
+            console.log('Please check boxes')
+            return;
+        }
+        callSignUpPostAPI()
+    }
 
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
@@ -30,14 +77,24 @@ export function SignUpPage() {
             </div>
             <Card className='login-sign-up-card border-top-0'>
                 <Card.Body>
-                    <Form className='w-100'>
+                    <Form className='w-100' onSubmit={onSignUpSubmit}>
                         <Form.Group>
-                            <Form.Label>E-Posta</Form.Label>
-                            <Form.Control type='e-mail' placeholder='E-mail'/>
+                            <Form.Label>E-mail</Form.Label>
+                            <Form.Control type='e-mail' placeholder='E-mail' onChange={handleChangeEmail}/>
                         </Form.Group>
+                        {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
+                        {/*<InputGroup>*/}
+                        {/*    <Form.Control className='password-input' type='password' placeholder='Şifre' onChange={handleChangePassword}/>*/}
+                        {/*    <InputGroup.Text>*/}
+                        {/*        <i className="bi bi-eye"/>*/}
+                        {/*    </InputGroup.Text>*/}
+                        {/*</InputGroup>*/}
+                        {/*<Form.Text>Şifreniz en az 7 karakter ve en fazla 64 karakter olmalı, harf*/}
+                        {/*    ve rakam*/}
+                        {/*    içermelidir.</Form.Text>*/}
                         <Form.Group>
                             <Form.Label className='mt-4'>Şifre</Form.Label>
-                            <Form.Control type='password' placeholder='Şifre'/>
+                            <Form.Control type='password' placeholder='Şifre' onChange={handleChangePassword}/>
                             <Form.Text>Şifreniz en az 7 karakter ve en fazla 64 karakter olmalı, harf
                                 ve rakam
                                 içermelidir.</Form.Text>
@@ -66,13 +123,13 @@ export function SignUpPage() {
                         <Form.Text>Üye Ol'a basarak Üyelik Koşullarını kabul ediyorum.</Form.Text>
                         <div className='d-flex flex-column mt-3'>
                             <div className='d-flex flex-row'>
-                                <Form.Check type='checkbox'/>
+                                <Form.Check type='checkbox' onChange={handleChangeBoxes} checked={isChecked} />
                                 <Form.Text className='sign-up-page-text'>Kampanyalardan haberdar olabilmem için kişisel
                                     verilerimin işlenmesini ve tarafıma elektronik ileti gönderilmesini kabul
                                     ediyorum.</Form.Text>
                             </div>
                             <div className='d-flex flex-row'>
-                                <Form.Check type='checkbox'/>
+                                <Form.Check type='checkbox' onChange={handleChangeBoxes1} checked={isChecked1}/>
                                 <Form.Text className='sign-up-page-text'>Kişisel verilerimin işlenmesine yönelik
                                     aydınlatma metnini okudum ve anladım.</Form.Text>
                             </div>
