@@ -22,10 +22,10 @@ export function LoginPage() {
                 </Nav>
             </div>
             <Card className='login-sign-up-card border-top-0'>
-                {/*<Card.Header className='w-100 d-flex justify-content-center'>*/}
-
-                {/*</Card.Header>*/}
                 <Card.Body>
+                    <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
+                        <small>E-postanız ya da şifreniz yanlış. Lütfen tekrar deneyiniz.</small>
+                    </div>
                     <Form className='w-100'>
                         <Form.Group>
                             <Form.Label>E-Posta</Form.Label>
@@ -35,7 +35,8 @@ export function LoginPage() {
                             <Form.Label className='mt-4'>Şifre</Form.Label>
                             <Form.Control type='password' placeholder='Şifre'/>
                         </Form.Group>
-                        <Button variant="link" className="d-flex float-end forget-password mt-2">Şifremi Unuttum</Button>
+                        <Button variant="link" className="d-flex float-end forget-password mt-2">Şifremi
+                            Unuttum</Button>
                         <Button type='submit' className='w-100 mt-2'>GİRİŞ YAP</Button>
                     </Form>
                     <div className='w-100 d-flex justify-content-between mt-3'>

@@ -49,15 +49,25 @@
     width: 20px;
     height: 20px;
 }
+.form-check-input:focus{
+    box-shadow: 0 0 transparent;
+    border-color: #999999;
+}
+.form-check-input-validation{
+    border: 2px solid #b30000;
+    width: 20px;
+    height: 20px;
+}
 .form-check-input:checked{
     background-color: #f27a21;
     border: 2px solid #f27a21;
 }
-.form-check-input::shadow{
-    border: 1px solid white;
-}
 .form-control{
     background-color: #fafafa;
+}
+.form-control:focus{
+    box-shadow: 0 0 transparent;
+    border-color: #ced4da;
 }
 .nav{
     --bs-nav-link-color: #f27a21;

@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
-import {InputGroup} from "react-bootstrap";
 
 export function SignUpPage() {
 
@@ -13,7 +12,9 @@ export function SignUpPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isChecked, setIsChecked] = useState(false)
-    const [isChecked1, setIsChecked1] = useState(false)
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
+    const [isCheckValid, setIsCheckValid] = useState(true)
 
     const validateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -21,45 +22,47 @@ export function SignUpPage() {
     }
     const handleChangeEmail = (event) => {
         setEmail(event.target.value)
+        setIsEmailValid(true)
     }
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
+        setIsPasswordValid(true)
     }
     const handleChangeBoxes = (event) => {
         setIsChecked(event.target.checked)
-    }
-    const handleChangeBoxes1 = (event) => {
-        setIsChecked1(event.target.checked)
+        setIsCheckValid(true)
     }
 
     function callSignUpPostAPI() {
         console.log('api cagirildi!')
     }
+    const validatePassword=(password)=>{
+        const re = /[a-zA-Z]+/;
+        const re2 = /[0-9]+/;
+        return re.test(password) && re2.test(password) && password.length >= 7
+    }
 
     function onSignUpSubmit(e) {
         e.preventDefault()
         if (!validateEmail(email)) {
+            setIsEmailValid(false)
             console.log('Invalid Error')
             return;
         }
-        if (password.length < 7) {
+        if (!validatePassword(password)){
+            setIsPasswordValid(false)
             console.log('Password must be at least 7 chars long')
             return;
         }
-        if (!selectedGender) {
-            console.log('Please choose a gender!')
-            return;
-        }
         if (!isChecked) {
-            console.log('Please check boxes')
-            return;
-        }
-        if (!isChecked1) {
+            setIsCheckValid(false)
             console.log('Please check boxes')
             return;
         }
         callSignUpPostAPI()
     }
+
+    let a = false
 
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
@@ -80,7 +83,11 @@ export function SignUpPage() {
                     <Form className='w-100' onSubmit={onSignUpSubmit}>
                         <Form.Group>
                             <Form.Label>E-mail</Form.Label>
-                            <Form.Control type='e-mail' placeholder='E-mail' onChange={handleChangeEmail}/>
+                            <Form.Control className={`${(isEmailValid === false ? 'sign-up-validation-input' : '')}`}
+                                          type='e-mail'
+                                          placeholder='E-mail'
+                                          onChange={handleChangeEmail}/>
+                            {!isEmailValid ? <small className='email-valid-text'>Lütfen e-postanızı giriniz.</small> : null}
                         </Form.Group>
                         {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
                         {/*<InputGroup>*/}
@@ -94,10 +101,12 @@ export function SignUpPage() {
                         {/*    içermelidir.</Form.Text>*/}
                         <Form.Group>
                             <Form.Label className='mt-4'>Şifre</Form.Label>
-                            <Form.Control type='password' placeholder='Şifre' onChange={handleChangePassword}/>
-                            <Form.Text>Şifreniz en az 7 karakter ve en fazla 64 karakter olmalı, harf
-                                ve rakam
-                                içermelidir.</Form.Text>
+                            <Form.Control type='password'
+                                          placeholder='Şifre'
+                                          onChange={handleChangePassword}
+                                          className={`${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
+                            <Form.Text className={`${isPasswordValid === false ? 'password-text-validation' : ''}`}>Şifreniz
+                                en az 7 karakter ve en fazla 64 karakter olmalı, harf ve rakam içermelidir.</Form.Text>
                         </Form.Group>
                         {/*<ToggleButtonGroup type="radio" name="options" className='w-100 mt-3'>*/}
                         {/*    <ToggleButton id="tbg-radio-1" value={1} variant='warning'>*/}
@@ -107,7 +116,8 @@ export function SignUpPage() {
                         {/*        Erkek*/}
                         {/*    </ToggleButton>*/}
                         {/*</ToggleButtonGroup>*/}
-                        <div className='d-flex justify-content-between mt-3'>
+                        <Form.Label className='mt-4'>Cinsiyet (Opsiyonel)</Form.Label>
+                        <div className='d-flex justify-content-between'>
                             <Button
                                 className={`w-50 ${(selectedGender === 'female' ? 'gender-button-selected' : 'gender-button')}`}
                                 onClick={() => setSelectedGender('female')}>
@@ -123,15 +133,22 @@ export function SignUpPage() {
                         <Form.Text>Üye Ol'a basarak Üyelik Koşullarını kabul ediyorum.</Form.Text>
                         <div className='d-flex flex-column mt-3'>
                             <div className='d-flex flex-row'>
-                                <Form.Check type='checkbox' onChange={handleChangeBoxes} checked={isChecked} />
+                                <Form.Check type='checkbox'/>
                                 <Form.Text className='sign-up-page-text'>Kampanyalardan haberdar olabilmem için kişisel
                                     verilerimin işlenmesini ve tarafıma elektronik ileti gönderilmesini kabul
                                     ediyorum.</Form.Text>
                             </div>
                             <div className='d-flex flex-row'>
-                                <Form.Check type='checkbox' onChange={handleChangeBoxes1} checked={isChecked1}/>
-                                <Form.Text className='sign-up-page-text'>Kişisel verilerimin işlenmesine yönelik
-                                    aydınlatma metnini okudum ve anladım.</Form.Text>
+                                <Form.Check type='checkbox'>
+                                    <Form.Check.Input type={"checkbox"}
+                                                      className={`${(isCheckValid === false ? 'form-check-input-validation' : '')}`}
+                                                      onChange={handleChangeBoxes}
+                                                      checked={isChecked}/>
+                                </Form.Check>
+                                <Form.Text
+                                    className={`${(isCheckValid === false ? 'sign-up-page-text-validation' : 'sign-up-page-text')}`}>
+                                    Kişisel verilerimin işlenmesine yönelik aydınlatma metnini okudum ve
+                                    anladım.</Form.Text>
                             </div>
                         </div>
                     </Form>
