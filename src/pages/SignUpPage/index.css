@@ -114,14 +114,30 @@
     color: #666666;
 }
 
+.login-text-validation {
+    color: #b30000;
+    background-color: #fff1f1;
+    padding: 10px;
+    border: 1px solid #b30000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bi-exclamation-circle {
+    margin-right: 5px;
+}
+
 .sign-up-validation-input {
     border: 1px solid #b30000;
     background-color: #fff1f1;
 }
+
 .sign-up-validation-input:focus {
     border: 1px solid #b30000;
     background-color: #fff1f1;
 }
+
 .password-text-validation {
     color: #b30000;
 }

@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export function SignUpPage() {
-
+    const navigate = useNavigate()
     const [selectedGender, setSelectedGender] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,12 +16,13 @@ export function SignUpPage() {
     const [isEmailValid, setIsEmailValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const [isCheckValid, setIsCheckValid] = useState(true)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const validateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
-    const validatePassword=(password)=>{
+    const validatePassword = (password) => {
         const re = /[a-zA-Z]+/;
         const re2 = /[0-9]+/;
         return re.test(password) && re2.test(password) && password.length >= 7
@@ -37,21 +39,60 @@ export function SignUpPage() {
         setIsChecked(event.target.checked)
         setIsCheckValid(true)
     }
+    const onFormChange = () => {
+        setErrorMessage('')
+    }
 
     function callSignUpPostAPI() {
+        fetch('http://localhost:1234/user', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                gender: selectedGender,
+            }),
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .catch(() => {
+                setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
+            })
+            .then(res => {
+                if (res.ok) {
+                    navigate('/home')
+                } else {
+                    if (res.status === 409) {
+                        setIsEmailValid(false)
+                        setErrorMessage('Bu e-posta adresi kullanılamaz. Lütfen başka bir e-posta adresi deneyiniz.')
+                    } else {
+                        setErrorMessage('Bir hata oluştu. Lütfen tekrar deneyiniz.')
+                    }
+                }
+            })
         console.log('api cagirildi!')
     }
 
     function onSignUpSubmit(e) {
         e.preventDefault()
-        if (!validateEmail(email)) {
+        if (email.length === 0) {
             setIsEmailValid(false)
-            console.log('Invalid Error')
+            setErrorMessage('E-posta ve/veya şifrenizi giriniz.')
             return;
         }
-        if (!validatePassword(password)){
+        if (!validateEmail(email)) {
+            setIsEmailValid(false)
+            setErrorMessage('Lütfen geçerli bir email adresi giriniz.')
+            return;
+        }
+        if (password.length === 0) {
             setIsPasswordValid(false)
-            console.log('Password must be at least 7 chars long')
+            setErrorMessage('E-posta ve/veya şifrenizi giriniz.')
+            return;
+        }
+        if (!validatePassword(password)) {
+            setIsPasswordValid(false)
+            setErrorMessage('Şifreniz 7 ile 64 karakter arasında olmalıdır.')
             return;
         }
         if (!isChecked) {
@@ -77,23 +118,17 @@ export function SignUpPage() {
                 </Nav>
             </div>
             <Card className='login-sign-up-card border-top-0'>
-                {!isEmailValid ?
-                    <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
-                        <span>E-posta ve/veya şifrenizi giriniz.</span>
-                    </div> : null}
-                {!isPasswordValid ?
-                    <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
-                        <span>Şifreniz 7 ile 64 karakter arasında olmalıdır.</span>
-                    </div> : null}
                 <Card.Body>
-                    <Form className='w-100' onSubmit={onSignUpSubmit}>
+                    {errorMessage ? <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
+                        <span>{errorMessage}</span>
+                    </div> : null}
+                    <Form className='w-100' onSubmit={onSignUpSubmit} onChange={onFormChange}>
                         <Form.Group>
                             <Form.Label>E-mail</Form.Label>
                             <Form.Control className={`${(isEmailValid === false ? 'sign-up-validation-input' : '')}`}
                                           type='e-mail'
                                           placeholder='E-mail'
                                           onChange={handleChangeSignUpEmail}/>
-                            {!isEmailValid ? <small className='email-valid-text'>Lütfen e-postanızı giriniz.</small> : null}
                         </Form.Group>
                         {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
                         {/*<InputGroup>*/}

@@ -1,79 +1,97 @@
 
-.nav1{
+.nav1 {
     font-size: 12px;
 }
-.nav2{
+
+.nav2 {
     font-size: 13px;
 }
-.nav3{
+
+.nav3 {
     font-size: 14px;
 }
-.icon{
+
+.icon {
     font-size: 16px;
 }
-.label{
+
+.label {
     font-size: 15px;
 }
-.login-sign-up-card{
+
+.login-sign-up-card {
     width: 374px;
     padding: 24px;
 }
-.tabs{
+
+.tabs {
     background-color: #f2f2f2;
     font-size: 16px;
 }
-.tab{
+
+.tab {
     width: 374px;
 }
-.forget-password{
+
+.forget-password {
     font-size: 14px;
 }
-.bi-google{
+
+.bi-google {
     color: #ffffff;
 }
-.bi-facebook{
+
+.bi-facebook {
     color: #ffffff;
 }
-.facebook-icon{
+
+.facebook-icon {
     background-color: #4b6ea8;;
     border-radius: 4px;
     width: 30px;
     height: 30px;
 }
-.google-icon{
+
+.google-icon {
     background-color: #f04236;
     border-radius: 4px;
     width: 30px;
     height: 30px;
 }
-.login-page-sign-in{
+
+.login-page-sign-in {
     font-size: 12px;
     line-height: 14px;
 }
-.sign-button{
+
+.sign-button {
     width: 148px;
     margin-right: 15px;
 }
-.sign-button1{
+
+.sign-button1 {
     width: 148px;
 }
-.login-text-validation{
+
+.login-text-validation {
     color: #b30000;
     background-color: #fff1f1;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     border: 1px solid #b30000;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-.bi-exclamation-circle{
+
+.bi-exclamation-circle {
     margin-right: 5px;
 }
+
 .login-validation-input {
     border: 1px solid #b30000;
     background-color: #fff1f1;
 }
+
 .login-validation-input:focus {
     border: 1px solid #b30000;
     background-color: #fff1f1;
