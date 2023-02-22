@@ -67,3 +67,14 @@
     flex-direction: row;
     justify-content: center;
 }
+.bi-exclamation-circle{
+    margin-right: 5px;
+}
+.login-validation-input {
+    border: 1px solid #b30000;
+    background-color: #fff1f1;
+}
+.login-validation-input:focus {
+    border: 1px solid #b30000;
+    background-color: #fff1f1;
+}

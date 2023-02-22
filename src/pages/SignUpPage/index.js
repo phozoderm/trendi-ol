@@ -20,11 +20,16 @@ export function SignUpPage() {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
-    const handleChangeEmail = (event) => {
+    const validatePassword=(password)=>{
+        const re = /[a-zA-Z]+/;
+        const re2 = /[0-9]+/;
+        return re.test(password) && re2.test(password) && password.length >= 7
+    }
+    const handleChangeSignUpEmail = (event) => {
         setEmail(event.target.value)
         setIsEmailValid(true)
     }
-    const handleChangePassword = (event) => {
+    const handleChangeSignUpPassword = (event) => {
         setPassword(event.target.value)
         setIsPasswordValid(true)
     }
@@ -35,11 +40,6 @@ export function SignUpPage() {
 
     function callSignUpPostAPI() {
         console.log('api cagirildi!')
-    }
-    const validatePassword=(password)=>{
-        const re = /[a-zA-Z]+/;
-        const re2 = /[0-9]+/;
-        return re.test(password) && re2.test(password) && password.length >= 7
     }
 
     function onSignUpSubmit(e) {
@@ -62,8 +62,6 @@ export function SignUpPage() {
         callSignUpPostAPI()
     }
 
-    let a = false
-
     return (
         <Container className='w-100 d-flex flex-column align-items-center'>
             <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
@@ -79,6 +77,14 @@ export function SignUpPage() {
                 </Nav>
             </div>
             <Card className='login-sign-up-card border-top-0'>
+                {!isEmailValid ?
+                    <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
+                        <span>E-posta ve/veya şifrenizi giriniz.</span>
+                    </div> : null}
+                {!isPasswordValid ?
+                    <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
+                        <span>Şifreniz 7 ile 64 karakter arasında olmalıdır.</span>
+                    </div> : null}
                 <Card.Body>
                     <Form className='w-100' onSubmit={onSignUpSubmit}>
                         <Form.Group>
@@ -86,7 +92,7 @@ export function SignUpPage() {
                             <Form.Control className={`${(isEmailValid === false ? 'sign-up-validation-input' : '')}`}
                                           type='e-mail'
                                           placeholder='E-mail'
-                                          onChange={handleChangeEmail}/>
+                                          onChange={handleChangeSignUpEmail}/>
                             {!isEmailValid ? <small className='email-valid-text'>Lütfen e-postanızı giriniz.</small> : null}
                         </Form.Group>
                         {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
@@ -103,7 +109,7 @@ export function SignUpPage() {
                             <Form.Label className='mt-4'>Şifre</Form.Label>
                             <Form.Control type='password'
                                           placeholder='Şifre'
-                                          onChange={handleChangePassword}
+                                          onChange={handleChangeSignUpPassword}
                                           className={`${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
                             <Form.Text className={`${isPasswordValid === false ? 'password-text-validation' : ''}`}>Şifreniz
                                 en az 7 karakter ve en fazla 64 karakter olmalı, harf ve rakam içermelidir.</Form.Text>
