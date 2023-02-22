@@ -5,23 +5,16 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export function LoginPage() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
 
-
-    const validateEmail = (email) => {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-    const validatePassword = (password) => {
-        const re = /[a-zA-Z]+/;
-        const re2 = /[0-9]+/;
-        return re.test(password) && re2.test(password) && password.length >= 7
-    }
     const handleChangeLoginEmail = (event) => {
         setEmail(event.target.value)
         setIsEmailValid(true)
@@ -30,21 +23,47 @@ export function LoginPage() {
         setPassword(event.target.value)
         setIsPasswordValid(true)
     }
+    const onFormChange = () => {
+        setErrorMessage('')
+    }
 
     function callLoginPostAPI() {
-        console.log('api cagirildi!')
+        fetch('http://localhost:1234/session', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+            headers: {
+                'content-type': 'application/json',
+            }
+        }).catch(() => {
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
+        }).then(res => {
+            if (res.ok) {
+                localStorage.setItem('email', email)
+                window.location.reload()
+                navigate('/home')
+            } else {
+                if (res.status === 401) {
+                    setErrorMessage('E-posta adresiniz ve/veya şifreniz hatalı.')
+                } else {
+                    setErrorMessage('Bir hata oluştu. Lütfen tekrar deneyiniz.')
+                }
+            }
+        })
     }
 
     function onLoginSubmit(e) {
         e.preventDefault()
-        if (!validateEmail(email)) {
+        if (email.length === 0) {
             setIsEmailValid(false)
-            console.log('invalid email')
+            setErrorMessage('Lütfen geçerli bir email adresi giriniz.')
             return;
         }
-        if (!validatePassword(password)) {
+        if (password.length === 0) {
             setIsPasswordValid(false)
-            console.log('invalid password')
+            setErrorMessage('Lütfen şifrenizi giriniz.')
             return;
         }
         callLoginPostAPI()
@@ -66,11 +85,10 @@ export function LoginPage() {
             </div>
             <Card className='login-sign-up-card border-top-0'>
                 <Card.Body>
-                    {!isEmailValid || !isPasswordValid ?
-                        <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
-                            <span>E-posta adresiniz ve/veya şifreniz hatalı.</span>
-                        </div> : null}
-                    <Form className='w-100' onSubmit={onLoginSubmit}>
+                    {errorMessage ? <div className='login-text-validation'><i className="bi bi-exclamation-circle"/>
+                        <span>{errorMessage}</span>
+                    </div> : null}
+                    <Form className='w-100' onSubmit={onLoginSubmit} onChange={onFormChange}>
                         <Form.Group>
                             <Form.Label>E-Posta</Form.Label>
                             <Form.Control className={`${!isEmailValid ? 'login-validation-input' : ''}`}

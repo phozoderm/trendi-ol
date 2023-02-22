@@ -6,15 +6,24 @@ import {LoginPage} from "./pages/LoginPage";
 import {SignUpPage} from "./pages/SignUpPage";
 import {HomePage} from "./pages/HomePage";
 
+const emailFromLocalStorage = localStorage.getItem('email')
+const isEmailLoggedIn = emailFromLocalStorage != null
 
 export function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='*' element={<XPage/>}>
-                    <Route path='giris' element={<LoginPage/>}/>
-                    <Route path='uyelik' element={<SignUpPage/>}/>
-                    <Route path='home' element={<HomePage/>}></Route>
+                    {
+                        isEmailLoggedIn ? null :
+                            <Route path='giris' element={<LoginPage/>}/>
+                    }
+                    {
+                        isEmailLoggedIn ? null :
+                            <Route path='uyelik' element={<SignUpPage/>}/>
+                    }
+                    <Route path='home' element={<HomePage/>}/>
+                    <Route path='*' element={<Navigate to='/home' replace/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

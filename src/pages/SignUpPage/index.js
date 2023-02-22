@@ -60,7 +60,7 @@ export function SignUpPage() {
             })
             .then(res => {
                 if (res.ok) {
-                    navigate('/home')
+                    navigate('/giris')
                 } else {
                     if (res.status === 409) {
                         setIsEmailValid(false)
@@ -70,7 +70,6 @@ export function SignUpPage() {
                     }
                 }
             })
-        console.log('api cagirildi!')
     }
 
     function onSignUpSubmit(e) {
