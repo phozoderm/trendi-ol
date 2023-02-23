@@ -4,38 +4,38 @@ import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import {HomeSalesItemComponent} from "../../components/HomeSalesItemComponent";
 import './index.css'
+import {useState} from "react";
 
 export function HomePage() {
 
     return (
         <>
-            <Container>
-                <Carousel variant='dark'>
-                    <Carousel.Item>
-                        <img
-                            src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/14/En_Cok_Satanlar_202302142041.png'
-                            width='68'
-                            height='68'
-                        />
-                        <img
-                            src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/14/Senin_Icin_Sectik_202302142041.png'
-                            width='68'
-                            height='68'
-                        />
-                        <img
-                            src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2022/11/29/Screenshot20221128At163430_202211290324.png'
-                            width='68'
-                            height='68'
-                        />
-                        <img
-                            src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/15/Widget_202302151451.png'
-                            width='68'
-                            height='68'
-                        />
-                    </Carousel.Item>
-                </Carousel>
-
-            </Container>
+            {/*<Container>*/}
+            {/*    <Carousel variant='dark'>*/}
+            {/*        <Carousel.Item>*/}
+            {/*            <img*/}
+            {/*                src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/14/En_Cok_Satanlar_202302142041.png'*/}
+            {/*                width='68'*/}
+            {/*                height='68'*/}
+            {/*            />*/}
+            {/*            <img*/}
+            {/*                src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/14/Senin_Icin_Sectik_202302142041.png'*/}
+            {/*                width='68'*/}
+            {/*                height='68'*/}
+            {/*            />*/}
+            {/*            <img*/}
+            {/*                src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2022/11/29/Screenshot20221128At163430_202211290324.png'*/}
+            {/*                width='68'*/}
+            {/*                height='68'*/}
+            {/*            />*/}
+            {/*            <img*/}
+            {/*                src='https://cdn.dsmcdn.com/mnresize/200/200/marketing/datascience/automation/2023/2/15/Widget_202302151451.png'*/}
+            {/*                width='68'*/}
+            {/*                height='68'*/}
+            {/*            />*/}
+            {/*        </Carousel.Item>*/}
+            {/*    </Carousel>*/}
+            {/*</Container>*/}
 
             <Container>
                 <Row md={2} lg={3}>

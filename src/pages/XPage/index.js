@@ -2,20 +2,18 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-// import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/img/logo3.png"
 import google from "../../assets/img/google.png"
 import visa from "../../assets/img/logo7.png"
 import american from "../../assets/img/logo6.png"
 import master from "../../assets/img/logo8.png"
-import './index.css'
 import {useMemo, useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Button from "react-bootstrap/Button";
+import './index.css'
 
 // console.log('before data is created')
 // const data = [
@@ -35,6 +33,7 @@ import Button from "react-bootstrap/Button";
 export function XPage() {
 
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
     const categoryList = useMemo(() => {
         return [
             {id: 1, name: "KADIN", href: '#kadin'},
@@ -89,8 +88,35 @@ export function XPage() {
         ]
     }, [])
 
+    const myAccount = useMemo(() => {
+        return [
+            {id: 1, name: "Siparişlerim", href: '#siparislerim', icon: <i className="bi bi-box-fill me-2 account-icons"/>},
+            {id: 2, name: "Değerlendirmelerim", href: '#degerlendirmelerim', icon: <i className="bi bi-chat-left-dots-fill me-2 account-icons"/>},
+            {id: 3, name: "Satıcı Mesajlarım", href: '#satici-mesajlarim', icon: <i className="bi bi-envelope-fill me-2 account-icons"/>},
+            {id: 4, name: "Trendyol Cüzdanım", href: '#trendyol-cuzdanim', icon: <i className="bi bi-wallet-fill me-2 account-icons"/>},
+            {id: 5, name: "İndirim Kuponlarım", href: '#indirim-kuponlarim', icon: <i className="bi bi-ticket-perforated-fill me-2 account-icons"/>},
+            {id: 6, name: "Kullanıcı Bilgilerim", href: '#kullanici-bilgilerim', icon: <i className="bi bi-person-fill me-2 account-icons"/>},
+            {id: 7, name: "Trendi-ol Elite", href: '#trendiol-elite', icon: <i className="bi bi-suit-diamond-fill me-2 account-icons"/>},
+            {id: 8, name: "Trendi-ol Asistan", href: '#trendiol-asistan', icon: <i className="bi bi-chat-left-heart-fill me-2 account-icons"/>},
+        ]
+    })
+
+    const showDropdown = (e) => {
+        setShow(!show)
+    }
+    const hideDropdown = (e) => {
+        setShow(false)
+    }
+    const emailFromLocalStorage = localStorage.getItem('email')
+    const isEmailLoggedIn = emailFromLocalStorage != null
+
     function myFunction() {
         navigate('/home')
+    }
+
+    function signOut() {
+        localStorage.removeItem('email')
+        window.location.reload()
     }
 
     return (
@@ -128,26 +154,46 @@ export function XPage() {
                             </Form.Group>
                         </Form>
                         <Nav className='nav2 d-flex align-items-center'>
-                            {/*<i className="bi bi-person me-1 icon "></i>*/}
-                            {/*<NavDropdown title="Giriş Yap" id="giris-dropdown"*/}
-                            {/*             className='d-flex align-items-center text-black'>*/}
-                            {/*    <NavDropdown.Item href="#giris">*/}
-                            {/*        Giriş Yap*/}
-                            {/*    </NavDropdown.Item>*/}
-                            {/*    <NavDropdown.Item href="#uye-ol">*/}
-                            {/*        Üye Ol*/}
-                            {/*    </NavDropdown.Item>*/}
-                            {/*</NavDropdown>*/}
-                            <Nav.Link href='giris' className='text-black'>
-                                <i className="bi bi-person me-1 icon"/>
-                                Giriş Yap
-                            </Nav.Link>
+                            {
+                                !isEmailLoggedIn ?
+                                    <NavDropdown
+                                        title={<span> <i className="bi bi-person nav-icon me-1"/>Giriş Yap</span>}
+                                        show={show}
+                                        onMouseEnter={showDropdown}
+                                        onMouseLeave={hideDropdown}>
+                                        <NavDropdown.Item href="giris">
+                                            Giriş Yap
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item href="uyelik">
+                                            Üye Ol
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                    :
+                                    <NavDropdown
+                                        title={<span> <i className="bi bi-person nav-icon me-1"/>Hesabım</span>}
+                                        id="giris-dropdown"
+                                        show={show}
+                                        onMouseEnter={showDropdown}
+                                        onMouseLeave={hideDropdown}>
+                                        <NavDropdown.Header>{emailFromLocalStorage}</NavDropdown.Header>
+                                        {myAccount.map((account) => (
+                                            <NavDropdown.Item className='account-dropdown-item' key={account.name} href={account.href}>
+                                                {account.icon}
+                                                {account.name}
+                                            </NavDropdown.Item>
+                                        ))}
+                                        <NavDropdown.Item className='accout-dropdown-item' onClick={signOut}>
+                                            <i className="bi bi-door-open-fill me-2 account-icons"/>
+                                            Çıkış Yap
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                            }
                             <Nav.Link href='#favorilerim' className='text-black ms-3'>
-                                <i className="bi bi-heart me-1 icon"/>
+                                <i className="bi bi-heart me-1 nav-icon"/>
                                 Favorilerim
                             </Nav.Link>
                             <Nav.Link href='#sepetim' className='text-black ms-3'>
-                                <i className="bi bi-cart3 me-1 icon"/>
+                                <i className="bi bi-cart3 me-1 nav-icon"/>
                                 Sepetim
                             </Nav.Link>
                         </Nav>
@@ -292,23 +338,23 @@ export function XPage() {
                 </Row>
             </Container>
             <Container fluid className='footer-x'>
-                    <div className='d-flex flex-row justify-content-around align-items-center'>
-                        <div>
-                            <label>©2023 STNA Grup Danışmanlık İletişim ve Satış Tic.A.Ş.-Her Hakkı Saklıdır.</label>
-                        </div>
-                        <div>
-                            <label>Çerez Tercihleri</label>
-                        </div>
-                        <div>
-                            <label>KVK ve Gizlilik Politikası</label>
-                        </div>
-                        <div>
-                            <label>DSM Grup</label>
-                        </div>
-                        <div>
-                            <label>Kullanım Koşulları</label>
-                        </div>
+                <div className='d-flex flex-row justify-content-around align-items-center'>
+                    <div>
+                        <label>©2023 STNA Grup Danışmanlık İletişim ve Satış Tic.A.Ş.-Her Hakkı Saklıdır.</label>
                     </div>
+                    <div>
+                        <label>Çerez Tercihleri</label>
+                    </div>
+                    <div>
+                        <label>KVK ve Gizlilik Politikası</label>
+                    </div>
+                    <div>
+                        <label>DSM Grup</label>
+                    </div>
+                    <div>
+                        <label>Kullanım Koşulları</label>
+                    </div>
+                </div>
             </Container>
             <Container fluid className='container-white'> </Container>
         </>

@@ -10,7 +10,7 @@
 .nav3{
     font-size: 14px;
 }
-.icon{
+.nav-icon{
     font-size: 16px;
 }
 .login-sign-up-card{
@@ -41,4 +41,14 @@
 }
 .container-white{
     height: 30px;
+}
+.dropdown-toggle::after {
+    content: initial
+}
+.account-icons{
+    color: #999999;
+    font-size: 14px;
+}
+.account-dropdown-item{
+    font-size: 14px;
 }
