@@ -90,14 +90,54 @@ export function XPage() {
 
     const myAccount = useMemo(() => {
         return [
-            {id: 1, name: "Siparişlerim", href: '#siparislerim', icon: <i className="bi bi-box-fill me-2 account-icons"/>},
-            {id: 2, name: "Değerlendirmelerim", href: '#degerlendirmelerim', icon: <i className="bi bi-chat-left-dots-fill me-2 account-icons"/>},
-            {id: 3, name: "Satıcı Mesajlarım", href: '#satici-mesajlarim', icon: <i className="bi bi-envelope-fill me-2 account-icons"/>},
-            {id: 4, name: "Trendyol Cüzdanım", href: '#trendyol-cuzdanim', icon: <i className="bi bi-wallet-fill me-2 account-icons"/>},
-            {id: 5, name: "İndirim Kuponlarım", href: '#indirim-kuponlarim', icon: <i className="bi bi-ticket-perforated-fill me-2 account-icons"/>},
-            {id: 6, name: "Kullanıcı Bilgilerim", href: '#kullanici-bilgilerim', icon: <i className="bi bi-person-fill me-2 account-icons"/>},
-            {id: 7, name: "Trendi-ol Elite", href: '#trendiol-elite', icon: <i className="bi bi-suit-diamond-fill me-2 account-icons"/>},
-            {id: 8, name: "Trendi-ol Asistan", href: '#trendiol-asistan', icon: <i className="bi bi-chat-left-heart-fill me-2 account-icons"/>},
+            {
+                id: 1,
+                name: "Siparişlerim",
+                href: '#siparislerim',
+                icon: <i className="bi bi-box-fill me-2"/>
+            },
+            {
+                id: 2,
+                name: "Değerlendirmelerim",
+                href: '#degerlendirmelerim',
+                icon: <i className="bi bi-chat-left-dots-fill me-2"/>
+            },
+            {
+                id: 3,
+                name: "Satıcı Mesajlarım",
+                href: '#satici-mesajlarim',
+                icon: <i className="bi bi-envelope-fill me-2"/>
+            },
+            {
+                id: 4,
+                name: "Trendyol Cüzdanım",
+                href: '#trendyol-cuzdanim',
+                icon: <i className="bi bi-wallet-fill me-2"/>
+            },
+            {
+                id: 5,
+                name: "İndirim Kuponlarım",
+                href: '#indirim-kuponlarim',
+                icon: <i className="bi bi-ticket-perforated-fill me-2"/>
+            },
+            {
+                id: 6,
+                name: "Kullanıcı Bilgilerim",
+                href: '#kullanici-bilgilerim',
+                icon: <i className="bi bi-person-fill me-2"/>
+            },
+            {
+                id: 7,
+                name: "Trendi-ol Elite",
+                href: '#trendiol-elite',
+                icon: <i className="bi bi-suit-diamond-fill me-2"/>
+            },
+            {
+                id: 8,
+                name: "Trendi-ol Asistan",
+                href: '#trendiol-asistan',
+                icon: <i className="bi bi-chat-left-heart-fill me-2"/>
+            },
         ]
     })
 
@@ -112,6 +152,10 @@ export function XPage() {
 
     function myFunction() {
         navigate('/home')
+    }
+
+    function navigateLogin() {
+        navigate('/giris')
     }
 
     function signOut() {
@@ -147,7 +191,7 @@ export function XPage() {
                         <Form>
                             <Form.Group className='search-button'>
                                 <Form.Control
-                                    className='bg-light border border-light'
+                                    className='search-button-control'
                                     type='search'
                                     placeholder='Aradığınız ürün, kategori veya markayı yazınız'
                                 />
@@ -156,52 +200,72 @@ export function XPage() {
                         <Nav className='nav2 d-flex align-items-center'>
                             {
                                 !isEmailLoggedIn ?
-                                    <NavDropdown
-                                        title={<span> <i className="bi bi-person nav-icon me-1"/>Giriş Yap</span>}
-                                        show={show}
-                                        onMouseEnter={showDropdown}
-                                        onMouseLeave={hideDropdown}>
-                                        <NavDropdown.Item href="giris">
-                                            Giriş Yap
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Item href="uyelik">
-                                            Üye Ol
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
+                                    <>
+                                        <NavDropdown
+                                            title={<span className={`${show ? 'navbar-dropdown-header' : ''}`}>
+                                            <i className="bi bi-person nav-icon me-1"/>Giriş Yap</span>}
+                                            show={show}
+                                            onMouseEnter={showDropdown}
+                                            onMouseLeave={hideDropdown}
+                                            onClick={() => navigateLogin()}>
+                                            <div>
+                                                <NavDropdown.Item className='login-dropdown-item' href="giris">
+                                                    <div className='dropdown-login-button'><span>Giriş Yap</span></div>
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Item className='login-dropdown-item' href="uyelik">
+                                                    <div className='dropdown-signup-button'><span>Üye Ol</span></div>
+                                                </NavDropdown.Item>
+                                            </div>
+
+                                        </NavDropdown>
+                                        <Nav.Link href='#favorilerim' className='ms-3 navbar-items'>
+                                            <i className="bi bi-heart me-1 nav-icon"/>
+                                            Favorilerim
+                                        </Nav.Link>
+                                        <Nav.Link href='#sepetim' className='ms-3 navbar-items'>
+                                            <i className="bi bi-cart3 me-1 nav-icon"/>
+                                            Sepetim
+                                        </Nav.Link>
+                                    </>
                                     :
-                                    <NavDropdown
-                                        title={<span> <i className="bi bi-person nav-icon me-1"/>Hesabım</span>}
-                                        id="giris-dropdown"
-                                        show={show}
-                                        onMouseEnter={showDropdown}
-                                        onMouseLeave={hideDropdown}>
-                                        <NavDropdown.Header>{emailFromLocalStorage}</NavDropdown.Header>
-                                        {myAccount.map((account) => (
-                                            <NavDropdown.Item className='account-dropdown-item' key={account.name} href={account.href}>
-                                                {account.icon}
-                                                {account.name}
+                                    <>
+                                        <NavDropdown
+                                            title={<span className={`${show ? 'navbar-dropdown-header' : ''}`}>
+                                            <i className="bi bi-person nav-icon me-1"/>Hesabım</span>}
+                                            id="giris-dropdown"
+                                            show={show}
+                                            onMouseEnter={showDropdown}
+                                            onMouseLeave={hideDropdown}>
+                                            <NavDropdown.Header>{emailFromLocalStorage}</NavDropdown.Header>
+                                            {myAccount.map((account) => (
+                                                <NavDropdown.Item className='account-dropdown-item'
+                                                                  key={account.name}
+                                                                  href={account.href}>
+                                                    {account.icon}
+                                                    {account.name}
+                                                </NavDropdown.Item>
+                                            ))}
+                                            <NavDropdown.Item className='account-dropdown-item' onClick={signOut}>
+                                                <i className="bi bi-door-open-fill me-2"/>
+                                                Çıkış Yap
                                             </NavDropdown.Item>
-                                        ))}
-                                        <NavDropdown.Item className='accout-dropdown-item' onClick={signOut}>
-                                            <i className="bi bi-door-open-fill me-2 account-icons"/>
-                                            Çıkış Yap
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
+                                        </NavDropdown>
+                                        <Nav.Link href='#favorilerim' className='ms-3 navbar-items'>
+                                            <i className="bi bi-heart me-1 nav-icon"/>
+                                            Favorilerim
+                                        </Nav.Link>
+                                        <Nav.Link href='#sepetim' className='ms-3 navbar-items'>
+                                            <i className="bi bi-cart3 me-1 nav-icon"/>
+                                            Sepetim
+                                        </Nav.Link>
+                                    </>
                             }
-                            <Nav.Link href='#favorilerim' className='text-black ms-3'>
-                                <i className="bi bi-heart me-1 nav-icon"/>
-                                Favorilerim
-                            </Nav.Link>
-                            <Nav.Link href='#sepetim' className='text-black ms-3'>
-                                <i className="bi bi-cart3 me-1 nav-icon"/>
-                                Sepetim
-                            </Nav.Link>
                         </Nav>
                     </div>
                     <div>
                         <Nav className='nav3'>
                             {categoryList.map((category) => (
-                                <Nav.Link key={category.name} href={category.href} className='text-black me-3'>
+                                <Nav.Link key={category.name} href={category.href} className='category-list me-3'>
                                     {category.name}
                                 </Nav.Link>
                             ))}

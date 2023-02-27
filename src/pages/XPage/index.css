@@ -1,54 +1,143 @@
-.search-button{
-    width:600px;
+.search-button {
+    width: 600px;
 }
-.nav1{
+
+.search-button-control {
+    border: 2px solid rgb(0, 0, 0, 0);
+    background-color: #f3f3f3;
+    border-radius: 6px;
+}
+
+.search-button-control:focus {
+    border: 2px solid #f27a21;
+}
+
+.nav1 {
     font-size: 12px;
 }
-.nav2{
+
+.nav2 {
     font-size: 13px;
 }
-.nav3{
+
+.nav3 {
     font-size: 14px;
 }
-.nav-icon{
+
+.category-list:hover {
+    color: #f27a21;
+    box-shadow: inset 0 -2px 0 0 #f27a21;
+}
+
+.nav-icon {
     font-size: 16px;
 }
-.login-sign-up-card{
+
+.login-sign-up-card {
     width: 370px;
 }
-.tab{
+
+.tab {
     width: 370px;
 }
-.navbar-xpage{
+
+.navbar-xpage {
     background-color: #ffffff;
     border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 0;
 }
-.x-page-footer{
+
+.x-page-footer {
     background-color: black;
 }
-.social-media{
+
+.social-media {
     padding-right: 0;
 }
-.social-media1{
+
+.social-media1 {
     padding-right: 0;
     padding-left: 8px;
 }
-.footer-x{
+
+.footer-x {
     background-color: #2d2d2d;
     color: white;
     padding-bottom: 7px;
     padding-top: 7px;
 }
-.container-white{
+
+.container-white {
     height: 30px;
 }
+
 .dropdown-toggle::after {
     content: initial
 }
-.account-icons{
+
+.account-dropdown-item {
+    font-size: 14px;
+}
+
+.account-dropdown-item i {
     color: #999999;
-    font-size: 14px;
 }
-.account-dropdown-item{
-    font-size: 14px;
+
+.account-dropdown-item:hover {
+    color: #f27a21;
+    background-color: white;
 }
+
+.login-dropdown-item:hover {
+    background-color: white;
+}
+
+.account-dropdown-item:hover i {
+    color: #f27a21;
+}
+
+.dropdown-header {
+    color: #f27a21;
+}
+
+.navbar-items:hover {
+    color: #f27a21;
+}
+
+.navbar-dropdown-header:hover {
+    color: #f27a21;
+}
+
+.navbar-dropdown-header {
+    color: #f27a21;
+}
+
+.dropdown-login-button {
+    border: 1px solid #f27a21;
+    background-color: #f27a21;
+    color: white;
+    width: 100%;
+    height: 34px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    line-height: 34px;
+}
+
+.dropdown-signup-button {
+    border: 1px solid #dedede;
+    background-color: white;
+    color: #666666;
+    width: 100%;
+    height: 34px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    line-height: 34px;
+}
+
+

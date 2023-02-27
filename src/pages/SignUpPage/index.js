@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {InputGroup} from "react-bootstrap";
 
 export function SignUpPage() {
     const navigate = useNavigate()
@@ -123,7 +124,7 @@ export function SignUpPage() {
                     </div> : null}
                     <Form className='w-100' onSubmit={onSignUpSubmit} onChange={onFormChange}>
                         <Form.Group>
-                            <Form.Label>E-mail</Form.Label>
+                            <Form.Label>E-Posta</Form.Label>
                             <Form.Control className={`${(isEmailValid === false ? 'sign-up-validation-input' : '')}`}
                                           type='e-mail'
                                           placeholder='E-mail'
@@ -131,7 +132,7 @@ export function SignUpPage() {
                         </Form.Group>
                         {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
                         {/*<InputGroup>*/}
-                        {/*    <Form.Control className='password-input' type='password' placeholder='Şifre' onChange={handleChangePassword}/>*/}
+                        {/*    <Form.Control className='password-input' type='password' placeholder='Şifre' onChange={handleChangeSignUpPassword}/>*/}
                         {/*    <InputGroup.Text>*/}
                         {/*        <i className="bi bi-eye"/>*/}
                         {/*    </InputGroup.Text>*/}
@@ -141,10 +142,14 @@ export function SignUpPage() {
                         {/*    içermelidir.</Form.Text>*/}
                         <Form.Group>
                             <Form.Label className='mt-4'>Şifre</Form.Label>
-                            <Form.Control type='password'
-                                          placeholder='Şifre'
-                                          onChange={handleChangeSignUpPassword}
-                                          className={`${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
+                            <div className='input-icons'>
+                                {/*<i className="bi bi-eye icon"/>*/}
+                                <Form.Control type='password'
+                                              placeholder='Şifre'
+                                              onChange={handleChangeSignUpPassword}
+                                              className={`${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
+                            </div>
+
                             <Form.Text className={`${isPasswordValid === false ? 'password-text-validation' : ''}`}>Şifreniz
                                 en az 7 karakter ve en fazla 64 karakter olmalı, harf ve rakam içermelidir.</Form.Text>
                         </Form.Group>
