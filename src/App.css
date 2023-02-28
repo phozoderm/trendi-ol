@@ -83,17 +83,18 @@
 }
 
 .nav {
-    --bs-nav-link-color: #f27a21;
-    --bs-nav-link-hover-color: #f27a21;
+    --bs-nav-link-color: #333333;
+    --bs-nav-link-hover-color: #333333;
 }
-
 .list-group {
     --bs-list-group-color: #ffffff;
     --bs-list-group-bg: #000000;
     --bs-list-group-border-width: 0;
     --bs-list-group-active-bg: #000000;
 }
-
+.nav-tabs{
+    --bs-nav-tabs-link-active-color: #f27a21;
+}
 .list-group-item:hover {
     color: white;
     text-decoration: underline;
@@ -106,8 +107,3 @@
 .nav-link:focus{
     color: black;
 }
-/*.input-group-text{*/
-/*    background-color: #fafafa;*/
-/*    border-left: 0;*/
-/*    cursor: pointer;*/
-/*}*/

@@ -190,6 +190,7 @@ export function XPage() {
                         </Navbar.Brand>
                         <Form>
                             <Form.Group className='search-button'>
+                                <i className="bi bi-search search-button-icon"/>
                                 <Form.Control
                                     className='search-button-control'
                                     type='search'

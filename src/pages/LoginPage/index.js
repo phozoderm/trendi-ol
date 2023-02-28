@@ -14,7 +14,11 @@ export function LoginPage() {
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('')
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+    const showHide = () => {
+        setIsPasswordVisible(!isPasswordVisible)
+    }
     const handleChangeLoginEmail = (event) => {
         setEmail(event.target.value)
         setIsEmailValid(true)
@@ -73,8 +77,8 @@ export function LoginPage() {
         <Container className='w-100 d-flex flex-column align-items-center'>
             <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
             <label className='label mb-3'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</label>
-            <div className='tab'>
-                <Nav variant="tabs" defaultActiveKey="giris" className='w-100 tabs'>
+            <div className='nav-div'>
+                <Nav variant="tabs" defaultActiveKey="giris" className='w-100 card-form-tabs'>
                     <Nav.Item className='w-50'>
                         <Nav.Link href="giris">Giriş Yap</Nav.Link>
                     </Nav.Item>
@@ -98,10 +102,15 @@ export function LoginPage() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='mt-4'>Şifre</Form.Label>
-                            <Form.Control className={`${!isPasswordValid ? 'login-validation-input' : ''}`}
-                                          onChange={handleChangeLoginPassword}
-                                          type='password'
-                                          placeholder='Şifre'/>
+                            <div className='login-input-container'>
+                                <i onClick={showHide}
+                                   className={`bi ${isPasswordVisible ? 'bi-eye-slash' : 'bi-eye'} login-input-icon`}/>
+                                <Form.Control
+                                    className={`login-input ${!isPasswordValid ? 'login-validation-input' : ''}`}
+                                    onChange={handleChangeLoginPassword}
+                                    type={isPasswordVisible ? 'text' : 'password'}
+                                    placeholder='Şifre'/>
+                            </div>
                         </Form.Group>
                         <Button variant="link" className="d-flex float-end forget-password mt-2">Şifremi
                             Unuttum</Button>

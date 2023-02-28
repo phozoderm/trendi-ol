@@ -1,7 +1,16 @@
 .search-button {
     width: 600px;
+    display: flex;
+    flex-direction: row-reverse;
 }
-
+.search-button i {
+    position: absolute;
+}
+.search-button-icon{
+    padding: 12px;
+    color: #f27a21;
+    cursor: pointer;
+}
 .search-button-control {
     border: 2px solid rgb(0, 0, 0, 0);
     background-color: #f3f3f3;
@@ -34,10 +43,6 @@
 }
 
 .login-sign-up-card {
-    width: 370px;
-}
-
-.tab {
     width: 370px;
 }
 
@@ -139,5 +144,4 @@
     box-sizing: border-box;
     line-height: 34px;
 }
-
 

@@ -6,7 +6,6 @@ import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {InputGroup} from "react-bootstrap";
 
 export function SignUpPage() {
     const navigate = useNavigate()
@@ -18,6 +17,7 @@ export function SignUpPage() {
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const [isCheckValid, setIsCheckValid] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
     const validateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,6 +27,9 @@ export function SignUpPage() {
         const re = /[a-zA-Z]+/;
         const re2 = /[0-9]+/;
         return re.test(password) && re2.test(password) && password.length >= 7
+    }
+    const showPassword = () => {
+        setIsPasswordVisible(!isPasswordVisible)
     }
     const handleChangeSignUpEmail = (event) => {
         setEmail(event.target.value)
@@ -107,8 +110,8 @@ export function SignUpPage() {
         <Container className='w-100 d-flex flex-column align-items-center'>
             <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
             <label className='label mb-3'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</label>
-            <div className='tab'>
-                <Nav variant="tabs" defaultActiveKey="uyelik" className='w-100 tabs'>
+            <div className='nav-div'>
+                <Nav variant="tabs" defaultActiveKey="uyelik" className='w-100 card-form-tabs'>
                     <Nav.Item className='w-50'>
                         <Nav.Link href="giris">Giriş Yap</Nav.Link>
                     </Nav.Item>
@@ -130,37 +133,20 @@ export function SignUpPage() {
                                           placeholder='E-mail'
                                           onChange={handleChangeSignUpEmail}/>
                         </Form.Group>
-                        {/*<Form.Label className='mt-4'>Şifre</Form.Label>*/}
-                        {/*<InputGroup>*/}
-                        {/*    <Form.Control className='password-input' type='password' placeholder='Şifre' onChange={handleChangeSignUpPassword}/>*/}
-                        {/*    <InputGroup.Text>*/}
-                        {/*        <i className="bi bi-eye"/>*/}
-                        {/*    </InputGroup.Text>*/}
-                        {/*</InputGroup>*/}
-                        {/*<Form.Text>Şifreniz en az 7 karakter ve en fazla 64 karakter olmalı, harf*/}
-                        {/*    ve rakam*/}
-                        {/*    içermelidir.</Form.Text>*/}
                         <Form.Group>
                             <Form.Label className='mt-4'>Şifre</Form.Label>
-                            <div className='input-icons'>
-                                {/*<i className="bi bi-eye icon"/>*/}
-                                <Form.Control type='password'
+                            <div className='sign-up-input-container'>
+                                <i onClick={showPassword}
+                                   className={`bi ${isPasswordVisible ? 'bi-eye-slash' : 'bi-eye'} sign-up-input-icon`}/>
+                                <Form.Control type={`${isPasswordVisible ? 'text' : 'password'}`}
                                               placeholder='Şifre'
                                               onChange={handleChangeSignUpPassword}
-                                              className={`${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
+                                              className={`sign-up-input ${(isPasswordValid === false ? 'sign-up-validation-input' : '')}`}/>
                             </div>
 
                             <Form.Text className={`${isPasswordValid === false ? 'password-text-validation' : ''}`}>Şifreniz
                                 en az 7 karakter ve en fazla 64 karakter olmalı, harf ve rakam içermelidir.</Form.Text>
                         </Form.Group>
-                        {/*<ToggleButtonGroup type="radio" name="options" className='w-100 mt-3'>*/}
-                        {/*    <ToggleButton id="tbg-radio-1" value={1} variant='warning'>*/}
-                        {/*        Kadın*/}
-                        {/*    </ToggleButton>*/}
-                        {/*    <ToggleButton id="tbg-radio-2" value={2} variant='warning'>*/}
-                        {/*        Erkek*/}
-                        {/*    </ToggleButton>*/}
-                        {/*</ToggleButtonGroup>*/}
                         <Form.Label className='mt-4'>Cinsiyet (Opsiyonel)</Form.Label>
                         <div className='d-flex justify-content-between'>
                             <Button
