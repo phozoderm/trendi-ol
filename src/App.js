@@ -5,6 +5,7 @@ import {XPage} from "./pages/XPage";
 import {LoginPage} from "./pages/LoginPage";
 import {SignUpPage} from "./pages/SignUpPage";
 import {HomePage} from "./pages/HomePage";
+import {ProductListPage} from "./pages/ProductListPage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -23,6 +24,7 @@ export function App() {
                             <Route path='uyelik' element={<SignUpPage/>}/>
                     }
                     <Route path='home' element={<HomePage/>}/>
+                    <Route path='product-list' element={<ProductListPage/>}/>
                     <Route path='*' element={<Navigate to='/home' replace/>}/>
                 </Route>
             </Routes>

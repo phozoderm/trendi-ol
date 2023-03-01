@@ -112,8 +112,7 @@ export function LoginPage() {
                                     placeholder='Şifre'/>
                             </div>
                         </Form.Group>
-                        <Button variant="link" className="d-flex float-end forget-password mt-2">Şifremi
-                            Unuttum</Button>
+                        <Button variant="link" className="d-flex float-end forget-password mt-2">Şifremi Unuttum</Button>
                         <Button type='submit' className='w-100 mt-2'>GİRİŞ YAP</Button>
                     </Form>
                     <div className='w-100 d-flex justify-content-between mt-3'>

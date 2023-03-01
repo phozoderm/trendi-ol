@@ -1,3 +1,37 @@
+.bi-exclamation-circle {
+    margin-right: 5px;
+}
+
+.bi-facebook {
+    color: #ffffff;
+}
+
+.bi-google {
+    color: #ffffff;
+}
+
+.card-form-tabs {
+    background-color: #f2f2f2;
+    font-size: 16px;
+}
+
+.facebook-icon {
+    background-color: #4b6ea8;;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+}
+
+.forget-password {
+    font-size: 14px;
+}
+
+.google-icon {
+    background-color: #f04236;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+}
 
 .label {
     font-size: 15px;
@@ -8,53 +42,28 @@
     padding: 24px;
 }
 
-.card-form-tabs {
-    background-color: #f2f2f2;
-    font-size: 16px;
+.login-input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-.nav-div {
-    width: 374px;
+.login-input-container i {
+    position: absolute;
 }
 
-.forget-password {
-    font-size: 14px;
+.login-input-icon {
+    padding: 10px;
+    font-size: 18px;
 }
 
-.bi-google {
-    color: #ffffff;
-}
-
-.bi-facebook {
-    color: #ffffff;
-}
-
-.facebook-icon {
-    background-color: #4b6ea8;;
-    border-radius: 4px;
-    width: 30px;
-    height: 30px;
-}
-
-.google-icon {
-    background-color: #f04236;
-    border-radius: 4px;
-    width: 30px;
-    height: 30px;
+.login-input {
+    padding-right: 30px;
 }
 
 .login-page-sign-in {
     font-size: 12px;
     line-height: 14px;
-}
-
-.sign-button {
-    width: 148px;
-    margin-right: 15px;
-}
-
-.sign-button1 {
-    width: 148px;
 }
 
 .login-text-validation {
@@ -67,10 +76,6 @@
     justify-content: center;
 }
 
-.bi-exclamation-circle {
-    margin-right: 5px;
-}
-
 .login-validation-input {
     border: 1px solid #b30000;
     background-color: #fff1f1;
@@ -81,18 +86,15 @@
     background-color: #fff1f1;
 }
 
-.login-input-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
+.nav-div {
+    width: 374px;
 }
 
-.login-input-container i {
-    position: absolute;
+.sign-button {
+    width: 148px;
+    margin-right: 15px;
 }
-.login-input-icon{
-    padding: 10px;
-}
-.login-input{
-    padding-right: 30px;
+
+.sign-button1 {
+    width: 148px;
 }

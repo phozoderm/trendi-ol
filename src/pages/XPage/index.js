@@ -15,20 +15,6 @@ import {useMemo, useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import './index.css'
 
-// console.log('before data is created')
-// const data = [
-//     {id: 1, name: "KADIN", href: '#kadin'},
-//     {id: 2, name: "ERKEK", href: '#erkek'},
-//     {id: 3, name: "ANNE & ÇOCUK", href: '#anne-cocuk'},
-//     {id: 1, name: "EV & MOBİLYA", href: '#ev-mobilya'},
-//     {id: 2, name: "SÜPERMARKET", href: '#supermarket'},
-//     {id: 3, name: "KOZMETİK", href: '#kozmetik'},
-//     {id: 1, name: "AYAKKABI & ÇANTA", href: '#ayakkabi-canta'},
-//     {id: 2, name: "SAAT & AKSESUAR", href: '#saat-aksesuar'},
-//     {id: 3, name: "ELEKTRONİK", href: '#elektronik'},
-//     {id: 1, name: "SPOR & OUTDOOR", href: '#spor-outdoor'},
-// ];
-// console.log('data is created!')
 
 export function XPage() {
 
@@ -141,10 +127,10 @@ export function XPage() {
         ]
     })
 
-    const showDropdown = (e) => {
+    const showDropdown = () => {
         setShow(!show)
     }
-    const hideDropdown = (e) => {
+    const hideDropdown = () => {
         setShow(false)
     }
     const emailFromLocalStorage = localStorage.getItem('email')
@@ -204,11 +190,13 @@ export function XPage() {
                                     <>
                                         <NavDropdown
                                             title={<span className={`${show ? 'navbar-dropdown-header' : ''}`}>
-                                            <i className="bi bi-person nav-icon me-1"/>Giriş Yap</span>}
+                                            <i className="bi bi-person nav-icon me-1"/>
+                                                Giriş Yap</span>}
                                             show={show}
                                             onMouseEnter={showDropdown}
                                             onMouseLeave={hideDropdown}
-                                            onClick={() => navigateLogin()}>
+                                            onClick={() => navigateLogin()}
+                                            className='navbar-items'>
                                             <div>
                                                 <NavDropdown.Item className='login-dropdown-item' href="giris">
                                                     <div className='dropdown-login-button'><span>Giriş Yap</span></div>
@@ -236,7 +224,8 @@ export function XPage() {
                                             id="giris-dropdown"
                                             show={show}
                                             onMouseEnter={showDropdown}
-                                            onMouseLeave={hideDropdown}>
+                                            onMouseLeave={hideDropdown}
+                                            className='navbar-items'>
                                             <NavDropdown.Header>{emailFromLocalStorage}</NavDropdown.Header>
                                             {myAccount.map((account) => (
                                                 <NavDropdown.Item className='account-dropdown-item'

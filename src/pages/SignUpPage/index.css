@@ -1,11 +1,13 @@
-
-.label {
-    font-size: 15px;
+.bi-exclamation-circle {
+    margin-right: 5px;
 }
 
-.login-sign-up-card {
-    width: 374px;
-    padding: 24px;
+.bi-facebook {
+    color: #ffffff;
+}
+
+.bi-google {
+    color: #ffffff;
 }
 
 .card-form-tabs {
@@ -13,30 +15,8 @@
     font-size: 16px;
 }
 
-.nav-div {
-    width: 374px;
-}
-
-.sign-up-page-text {
-    font-size: 12px;
-    line-height: normal;
-    margin-left: 10px;
-}
-
-.sign-up-page-text-validation {
+.email-valid-text {
     color: #b30000;
-    font-size: 12px;
-    line-height: normal;
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-.bi-google {
-    color: #ffffff;
-}
-
-.bi-facebook {
-    color: #ffffff;
 }
 
 .facebook-icon {
@@ -44,27 +24,6 @@
     border-radius: 4px;
     width: 30px;
     height: 30px;
-}
-
-.google-icon {
-    background-color: #f04236;
-    border-radius: 4px;
-    width: 30px;
-    height: 30px;
-}
-
-.login-page-sign-up {
-    font-size: 12px;
-    line-height: 14px;
-}
-
-.sign-button {
-    width: 148px;
-    margin-right: 15px;
-}
-
-.sign-button1 {
-    width: 148px;
 }
 
 .gender-button-selected {
@@ -99,6 +58,27 @@
     color: #666666;
 }
 
+.google-icon {
+    background-color: #f04236;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+}
+
+.label {
+    font-size: 15px;
+}
+
+.login-sign-up-card {
+    width: 374px;
+    padding: 24px;
+}
+
+.login-page-sign-up {
+    font-size: 12px;
+    line-height: 14px;
+}
+
 .login-text-validation {
     color: #b30000;
     background-color: #fff1f1;
@@ -109,8 +89,35 @@
     justify-content: center;
 }
 
-.bi-exclamation-circle {
-    margin-right: 5px;
+.nav-div {
+    width: 374px;
+}
+
+.password-text-validation {
+    color: #b30000;
+}
+
+.sign-up-page-text {
+    font-size: 12px;
+    line-height: normal;
+    margin-left: 10px;
+}
+
+.sign-up-page-text-validation {
+    color: #b30000;
+    font-size: 12px;
+    line-height: normal;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.sign-button {
+    width: 148px;
+    margin-right: 15px;
+}
+
+.sign-button1 {
+    width: 148px;
 }
 
 .sign-up-validation-input {
@@ -121,14 +128,6 @@
 .sign-up-validation-input:focus {
     border: 1px solid #b30000;
     background-color: #fff1f1;
-}
-
-.password-text-validation {
-    color: #b30000;
-}
-
-.email-valid-text {
-    color: #b30000;
 }
 
 .sign-up-input-container i {
@@ -143,6 +142,7 @@
 
 .sign-up-input-icon {
     padding: 10px;
+    font-size: 18px;
 }
 
 .sign-up-input {
