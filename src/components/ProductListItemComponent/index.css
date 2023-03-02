@@ -1,0 +1,10 @@
+.product-list-card {
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    width: 229px;
+    height: 496px;
+}

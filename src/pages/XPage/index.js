@@ -27,11 +27,11 @@ export function XPage() {
             {id: 3, name: "ANNE & ÇOCUK", href: '#anne-cocuk'},
             {id: 4, name: "EV & MOBİLYA", href: '#ev-mobilya'},
             {id: 5, name: "SÜPERMARKET", href: '#supermarket'},
-            {id: 6, name: "KOZMETİK", href: '#kozmetik'},
-            {id: 7, name: "AYAKKABI & ÇANTA", href: '#ayakkabi-canta'},
-            {id: 8, name: "SAAT & AKSESUAR", href: '#saat-aksesuar'},
-            {id: 9, name: "ELEKTRONİK", href: '#elektronik'},
-            {id: 0, name: "SPOR & OUTDOOR", href: '#spor-outdoor'},
+            {id: 6, name: "AYAKKABI & ÇANTA", href: '#ayakkabi-canta'},
+            {id: 7, name: "ELEKTRONİK", href: '#elektronik'},
+            {id: 8, name: "SPOR & OUTDOOR", href: '#spor-outdoor'},
+            {id: 9, name: "ÇOK SATANLAR", href: '#cok-satanlar'},
+            {id: 0, name: "FLAŞ İNDİRİMLER", href: '#flas-indirimler'},
         ];
     }, [])
 
