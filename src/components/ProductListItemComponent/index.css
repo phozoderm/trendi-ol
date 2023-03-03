@@ -3,8 +3,79 @@
     cursor: pointer;
     border: 1px solid #e6e6e6;
     box-sizing: border-box;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-radius: 8px;
     width: 229px;
     height: 496px;
+}
+
+.product-list-card-img-overlay {
+    border: 1px solid #3ec461;
+    color: #ffffff;
+    background-color: #3ec461;
+    border-radius: 4px;
+    width: 72px;
+    height: 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+}
+
+.bi-star-fill {
+    color: #fec000;
+    font-size: 10px;
+}
+
+.truck-icon-component {
+    font-size: 20px;
+}
+
+.star-icon {
+    font-size: 10px;
+    color: #d8d8d8;
+}
+
+.product-favorite-icon {
+    float: right;
+    width: 43px;
+    height: 43px;
+    background: url(https://cdn.dsmcdn.com/web/production/favorite-heart.svg) no-repeat;
+}
+.color-options{
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    background-color: #ffffff;
+    position: absolute;
+    right: 10px;
+    bottom: 160px;
+    cursor: pointer;
+    gap: 5px;
+    justify-content: center;
+    padding: 3px 6px;
+    z-index: 5;
+}
+.color-options div{
+    display: flex;
+    align-items: center;
+}
+.color-options div .color-option:nth-child(1){
+    width: 12px;
+    height: 12px;
+    border: solid 1px #ffffff;
+    background-color: red;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, #3023ae 0%, #53a0fd 48%, #b4ec51 101%);
+    z-index: 2;
+}
+.color-options div .color-option:nth-child(2){
+    background-image: linear-gradient(to right, #6bceb4 0%, #f98cc2 48%, #fff781 101%);
+    z-index: 1;
+    margin-left: -6px;
+    width: 12px;
+    height: 12px;
+    border: solid 1px #ffffff;
+    background-color: pink;
+    border-radius: 50%;
 }

@@ -1,3 +1,25 @@
-.product-page-container{
+.product-page-container {
     width: 1200px;
+}
+
+.hey {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #EFFBF5;
+    border-radius: 8px;
+    height: 68px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+}
+
+.heyy {
+    color: #333333;
+    font-weight: 700;
+    font-size: 16px;
+}
+.truck-icon{
+    color: #0BC15C;
+    margin-right: 15px;
+    font-size: 25px;
 }

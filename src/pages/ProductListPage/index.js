@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
 import './index.css'
 import {useMemo} from "react";
 import {ProductListItemComponent} from "../../components/ProductListItemComponent";
@@ -203,18 +204,25 @@ export function ProductListPage() {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <Container>
-                    <Row md={3} lg={4}>
-                        {productList.map((product) => (
-                            <Col>
-                                <ProductListItemComponent
-                                    bgImage={product.image}
-                                    title={product.title}
-                                />
-                            </Col>
-                        ))}
-                    </Row>
+                <Container className='d-flex flex-column'>
+                    <Container className='hey'>
+                        <span className='heyy'> <i className='bi bi-truck truck-icon'/> <b>Hızlı Teslimat</b> yapılan ürünleri göster. <i className="bi bi-info-circle"/> </span>
+                        <Button variant='warning'>Uygula</Button>
+                    </Container>
+                    <Container>
+                        <Row md={3} lg={4}>
+                            {productList.map((product) => (
+                                <Col>
+                                    <ProductListItemComponent
+                                        bgImage={product.image}
+                                        title={product.title}
+                                    />
+                                </Col>
+                            ))}
+                        </Row>
+                    </Container>
                 </Container>
+
             </Container>
         </>
     )

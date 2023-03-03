@@ -28,12 +28,15 @@
 }
 
 .btn-warning {
-    --bs-btn-bg: #f2f2f2;
-    --bs-btn-border-color: #e6e6e6;
-    --bs-btn-color: #666;
-    --bs-btn-active-bg: #f2f2f2;
-    --bs-btn-active-border-color: #f27a21;
-    --bs-btn-active-color: #f27a21;
+    --bs-btn-bg: #0BC15C;
+    --bs-btn-hover-bg: #00AA4C;
+    --bs-btn-hover-border-color: #00AA4C;
+    --bs-btn-border-color: #0BC15C;
+    --bs-btn-color: #ffffff;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-active-bg: #00AA4C;
+    --bs-btn-active-border-color: #00AA4C;
+    --bs-btn-active-color: #ffffff;
 }
 
 .btn-link {
@@ -43,6 +46,8 @@
 
 .card {
     --bs-card-border-radius: 0;
+    --bs-card-title-spacer-y:0;
+    --bs-card-img-overlay-padding: 8px;
 }
 
 :root {
