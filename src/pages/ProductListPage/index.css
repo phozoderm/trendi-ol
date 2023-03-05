@@ -2,7 +2,7 @@
     width: 1200px;
 }
 
-.hey {
+.product-fast-delivery-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,13 +13,29 @@
     padding: 0 20px;
 }
 
-.heyy {
+.product-fast-delivery-text {
     color: #333333;
-    font-weight: 700;
     font-size: 16px;
 }
-.truck-icon{
+
+.truck-icon {
     color: #0BC15C;
     margin-right: 15px;
     font-size: 25px;
 }
+
+.product-filter-select {
+    width: 180px;
+    border: 1px solid #e2e2e2;
+    color: #666666;
+    font-size: 12px;
+}
+.product-filter-select-container{
+    margin-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.product-item-card-container{
+    padding-left: 0;
+}
+

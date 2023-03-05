@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
 import './index.css'
 import {useMemo} from "react";
 import {ProductListItemComponent} from "../../components/ProductListItemComponent";
@@ -76,7 +77,8 @@ export function ProductListPage() {
     return (
         <>
             <Container className='d-flex flex-row product-page-container'>
-                <Accordion alwaysOpen>
+                <style>{'body { background-color: white; }'}</style>
+                <Accordion alwaysOpen style={{fontFamily: 'source_sans_prosemibold,sans-serif'}}>
                     <Accordion.Item eventKey='0'>
                         <Accordion.Header>Yıldızlı Ürünler</Accordion.Header>
                         <Accordion.Body>
@@ -205,11 +207,26 @@ export function ProductListPage() {
                     </Accordion.Item>
                 </Accordion>
                 <Container className='d-flex flex-column'>
-                    <Container className='hey'>
-                        <span className='heyy'> <i className='bi bi-truck truck-icon'/> <b>Hızlı Teslimat</b> yapılan ürünleri göster. <i className="bi bi-info-circle"/> </span>
+                    <Container className='d-flex flex-row justify-content-between product-filter-select-container'>
+                        <span style={{fontSize: '18px', fontWeight:'600', fontFamily: 'source_sans_prosemibold,sans-serif'}}>6503 sonuç listeleniyor </span>
+                        <Form.Select size='sm' className='product-filter-select'>
+                            <option>Önerilen Sıralama</option>
+                            <option value="1">En düşük fiyat</option>
+                            <option value="2">En yüksek fiyat</option>
+                            <option value="3">En yeniler</option>
+                            <option value="4">En çok satanlar</option>
+                            <option value="5">En çok beğenilenler</option>
+                            <option value="6">En çok değerlendirilenler</option>
+                        </Form.Select>
+                    </Container>
+                    <Container className='product-fast-delivery-container'>
+                        <span className='product-fast-delivery-text'> <i className='bi bi-truck truck-icon'/>
+                            <span style={{fontWeight: '600', fontFamily: 'source_sans_prosemibold,sans-serif'}}>Hızlı Teslimat</span> yapılan ürünleri göster.
+                            <i className="bi bi-info-circle ms-2" style={{fontSize: '12px'}}/>
+                        </span>
                         <Button variant='warning'>Uygula</Button>
                     </Container>
-                    <Container>
+                    <Container className='product-item-card-container'>
                         <Row md={3} lg={4}>
                             {productList.map((product) => (
                                 <Col>
@@ -222,7 +239,6 @@ export function ProductListPage() {
                         </Row>
                     </Container>
                 </Container>
-
             </Container>
         </>
     )

@@ -1,0 +1,93 @@
+.my-account-sidebar-item {
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.my-account-sidebar-item:hover {
+    border-radius: 6px;
+    background-color: #f3f3f3;
+}
+
+.my-account-sidebar-item .nav-link:focus {
+    color: #f27a21;
+    border-radius: 6px;
+    background-color: #fff1e6;
+}
+
+.my-account-sidebar {
+    width: 200px;
+}
+
+.my-account-sidebar .my-account-sidebar-item .nav-link i {
+    color: #999999;
+}
+
+.my-account-sidebar .my-account-sidebar-item .nav-link:hover i {
+    color: #f27a21;
+}
+
+.my-account-sidebar .my-account-sidebar-item .nav-link:focus i {
+    color: #f27a21;
+}
+
+.my-account-sidebar .my-account-sidebar-item .nav-link {
+    color: #333333;
+}
+
+.my-account-sidebar .my-account-sidebar-item .nav-link:focus {
+    color: black;
+    font-weight: bold;
+}
+
+.my-account-sidebar-item-title {
+    padding: 8px 13px 0 13px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.my-account-sidebar-item-assistant {
+    margin: 10px 0 10px 17px;
+    border: 1px solid #f27a21;
+    border-radius: 3px;
+    padding: 5px 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.my-account-sidebar-item-assistant:hover {
+    border-radius: 3px;
+    background-color: #f27a21;
+}
+
+.my-account-sidebar-item-assistant i {
+    color: #f27a21;
+    font-size: 25px;
+}
+
+.my-account-sidebar-item-assistant:hover i {
+    color: white;
+}
+
+.my-account-sidebar-item-assistant span {
+    color: #f27a21;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.my-account-sidebar-item-assistant:hover span {
+    color: white;
+}
+
+.my-account-sidebar-item-assistant p {
+    color: #999999;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.my-account-sidebar-item-assistant:hover p {
+    color: white;
+}
+
+.my-account-sidebar-item-assistant .nav-link {
+    padding: 0 16px;
+}

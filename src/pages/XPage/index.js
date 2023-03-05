@@ -109,7 +109,7 @@ export function XPage() {
             {
                 id: 6,
                 name: "Kullanıcı Bilgilerim",
-                href: '#kullanici-bilgilerim',
+                href: 'hesabim',
                 icon: <i className="bi bi-person-fill me-2"/>
             },
             {
@@ -143,7 +143,6 @@ export function XPage() {
     function navigateLogin() {
         navigate('/giris')
     }
-
     function signOut() {
         localStorage.removeItem('email')
         window.location.reload()
@@ -230,7 +229,7 @@ export function XPage() {
                                             {myAccount.map((account) => (
                                                 <NavDropdown.Item className='account-dropdown-item'
                                                                   key={account.name}
-                                                                  href={account.href}>
+                                                onClick={()=> navigate(account.href)}>
                                                     {account.icon}
                                                     {account.name}
                                                 </NavDropdown.Item>
