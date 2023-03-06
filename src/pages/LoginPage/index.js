@@ -41,13 +41,15 @@ export function LoginPage() {
             headers: {
                 'content-type': 'application/json',
             }
-        }).catch(() => {
-            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         }).then(res => {
             if (res.ok) {
-                localStorage.setItem('email', email)
-                window.location.reload()
-                navigate('/home')
+                res.json().then((responseBody)=>{
+                    localStorage.setItem('email', email)
+                    localStorage.setItem('jwt', responseBody.jwt)
+                    window.location.reload()
+                    navigate('/home')
+                })
+
             } else {
                 if (res.status === 401) {
                     setErrorMessage('E-posta adresiniz ve/veya şifreniz hatalı.')
@@ -55,6 +57,8 @@ export function LoginPage() {
                     setErrorMessage('Bir hata oluştu. Lütfen tekrar deneyiniz.')
                 }
             }
+        }).catch(() => {
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
 

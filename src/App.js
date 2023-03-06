@@ -8,6 +8,7 @@ import {HomePage} from "./pages/HomePage";
 import {ProductListPage} from "./pages/ProductListPage";
 import {MyAccountPage} from "./pages/MyAccountPage";
 import {UserInfoPage} from "./pages/UserInfoPage";
+import {UserAddressInfo} from "./pages/UserAddressInfo";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -29,6 +30,7 @@ export function App() {
                         !isEmailLoggedIn ? null :
                             <Route path='hesabim' element={<MyAccountPage/>}>
                                 <Route path='kullaniciBilgileri' element={<UserInfoPage/>} />
+                                <Route path='adresBilgileri' element={<UserAddressInfo/>}/>
                             </Route>
                     }
                     <Route path='home' element={<HomePage/>}/>

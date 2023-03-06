@@ -47,7 +47,7 @@ export function MyAccountPage() {
                                 className="bi bi-person-fill me-2"/> Kullanıcı Bilgilerim</Nav.Link>
                         </Nav.Item>
                         <Nav.Item className='my-account-sidebar-item'>
-                            <Nav.Link> <i className="bi bi-geo-alt-fill me-2"/>Adres Bilgilerim</Nav.Link>
+                            <Nav.Link onClick={()=> navigate('adresBilgileri')}> <i className="bi bi-geo-alt-fill me-2"/>Adres Bilgilerim</Nav.Link>
                         </Nav.Item>
                         <Nav.Item className='my-account-sidebar-item'>
                             <Nav.Link> <i className="bi bi-credit-card-fill me-2"/>Kayıtlı Kartlarım</Nav.Link>
@@ -74,7 +74,6 @@ export function MyAccountPage() {
                         <Outlet/>
                     </Col>
                 </Row>
-
             </Container>
         </>
     )

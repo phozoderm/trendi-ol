@@ -9,11 +9,7 @@ export function ProductListItemComponent(props) {
                     <i className="bi bi-truck truck-icon-component"/>
                     <span style={{fontSize: '10px', lineHeight: '9px', marginLeft: '4px', marginTop: '1px'}}>BUGÜN KARGODA</span>
                 </div>
-            </Card.ImgOverlay>
-            <Card.ImgOverlay>
                 <i className='product-favorite-icon'/>
-            </Card.ImgOverlay>
-            <Card.ImgOverlay>
                 <div className='color-options'>
                     <div>
                         <span className='color-option'> </span>

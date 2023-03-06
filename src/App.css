@@ -46,7 +46,7 @@
 
 .card {
     --bs-card-border-radius: 0;
-    --bs-card-title-spacer-y:0;
+    --bs-card-title-spacer-y: 0;
     --bs-card-img-overlay-padding: 8px;
 }
 
@@ -118,9 +118,6 @@
 }
 
 .accordion {
-    width: 200px;
-    min-width: 200px;
-    max-width: 200px;
     height: 100vh;
     overflow: hidden scroll;
     --bs-accordion-btn-icon-width: 12px;
@@ -129,7 +126,8 @@
     position: -webkit-sticky;
     top: 0;
 }
-.accordion-button:focus{
+
+.accordion-button:focus {
     box-shadow: 0 0 transparent;
     background-color: #ffffff;
     color: #333333;
@@ -142,18 +140,27 @@
     font-weight: 600;
     padding: 15px 5px 5px 5px;
 }
-.accordion-item{
+
+.accordion-item {
     font-size: 13px;
     border-left: 0;
     border-top: 0;
 }
-.card-title{
+
+.card-title {
     font-size: 14px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.form-select{
+
+.form-select {
     background: url('https://cdn.dsmcdn.com/web/assets/headerAccountNavArrow-new.png') #fff 93% center no-repeat;
+}
+
+.modal {
+    --bs-modal-padding: 15px 20px 20px;
+    --bs-modal-width:520px;
+
 }

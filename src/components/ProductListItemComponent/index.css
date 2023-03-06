@@ -4,11 +4,10 @@
     border: 1px solid #e6e6e6;
     box-sizing: border-box;
     border-radius: 8px;
-    width: 229px;
-    height: 496px;
 }
 
 .product-list-card-img-overlay {
+    display: inline-flex;
     border: 1px solid #3ec461;
     color: #ffffff;
     background-color: #3ec461;
@@ -16,7 +15,6 @@
     width: 72px;
     height: 24px;
     box-sizing: border-box;
-    display: flex;
     align-items: center;
     padding: 2px;
 }
@@ -39,7 +37,13 @@
     float: right;
     width: 43px;
     height: 43px;
-    background: url(https://cdn.dsmcdn.com/web/production/favorite-heart.svg) no-repeat;
+    background: url('https://cdn.dsmcdn.com/web/production/favorite-heart.svg') no-repeat;
+}
+.product-favorite-icon:active{
+    background: url('https://cdn.dsmcdn.com/web/assets/favorite-heart-active.svg') no-repeat;
+}
+.product-favorite-icon:hover{
+    background: url('https://cdn.dsmcdn.com/web/assets/favorite-heart-hover.svg') no-repeat;
 }
 .color-options{
     display: flex;
@@ -49,7 +53,7 @@
     background-color: #ffffff;
     position: absolute;
     right: 10px;
-    bottom: 160px;
+    bottom: 130px;
     cursor: pointer;
     gap: 5px;
     justify-content: center;

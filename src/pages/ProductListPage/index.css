@@ -1,7 +1,3 @@
-.product-page-container {
-    width: 1200px;
-}
-
 .product-fast-delivery-container {
     display: flex;
     align-items: center;
@@ -36,6 +32,6 @@
     padding-right: 0;
 }
 .product-item-card-container{
-    padding-left: 0;
+
 }
 
