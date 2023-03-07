@@ -25,6 +25,7 @@ export function AddressSaveModalComponent(props) {
     const [isDistrictValid, setIsDistrictValid] = useState(true)
     const [isDetailsValid, setIsDetailsValid] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
+    const [locationList, setLocationList] = useState([])
     // const[selectedInvoiceType, setSelectedInvoiceType]=useState(null)
 
 
@@ -80,10 +81,9 @@ export function AddressSaveModalComponent(props) {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
             },
         }).then((res) => {
-            if(res.ok){
+            if (res.ok) {
                 props.onHide(true)
-            }
-            else{
+            } else {
                 //todo errormessage gelcek
             }
         }).catch(() => {
@@ -91,6 +91,16 @@ export function AddressSaveModalComponent(props) {
         })
     }
 
+    function callUserAddressInfoGetLocationAPI() {
+        fetch('http://localhost:1234/location')
+            .then((res) => {
+                if (res.ok) {
+                    res.json().then((responseBody) => {
+                        setLocationList(responseBody)
+                    })
+                }
+            })
+    }
 
     function onAddressSaveModalSubmit(e) {
         e.preventDefault()
@@ -135,7 +145,7 @@ export function AddressSaveModalComponent(props) {
     return (
         <Modal
             show={props.show}
-            onHide={()=>props.onHide(false)}
+            onHide={() => props.onHide(false)}
             keyboard={false}
             centered
         >
@@ -149,7 +159,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Ad*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isNameValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isNameValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalName}
                                     style={{height: '42px'}}/>
                                 <div style={{
@@ -168,7 +178,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Soyad*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isSurnameValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isSurnameValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalSurname}
                                     style={{height: '42px'}}/>
                                 <div style={{
@@ -186,7 +196,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Telefon*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isPhoneNumberValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isPhoneNumberValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalPhoneNumber}
                                     style={{height: '42px'}}/>
                                 <div style={{
@@ -203,8 +213,11 @@ export function AddressSaveModalComponent(props) {
                         <Col xs={6}>
                             <Form.Group className="user-address-info-modal-form-group">
                                 <Form.Label style={{marginBottom: '4px'}}>İl</Form.Label>
-                                <Form.Select style={{height: '42px'}}>
+                                <Form.Select onClick={callUserAddressInfoGetLocationAPI} style={{height: '42px'}}>
                                     <option>Seçiniz</option>
+                                    {locationList.map((location) =>(
+                                        <option>{location.name}</option>
+                                    ))}
                                 </Form.Select>
                                 <div style={{
                                     display: "flex",
@@ -220,7 +233,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>İlçe*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isTownValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isTownValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalTown}
                                     style={{height: '42px'}}/>
                                 <div style={{
@@ -238,7 +251,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Mahalle*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isDistrictValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isDistrictValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalDistrict}
                                     style={{height: '42px'}}/>
                                 <div style={{
@@ -256,7 +269,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Adres*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isDetailsValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isDetailsValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalDetails}
                                     as='textarea'/>
                                 <div style={{
@@ -274,7 +287,7 @@ export function AddressSaveModalComponent(props) {
                             <Form.Group className='user-address-info-modal-form-group'>
                                 <Form.Label style={{marginBottom: '4px'}}>Adres Başlığı*</Form.Label>
                                 <Form.Control
-                                    className={` ${!isTitleValid?'address-save-modal-form-control-validation':'' }`}
+                                    className={` ${!isTitleValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalTitle}
                                     style={{height: '42px'}}/>
                                 <div style={{

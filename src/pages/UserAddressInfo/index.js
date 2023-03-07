@@ -20,7 +20,7 @@ export function UserAddressInfo() {
     const addNewAddressHandleClose = (isSuccess) => {
         setShow(false)
         if (isSuccess) {
-            //todo listeyi yenile
+            userAddressCallGetAPI()
         }
     }
 
