@@ -59,9 +59,6 @@ export function SignUpPage() {
                 'content-type': 'application/json',
             },
         })
-            .catch(() => {
-                setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
-            })
             .then(res => {
                 if (res.ok) {
                     navigate('/giris')
@@ -73,7 +70,9 @@ export function SignUpPage() {
                         setErrorMessage('Bir hata oluştu. Lütfen tekrar deneyiniz.')
                     }
                 }
-            })
+            }).catch(() => {
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
+        })
     }
 
     function onSignUpSubmit(e) {
@@ -100,7 +99,6 @@ export function SignUpPage() {
         }
         if (!isChecked) {
             setIsCheckValid(false)
-            console.log('Please check boxes')
             return;
         }
         callSignUpPostAPI()

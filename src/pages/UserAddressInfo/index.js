@@ -2,19 +2,60 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './index.css'
+import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
+import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
 
 export function UserAddressInfo() {
-
+    const [errorMessage, setErrorMessage] = useState('')
     const [show, setShow] = useState(false)
+    const [addressList, setAddressList] = useState([])
+
+    useEffect(() => {
+        userAddressCallGetAPI()
+    }, [])
 
     const addNewAddressHandleShow = () => setShow(true)
-    const addNewAddressHandleClose = () => setShow(false)
+    const addNewAddressHandleClose = (isSuccess) => {
+        setShow(false)
+        if (isSuccess) {
+            //todo listeyi yenile
+        }
+    }
 
+
+    function userAddressCallGetAPI() {
+        fetch('http://localhost:1234/address', {
+            headers: {
+                'authorization': `bearer ${localStorage.getItem('jwt')}`
+            }
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((responseBody) => {
+                    setAddressList(responseBody)
+                })
+            }
+        }).catch(() => {
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
+        })
+    }
+    function userAddressCallDelAPI(id){
+        fetch(`http://localhost:1234/address/${id}`,{
+            method:'DELETE',
+            headers:{
+                'authorization': `bearer ${localStorage.getItem('jwt')}`
+            },
+        }).then((res)=>{
+            if(res.ok){
+                userAddressCallGetAPI()
+            }
+        })
+    }
+
+    function onDeleteAddressClick(id){
+        userAddressCallDelAPI(id)
+    }
 
     return (
         <>
@@ -30,171 +71,24 @@ export function UserAddressInfo() {
                     </div>
                     <div className='user-info-addresses-container'>
                         <Row md={2} lg={3}>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card className='user-address-info-card'>
-                                    <Card.Header>Header</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>Light Card Title</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the
-                                            bulk of the card's content.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
+                            {addressList.map((address) => (
+                                <Col>
+                                    <UserAddressInfoItemComponent
+                                        address={address}
+                                        onEditClick={()=>setShow(true)}
+                                        deneme={() => onDeleteAddressClick(address.id)}
+                                    />
+                                </Col>
+                            ))}
                         </Row>
                     </div>
                 </div>
             </Container>
 
-            <Modal
+            <AddressSaveModalComponent
                 show={show}
                 onHide={addNewAddressHandleClose}
-                keyboard={false}
-                centered
-            >
-                <Modal.Header className='user-address-info-modal-header' closeButton>
-                    <Modal.Title style={{fontSize: '18px', color: '#333'}}>Adres Ekle</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Row>
-                            <Col xs={6}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Ad*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Soyad*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Telefon*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Group className="user-address-info-modal-form-group">
-                                    <Form.Label style={{marginBottom: '4px'}}>İl</Form.Label>
-                                    <Form.Select style={{height: '42px'}}>
-                                        <option>option</option>
-                                    </Form.Select>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>İlçe*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Mahalle*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={12}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Adres*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                            <Col xs={12}>
-                                <Form.Group className='user-address-info-modal-form-group'>
-                                    <Form.Label style={{marginBottom: '4px'}}>Adres Başlığı*</Form.Label>
-                                    <Form.Control style={{height: '42px'}}/>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Form.Label style={{marginBottom: '4px'}}>Fatura Türü*</Form.Label>
-                        <div>
-                            <Button className='w-50 user-address-info-modal-form-button'>
-                                Bireysel
-                            </Button>
-                            <Button className='w-50 user-address-info-modal-form-button'>
-                                Kurumsal
-                            </Button>
-                        </div>
-                        <Button className='w-100 user-address-info-modal-form-save-button'>Kaydet</Button>
-                    </Form>
-                </Modal.Body>
-            </Modal>
+            />
         </>
     )
 }

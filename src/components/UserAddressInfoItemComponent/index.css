@@ -1,0 +1,32 @@
+.user-address-info-card {
+    height: 232px;
+    border-radius: 3px;
+    border: 1px solid #e2e2e2;;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.user-address-details-component-text{
+    margin-bottom: 0;
+    line-height: 24px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user-address-component-footer{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+}
+.user-address-component-card-button{
+    width: 120px;
+    background: white;
+    color: #f27a21;
+    font-size: 14px;
+    border-radius: 3px;
+    line-height: 18px;
+}

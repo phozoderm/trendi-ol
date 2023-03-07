@@ -33,27 +33,4 @@
     min-height: 460px;
 }
 
-.user-address-info-card {
-    height: 232px;
-    border-radius: 3px;
-    border: 1px solid #e2e2e2;;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-.user-address-info-modal-header{
-    padding: 14px 20px;
-}
-.user-address-info-modal-form-group{
-    margin-bottom: 22px;
-}
-.user-address-info-modal-form-button{
-    margin-bottom: 22px;
-    border-radius: 6px;
-    font-size: 14px;
-    padding: 12px;
-}
-.user-address-info-modal-form-save-button{
-    border-radius: 6px;
-    height: 48px;
-    font-size: 18px;
-}
+
