@@ -6,17 +6,22 @@ import {useEffect, useState} from "react";
 import './index.css'
 import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
 import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
+import {json} from "react-router-dom";
 
 export function UserAddressInfo() {
     const [errorMessage, setErrorMessage] = useState('')
     const [show, setShow] = useState(false)
     const [addressList, setAddressList] = useState([])
+    const [addressToEdit, setAddressToEdit] = useState(null)
 
     useEffect(() => {
         userAddressCallGetAPI()
     }, [])
 
-    const addNewAddressHandleShow = () => setShow(true)
+    const addNewAddressHandleShow = () => {
+        setShow(true)
+        setAddressToEdit(null)
+    }
     const addNewAddressHandleClose = (isSuccess) => {
         setShow(false)
         if (isSuccess) {
@@ -40,20 +45,40 @@ export function UserAddressInfo() {
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
-    function userAddressCallDelAPI(id){
-        fetch(`http://localhost:1234/address/${id}`,{
-            method:'DELETE',
-            headers:{
+
+    function userAddressCallDelAPI(id) {
+        fetch(`http://localhost:1234/address/${id}`, {
+            method: 'DELETE',
+            headers: {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
             },
-        }).then((res)=>{
-            if(res.ok){
+        }).then((res) => {
+            if (res.ok) {
                 userAddressCallGetAPI()
             }
         })
     }
 
-    function onDeleteAddressClick(id){
+    function singleUserAddressCallGetAPI(id) {
+        fetch(`http://localhost:1234/address/${id}`, {
+            headers: {
+                'authorization': `bearer ${localStorage.getItem('jwt')}`
+            }
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((responseBody) => {
+                    setAddressToEdit(responseBody)
+                    setShow(true)
+                })
+            }
+        })
+    }
+
+    function onAddressEditClick(id) {
+        singleUserAddressCallGetAPI(id)
+    }
+
+    function onDeleteAddressClick(id) {
         userAddressCallDelAPI(id)
     }
 
@@ -75,8 +100,8 @@ export function UserAddressInfo() {
                                 <Col>
                                     <UserAddressInfoItemComponent
                                         address={address}
-                                        onEditClick={()=>setShow(true)}
-                                        deneme={() => onDeleteAddressClick(address.id)}
+                                        onEditClick={() => onAddressEditClick(address.id)}
+                                        onDeleteAddressClick={() => onDeleteAddressClick(address.id)}
                                     />
                                 </Col>
                             ))}
@@ -85,10 +110,13 @@ export function UserAddressInfo() {
                 </div>
             </Container>
 
-            <AddressSaveModalComponent
-                show={show}
-                onHide={addNewAddressHandleClose}
-            />
+            {
+                !show ? null :
+                <AddressSaveModalComponent
+                    onHide={addNewAddressHandleClose}
+                    address={addressToEdit}
+                />
+            }
         </>
     )
 }

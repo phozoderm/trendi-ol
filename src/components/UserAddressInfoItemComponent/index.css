@@ -30,3 +30,10 @@
     border-radius: 3px;
     line-height: 18px;
 }
+.user-address-component-delete-span{
+    font-size: 14px;
+    line-height: 18px;
+}
+.user-address-component-delete-span:hover{
+    text-decoration: underline;
+}

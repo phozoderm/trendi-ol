@@ -4,13 +4,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import './index.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export function AddressSaveModalComponent(props) {
 
     const [title, setTitle] = useState('');
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
+    const [name, setName] = useState(props.address ? props.address.name : '');
+    const [surname, setSurname] = useState(props.address ? props.address.surname : '');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [cityId, setCityId] = useState('');
     const [town, setTown] = useState('');
@@ -19,13 +19,15 @@ export function AddressSaveModalComponent(props) {
     const [invoiceType, setInvoiceType] = useState(null);
     const [isTitleValid, setIsTitleValid] = useState(true);
     const [isNameValid, setIsNameValid] = useState(true);
-    const [isSurnameValid, setIsSurnameValid] = useState(true)
-    const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true)
-    const [isTownValid, setIsTownValid] = useState(true)
-    const [isDistrictValid, setIsDistrictValid] = useState(true)
-    const [isDetailsValid, setIsDetailsValid] = useState(true)
-    const [errorMessage, setErrorMessage] = useState('')
-    const [locationList, setLocationList] = useState([])
+    const [isSurnameValid, setIsSurnameValid] = useState(true);
+    const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
+    const [isTownValid, setIsTownValid] = useState(true);
+    const [isDistrictValid, setIsDistrictValid] = useState(true);
+    const [isDetailsValid, setIsDetailsValid] = useState(true);
+    const [isCityIdValid, setIsCityIdValid] = useState(true);
+    const [locationList, setLocationList] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+
     // const[selectedInvoiceType, setSelectedInvoiceType]=useState(null)
 
 
@@ -56,6 +58,10 @@ export function AddressSaveModalComponent(props) {
     const handleChangeModalDistrict = (event) => {
         setDistrict(event.target.value)
         setIsDistrictValid(true)
+    }
+    const handleChangeModalCity = (event) => {
+        setCityId(event.target.value)
+        setIsCityIdValid(true)
     }
     const onModalFormChange = () => {
         setErrorMessage('')
@@ -139,12 +145,16 @@ export function AddressSaveModalComponent(props) {
             setIsDetailsValid(false)
             ok = false
         }
+        if (!cityId || cityId === 'Seçiniz') {
+            setIsCityIdValid(false)
+            ok = false
+        }
         return ok
     }
 
     return (
         <Modal
-            show={props.show}
+            show={true}
             onHide={() => props.onHide(false)}
             keyboard={false}
             centered
@@ -161,6 +171,7 @@ export function AddressSaveModalComponent(props) {
                                 <Form.Control
                                     className={` ${!isNameValid ? 'address-save-modal-form-control-validation' : ''}`}
                                     onChange={handleChangeModalName}
+                                    value={name}
                                     style={{height: '42px'}}/>
                                 <div style={{
                                     display: "flex",
@@ -213,10 +224,13 @@ export function AddressSaveModalComponent(props) {
                         <Col xs={6}>
                             <Form.Group className="user-address-info-modal-form-group">
                                 <Form.Label style={{marginBottom: '4px'}}>İl</Form.Label>
-                                <Form.Select onClick={callUserAddressInfoGetLocationAPI} style={{height: '42px'}}>
+                                <Form.Select onChange={handleChangeModalCity}
+                                             onClick={callUserAddressInfoGetLocationAPI} style={{height: '42px'}}
+                                             className={`${!isCityIdValid ? 'address-save-modal-form-control-validation' : ''}`}
+                                >
                                     <option>Seçiniz</option>
-                                    {locationList.map((location) =>(
-                                        <option>{location.name}</option>
+                                    {locationList.map((location) => (
+                                        <option value={location.id}>{location.name}</option>
                                     ))}
                                 </Form.Select>
                                 <div style={{
@@ -225,7 +239,8 @@ export function AddressSaveModalComponent(props) {
                                     width: '100%',
                                     marginTop: '4px',
                                 }}>
-                                    {/*<span className='modal-form-validation-text'>Lütfen seçim yapınız</span>*/}
+                                    {!isCityIdValid ?
+                                        <span className='modal-form-validation-text'>Lütfen seçim yapınız</span> : null}
                                 </div>
                             </Form.Group>
                         </Col>

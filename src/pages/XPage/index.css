@@ -74,17 +74,23 @@
 .login-dropdown-item:hover {
     background-color: white;
 }
-
+.x-page-nav-link-1{
+    padding: 0;
+    color: #999999;
+}
 .nav1 {
     font-size: 12px;
+    height: 15px;
 }
 
 .nav2 {
     font-size: 13px;
+    height: 64px;
 }
 
 .nav3 {
     font-size: 14px;
+    height: 34px;
 }
 
 .nav-icon {

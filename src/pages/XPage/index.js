@@ -143,6 +143,7 @@ export function XPage() {
     function navigateLogin() {
         navigate('/giris')
     }
+
     function signOut() {
         localStorage.removeItem('email')
         window.location.reload()
@@ -154,13 +155,13 @@ export function XPage() {
                 <Container className='d-flex flex-column'>
                     <div className='w-100 d-flex justify-content-end'>
                         <Nav className='nav1'>
-                            <Nav.Link href='#kadin' className='text-black'>
+                            <Nav.Link href='#kadin' className='x-page-nav-link-1'>
                                 İndirim Kuponlarım
                             </Nav.Link>
-                            <Nav.Link href='#erkek' className='text-black'>
+                            <Nav.Link href='#erkek' className='x-page-nav-link-1'>
                                 Trendi-ol'da Satış Yap
                             </Nav.Link>
-                            <Nav.Link href='#anne-cocuk' className='text-black'>
+                            <Nav.Link href='#anne-cocuk' className='x-page-nav-link-1'>
                                 Yardım & Destek
                             </Nav.Link>
                         </Nav>
@@ -229,7 +230,7 @@ export function XPage() {
                                             {myAccount.map((account) => (
                                                 <NavDropdown.Item className='account-dropdown-item'
                                                                   key={account.name}
-                                                onClick={()=> navigate(account.href)}>
+                                                                  onClick={() => navigate(account.href)}>
                                                     {account.icon}
                                                     {account.name}
                                                 </NavDropdown.Item>
