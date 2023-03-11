@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import './index.css'
 import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
 import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
-import {json} from "react-router-dom";
 
 export function UserAddressInfo() {
     const [errorMessage, setErrorMessage] = useState('')
@@ -56,6 +55,8 @@ export function UserAddressInfo() {
             if (res.ok) {
                 userAddressCallGetAPI()
             }
+        }).catch(()=>{
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
 
@@ -71,6 +72,8 @@ export function UserAddressInfo() {
                     setShow(true)
                 })
             }
+        }).catch(()=>{
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
 

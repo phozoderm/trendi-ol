@@ -13,7 +13,7 @@
     font-size: 14px;
     padding: 12px;
     background-color: #f2f2f2;
-    border-color: #e6e6e6;
+    border: 2px solid #e6e6e6;
     color: #666666;
     --bs-btn-active-bg: #f2f2f2;
     --bs-btn-active-border-color: #e6e6e6;
@@ -28,28 +28,31 @@
 
 .user-address-info-modal-form-button:focus {
     background-color: #f2f2f2;
-    border: 2px solid #f27a21;
-    color: #f27a21;
+    border: 2px solid #e6e6e6;
+    color: #666666;
     border-radius: 6px;
     --bs-btn-active-bg: #f2f2f2;
     --bs-btn-active-border-color: #e6e6e6;
     --bs-btn-active-color: #666666;
 }
 
-/*.user-address-info-modal-form-button-selected{*/
-/*    background-color: #f2f2f2;*/
-/*    border-color: #f27a21;*/
-/*    color: #f27a21;*/
-/*    border-radius: 6px;*/
-/*    --bs-btn-active-bg: #f2f2f2;*/
-/*    --bs-btn-active-border-color: #e6e6e6;*/
-/*    --bs-btn-active-color: #666666;*/
-/*}*/
-/*.user-address-info-modal-form-button-selected:hover{*/
-/*    background-color: #f2f2f2;*/
-/*    border-color: #f27a21;*/
-/*    color: #f27a21;*/
-/*}*/
+.user-address-info-modal-form-button-selected{
+    border: 2px solid #f27a21;
+    margin-bottom: 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 12px;
+    background-color: #f2f2f2;
+    color: #f27a21;
+    --bs-btn-active-bg: #f2f2f2;
+    --bs-btn-active-border-color: #e6e6e6;
+    --bs-btn-active-color: #666666;
+}
+.user-address-info-modal-form-button-selected:hover{
+    background-color: #f2f2f2;
+    border-color: #f27a21;
+    color: #f27a21;
+}
 .user-address-info-modal-form-save-button {
     border-radius: 6px;
     height: 48px;
