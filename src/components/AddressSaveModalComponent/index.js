@@ -218,7 +218,7 @@ export function AddressSaveModalComponent(props) {
                             </Form.Group>
                         </Col>
                         <Col xs={6}>
-                            <Form.Group className='user-address-info-modal-form-group'>
+                            <Form.Group>
                                 <Form.Label style={{marginBottom: '4px'}}>Soyad*</Form.Label>
                                 <Form.Control
                                     className={` ${!isSurnameValid ? 'address-save-modal-form-control-validation' : ''}`}

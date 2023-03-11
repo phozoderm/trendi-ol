@@ -37,3 +37,17 @@
 .user-address-component-delete-span:hover{
     text-decoration: underline;
 }
+.user-address-info-trash-icon{
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+.user-address-component-delete-modal-button-div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.user-address-component-delete-modal-button{
+    width: 100%;
+    margin:10px 20px
+}
