@@ -6,12 +6,18 @@ import {useEffect, useState} from "react";
 import './index.css'
 import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
 import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
+import Modal from "react-bootstrap/Modal";
 
 export function UserAddressInfo() {
     const [errorMessage, setErrorMessage] = useState('')
     const [show, setShow] = useState(false)
     const [addressList, setAddressList] = useState([])
     const [addressToEdit, setAddressToEdit] = useState(null)
+    const [showSavedConfirmationModal, setShowSavedConfirmationModal] = useState(false)
+
+    const handleCloseSavedConfirmation = () => setShowSavedConfirmationModal(false)
+    const handleShowSavedConfirmation = () => setShowSavedConfirmationModal(true)
+
 
     useEffect(() => {
         userAddressCallGetAPI()
@@ -24,7 +30,9 @@ export function UserAddressInfo() {
     const addNewAddressHandleClose = (isSuccess) => {
         setShow(false)
         if (isSuccess) {
+            handleShowSavedConfirmation()
             userAddressCallGetAPI()
+
         }
     }
 
@@ -55,7 +63,7 @@ export function UserAddressInfo() {
             if (res.ok) {
                 userAddressCallGetAPI()
             }
-        }).catch(()=>{
+        }).catch(() => {
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -72,7 +80,7 @@ export function UserAddressInfo() {
                     setShow(true)
                 })
             }
-        }).catch(()=>{
+        }).catch(() => {
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -115,11 +123,59 @@ export function UserAddressInfo() {
 
             {
                 !show ? null :
-                <AddressSaveModalComponent
-                    onHide={addNewAddressHandleClose}
-                    address={addressToEdit}
-                />
+                    <AddressSaveModalComponent
+                        onHide={addNewAddressHandleClose}
+                        address={addressToEdit}
+                    />
             }
+            <Modal show={showSavedConfirmationModal}
+                   onHide={handleCloseSavedConfirmation}
+                   centered
+                   keyboard={false}
+                   contentClassName='saved-confirmation-modal-container'>
+                <Modal.Body style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                }} className='saved-confirmation-modal-body'>
+                    <div onClick={handleCloseSavedConfirmation} className='modal-saved-x-icon-div'>
+                        <i className="bi bi-x"/>
+                    </div>
+                    <div className='modal-saved-check-icon-div'>
+                        <i className="bi bi-check-lg modal-saved-check-icon"/>
+                    </div>
+                    <div style={{marginTop: '16px',}}>
+                        <span style={{
+                            fontSize: '22px',
+                            lineHeight: '28px',
+                            textAlign: 'center',
+                            fontFamily: 'source_sans_proregular',
+                            fontWeight: '700'
+                        }}>ADRESİNİZ KAYDEDİLDİ</span>
+                    </div>
+                    <div style={{marginTop: '8px',}}>
+                        <span style={{
+                            fontSize: '16px',
+                            fontFamily: 'source_sans_proregular',
+                            fontWeight: 'normal',
+                            lineHeight: '20px',
+                            textAlign: 'center',
+                            color: '#666666',
+                        }}>İşleminiz başarıyla gerçekleştirildi</span>
+                    </div>
+                    <Button style={{
+                        width: '100%',
+                        height: '48px',
+                        marginTop: '48px',
+                        fontSize: '18px',
+                        borderRadius: '6px',
+                        fontFamily: 'source_sans_proregular',
+                        fontWeight: '600',
+                    }} variant="primary" onClick={handleCloseSavedConfirmation}>
+                        Tamam
+                    </Button>
+                </Modal.Body>
+            </Modal>
         </>
     )
 }

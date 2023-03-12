@@ -33,4 +33,36 @@
     min-height: 460px;
 }
 
-
+.modal-saved-check-icon{
+    color: #0BC15C;
+    font-size: 38px;
+    font-family: source_sans_prosemibold,sans-serif;
+}
+.modal-saved-check-icon-div{
+    width: 84px;
+    height: 84px;
+    background-color: #dfffed;
+    border-radius: 41.5px;
+    align-items: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.saved-confirmation-modal-container{
+    padding: 0;
+    width: 460px;
+    border-radius: 0;
+}
+.saved-confirmation-modal-body{
+    padding: 29px 21px 11px;
+}
+.modal-saved-x-icon-div{
+    position: absolute;
+    right: 12px;
+    top: 8px;
+}
+.bi-x{
+    cursor: pointer;
+    font-size: 25px;
+    color: #999999;
+}

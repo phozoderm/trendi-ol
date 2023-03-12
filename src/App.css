@@ -159,8 +159,3 @@
     background: url('https://cdn.dsmcdn.com/web/assets/headerAccountNavArrow-new.png') #fff 93% center no-repeat;
 }
 
-.modal {
-    --bs-modal-padding: 15px 20px 20px;
-    --bs-modal-width:520px;
-
-}

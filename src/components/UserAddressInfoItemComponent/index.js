@@ -5,10 +5,10 @@ import Modal from "react-bootstrap/Modal";
 import {useState} from "react";
 
 export function UserAddressInfoItemComponent(props) {
-    const [show, setShow] = useState(false);
+    const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleCloseDeleteConfirmation = () => setShowDeleteConfirmationModal(false);
+    const handleShowDeleteConfirmation = () => setShowDeleteConfirmationModal(true);
     return (
         <>
             <Card className='user-address-info-card'>
@@ -42,7 +42,7 @@ export function UserAddressInfoItemComponent(props) {
                     }}>{props.address.phoneNumber}</Card.Text>
                 </Card.Body>
                 <div className='user-address-component-footer'>
-                    <div onClick={handleShow}
+                    <div onClick={handleShowDeleteConfirmation}
                          style={{cursor: 'pointer'}}><i className="bi bi-trash3"
                                                         style={{marginRight: '3px', fontSize: '15px'}}/> <span
                         className='user-address-component-delete-span'>Sil</span></div>
@@ -51,33 +51,36 @@ export function UserAddressInfoItemComponent(props) {
                 </div>
             </Card>
             <Modal
-                show={show}
-                onHide={handleClose}
+                show={showDeleteConfirmationModal}
+                onHide={handleCloseDeleteConfirmation}
                 keyboard={false}
                 centered
+                contentClassName='user-address-delete-confirmation-modal-container'
+                size="sm"
             >
-                <Modal.Body
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        marginTop: '20px',
-                    }}>
-                    <div>
-                        <i className="bi bi-trash3 user-address-info-trash-icon"/>
+                <Modal.Body className='user-address-delete-confirmation-modal-body'>
+                    <div onClick={handleCloseDeleteConfirmation} className='modal-delete-x-icon-div'>
+                        <i className="bi bi-x"/>
                     </div>
-                    <div>
-                        <span style={{fontSize: '14px', lineHeight: '18px', color: '#333333'}}>Adresi silmek istediğinizden emin misiniz?</span>
+                    <div className='user-address-component-delete-modal-div'>
+                        <div>
+                            <i className="bi bi-trash3 user-address-info-trash-icon"/>
+                        </div>
+                        <div>
+                            <span style={{fontSize: '14px', lineHeight: '18px', color: '#333333'}}>Adresi silmek istediğinizden emin misiniz?</span>
+                        </div>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    <div className='user-address-component-delete-modal-button-div'>
-                        <Button onClick={props.onDeleteAddressClick} className='user-address-component-delete-modal-button' variant="secondary" >
-                            Evet
-                        </Button>
-                        <Button onClick={handleClose} className='user-address-component-delete-modal-button' variant="secondary">Hayır</Button>
-                    </div>
-                </Modal.Footer>
+                <div className='user-address-component-delete-modal-button-div'>
+                    <Button style={{marginRight: '0'}}
+                            onClick={props.onDeleteAddressClick}
+                            className='user-address-component-delete-modal-button' variant="secondary">
+                        Evet
+                    </Button>
+                    <Button onClick={handleCloseDeleteConfirmation}
+                            className='user-address-component-delete-modal-button'
+                            variant="secondary">Hayır</Button>
+                </div>
             </Modal>
         </>
     )
