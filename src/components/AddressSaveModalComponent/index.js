@@ -212,9 +212,7 @@ export function AddressSaveModalComponent(props) {
                                         marginTop: '4px',
                                     }}>
                                         {!isNameValid ? <span className='modal-form-validation-text'>2-30 karakter içermelidir</span> : null}
-
                                     </div>
-
                                 </Form.Group>
                             </Col>
                             <Col xs={6}>

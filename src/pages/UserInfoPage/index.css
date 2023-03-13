@@ -1,2 +1,26 @@
-
-
+.user-info-header-container{
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+}
+.user-info-forms-container{
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+    width: 100%;
+}
+.user-info-form-info-update-div{
+    padding: 20px;
+}
+.user-info-form-update-button{
+    background-color: white;
+    color: #f27a21;
+}
