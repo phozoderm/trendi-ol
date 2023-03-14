@@ -9,6 +9,8 @@ import {ProductListPage} from "./pages/ProductListPage";
 import {MyAccountPage} from "./pages/MyAccountPage";
 import {UserInfoPage} from "./pages/UserInfoPage";
 import {UserAddressInfo} from "./pages/UserAddressInfo";
+import {OrderPage} from "./pages/OrderPage";
+import {DiscountCouponsPage} from "./pages/DiscountCouponsPage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -31,6 +33,8 @@ export function App() {
                             <Route path='hesabim' element={<MyAccountPage/>}>
                                 <Route path='kullaniciBilgileri' element={<UserInfoPage/>} />
                                 <Route path='adresBilgileri' element={<UserAddressInfo/>}/>
+                                <Route path='siparislerim' element={<OrderPage/>}/>
+                                <Route path='indirimKuponlari' element={<DiscountCouponsPage/>}/>
                             </Route>
                     }
                     <Route path='home' element={<HomePage/>}/>

@@ -1,0 +1,53 @@
+.discount-header-div{
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%)
+}
+.discount-header-div span{
+    font-size: 18px;
+    font-weight: 900;
+    color: #2a2a2a;
+}
+.discount-header-div p {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 0;
+}
+.discount-div {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+}
+.discount-content-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.discount-content-div div{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff0e1;
+}
+.discount-content-div  span{
+    font-size: 20px;
+    font-weight: 900;
+    color: #f27a21;
+}
+.discount-content-div p{
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 0;
+}
+.discount-content-div div img{
+    margin-top: 18px;
+    margin-left: 20px;
+}

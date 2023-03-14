@@ -1,4 +1,4 @@
-.user-info-header-container{
+.user-info-header-container {
     padding: 20px;
     border-radius: 6px;
     border: 1px solid #e2e2e2;
@@ -9,7 +9,19 @@
     align-items: baseline;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
 }
-.user-info-forms-container{
+
+.user-info-header-container span {
+    font-size: 18px;
+    font-weight: 900;
+    color: #2a2a2a;
+}
+
+.user-info-header-container div span {
+    font-size: 13px;
+    margin-right: 7px;
+}
+
+.user-info-forms-container {
     display: flex;
     border-radius: 6px;
     border: 1px solid #e2e2e2;
@@ -17,10 +29,30 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
     width: 100%;
 }
-.user-info-form-info-update-div{
+
+.user-info-form-info-update-div {
     padding: 20px;
 }
-.user-info-form-update-button{
+
+.user-info-form-update-button {
     background-color: white;
     color: #f27a21;
+}
+.user-info-form-header-div{
+    margin-bottom: 20px;
+}
+.user-info-form-header-div span{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #f27a21;
+}
+.user-info-form-label{
+    margin-bottom: 8px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 900;
+}
+.user-info-form-control{
+    height: 44px;
 }

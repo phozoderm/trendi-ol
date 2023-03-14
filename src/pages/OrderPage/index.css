@@ -1,0 +1,95 @@
+.order-header-div {
+    border: 1px solid #e2e2e2;
+    background-color: white;
+    border-radius: 3px;
+    display: flex;
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #2a2a2a;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.order-header-div span {
+    font-size: 18px;
+}
+
+.order-header-search-control {
+    height: 34px;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    color: #2a2a2a;
+    background-color: #fbfbfb;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    font: inherit;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.form-group-order-search {
+    flex-direction: row-reverse;
+    display: flex;
+}
+
+.form-group-order-search i {
+    position: absolute;
+    cursor: pointer;
+    padding: 8px;
+    color: #f27a21;
+}
+
+.order-header-select {
+    width: 130px;
+    font: inherit;
+    font-size: 12px;
+    line-height: 16px;
+    height: 34px;
+    background-color: #fbfbfb;
+    border: 1px solid #e6e6e6;
+    color: #666666;
+}
+
+.order-content-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 445px;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    background-color: white;
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.order-content-div span {
+    font-size: 16px;
+    color: #666666;
+}
+
+.order-content-div div {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #fff4ec;
+    font-size: 32px;
+    color: #f27a21;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.order-content-button {
+    padding: 6px 10px;
+    font: inherit;
+    width: 210px;
+    height: 44px;
+    margin: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 900;
+}
