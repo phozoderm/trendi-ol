@@ -15,10 +15,10 @@ export function UserInfoPage() {
     const [newPassword, setNewPassword] = useState('')
     const [phoneNumberCountryCode, setPhoneNumberCountryCode] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [gender, setGender] = useState('');
-    const [birthdayYear, setBirthdayYear] = useState('');
-    const [birthdayMonth, setBirthdayMonth] = useState('');
-    const [birthdayDate, setBirthdayDate] = useState('');
+    const [gender, setGender] = useState(null);
+    const [birthdayYear, setBirthdayYear] = useState(1990);
+    const [birthdayMonth, setBirthdayMonth] = useState(1);
+    const [birthdayDate, setBirthdayDate] = useState(1);
     const [corporateCampaigns, setCorporateCampaigns] = useState(false)
 
 
@@ -43,12 +43,6 @@ export function UserInfoPage() {
     const handleChangePhoneNumber = (event) => {
         setPhoneNumber(event.target.value)
     }
-    const handleChangeGenderFemale = (event) => {
-        setGender(event.target.value)
-    }
-    const handleChangeGenderMale =(event)=>{
-        setGender(event.target.value)
-    }
     const handleChangeBirthdayYear = (event) => {
         setBirthdayYear(event.target.value)
     }
@@ -58,9 +52,7 @@ export function UserInfoPage() {
     const handleChangeBirthdayDate = (event) => {
         setBirthdayDate(event.target.value)
     }
-    const handleChangeCorporateCampaigns = (event) => {
-        setCorporateCampaigns(event.target.value)
-    }
+
 
     function callUserInfoGetAPI() {
         fetch(`http://localhost:1234/user/me`, {
@@ -88,6 +80,11 @@ export function UserInfoPage() {
     }
 
     function callUserInfoPutAPI() {
+        const birthday = new Date()
+        birthday.setFullYear(birthdayYear)
+        birthday.setMonth(birthdayMonth)
+        birthday.setDate(birthdayDate)
+        const birthdayString = birthday.toISOString().slice(0, 10)
         fetch(`http://localhost:1234/user/me`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -96,6 +93,7 @@ export function UserInfoPage() {
                 email: email,
                 gender: gender,
                 wantsToKnowAboutCorporateCampaigns: corporateCampaigns,
+                birthday: birthdayString
             }),
             headers: {
                 'content-type': 'application/json',
@@ -150,24 +148,24 @@ export function UserInfoPage() {
         })
     }
 
-    function onUserInfoSubmit(e){
+    function onUserInfoSubmit(e) {
         e.preventDefault()
         callUserInfoPutAPI()
 
     }
-    function onPhoneNumberClick(){
+
+    function onPhoneNumberClick() {
         callUserInfoPhoneNumberPutAPI()
     }
 
-    function onUserInfoPasswordSubmit(e){
+    function onUserInfoPasswordSubmit(e) {
         e.preventDefault()
         callUserInfoPasswordPutAPI()
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         callUserInfoGetAPI()
-    },[])
-
+    }, [])
 
     return (
         <Container>
@@ -188,7 +186,8 @@ export function UserInfoPage() {
                             <Col xs={6}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Ad</Form.Label>
-                                    <Form.Control value={name} onChange={handleChangeName} className='user-info-form-control'
+                                    <Form.Control value={name} onChange={handleChangeName}
+                                                  className='user-info-form-control'
                                                   type="text"/>
                                     <div style={{height: '26px', marginTop: '4px'}}/>
                                 </Form.Group>
@@ -196,20 +195,24 @@ export function UserInfoPage() {
                             <Col xs={6}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Soyad</Form.Label>
-                                    <Form.Control value={surname} onChange={handleChangeSurname} className='user-info-form-control' type="text"/>
+                                    <Form.Control value={surname} onChange={handleChangeSurname}
+                                                  className='user-info-form-control' type="text"/>
                                     <div style={{height: '26px', marginTop: '4px'}}/>
                                 </Form.Group>
                             </Col>
                             <Col xs={12}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>E-Mail</Form.Label>
-                                    <Form.Control value={email} onChange={handleChangeEmail} className='user-info-form-control' type="email"/>
+                                    <Form.Control value={email} onChange={handleChangeEmail}
+                                                  className='user-info-form-control' type="email"/>
                                 </Form.Group>
                                 <div style={{height: '26px', marginTop: '4px'}}/>
                             </Col>
                             <Col xs={3}>
                                 <Form.Label className='user-info-form-label'>Cep Telefonu</Form.Label>
-                                <Form.Select value={phoneNumberCountryCode} onChange={handleChangePhoneNumberCountryCode} className='user-info-form-control'>
+                                <Form.Select value={phoneNumberCountryCode}
+                                             onChange={handleChangePhoneNumberCountryCode}
+                                             className='user-info-form-control'>
                                     <option>+90</option>
                                     <option>+49</option>
                                     <option>+43</option>
@@ -219,18 +222,21 @@ export function UserInfoPage() {
                             <Col xs={6}>
                                 <Form.Group>
                                     <div style={{height: '21px', marginBottom: '8px'}}/>
-                                    <Form.Control value={phoneNumber} onChange={handleChangePhoneNumber} className='user-info-form-control' type="text"/>
+                                    <Form.Control value={phoneNumber} onChange={handleChangePhoneNumber}
+                                                  className='user-info-form-control' type="text"/>
                                 </Form.Group>
                                 <div style={{height: '26px', marginTop: '4px'}}/>
                             </Col>
                             <Col xs={3}>
-                                <Button onClick={onPhoneNumberClick} style={{height: '44px', marginTop: '29px'}} variant="primary" type="submit">
+                                <Button onClick={onPhoneNumberClick} style={{height: '44px', marginTop: '29px'}}
+                                        variant="primary" type="submit">
                                     Güncelle
                                 </Button>
                             </Col>
                             <Col xs={4}>
                                 <Form.Label className='user-info-form-label'>Doğum Tarihiniz</Form.Label>
-                                <Form.Select value={birthdayDate} onChange={handleChangeBirthdayDate} className='user-info-form-control'>
+                                <Form.Select value={birthdayDate} onChange={handleChangeBirthdayDate}
+                                             className='user-info-form-control'>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -239,7 +245,8 @@ export function UserInfoPage() {
                             </Col>
                             <Col xs={4}>
                                 <div style={{height: '21px', marginBottom: '8px'}}/>
-                                <Form.Select value={birthdayMonth} onChange={handleChangeBirthdayMonth} className='user-info-form-control'>
+                                <Form.Select value={birthdayMonth} onChange={handleChangeBirthdayMonth}
+                                             className='user-info-form-control'>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -248,7 +255,8 @@ export function UserInfoPage() {
                             </Col>
                             <Col xs={4}>
                                 <div style={{height: '21px', marginBottom: '8px'}}/>
-                                <Form.Select value={birthdayYear} onChange={handleChangeBirthdayYear} className='user-info-form-control'>
+                                <Form.Select value={birthdayYear} onChange={handleChangeBirthdayYear}
+                                             className='user-info-form-control'>
                                     <option>1990</option>
                                     <option>1989</option>
                                     <option>1988</option>
@@ -259,7 +267,10 @@ export function UserInfoPage() {
                                 <Form.Label className='user-info-form-label'>Cinsiyet</Form.Label>
                                 <div className='d-flex flex-row'>
                                     <Form.Group style={{marginRight: '20px'}} className='d-flex flex-row'>
-                                        <Form.Check value={gender} onChange={handleChangeGenderFemale} style={{marginRight: '6px'}} type="checkbox"/>
+                                        <Form.Check checked={gender === 'female'}
+                                                    onClick={() => gender === 'female' ? setGender(null) : setGender('female')}
+                                                    style={{marginRight: '6px'}}
+                                                    type="checkbox"/>
                                         <Form.Text style={{
                                             fontSize: '14px',
                                             lineHeight: '18px',
@@ -268,7 +279,10 @@ export function UserInfoPage() {
                                         }}> Kadın</Form.Text>
                                     </Form.Group>
                                     <Form.Group className='d-flex flex-row'>
-                                        <Form.Check value={gender} onChange={handleChangeGenderMale} style={{marginRight: '6px'}} type="checkbox"/>
+                                        <Form.Check checked={gender === 'male'}
+                                                    onClick={() => gender === 'male' ? setGender(null) : setGender('male')}
+                                                    style={{marginRight: '6px'}}
+                                                    type="checkbox"/>
                                         <Form.Text style={{
                                             fontSize: '14px',
                                             lineHeight: '18px',
@@ -282,7 +296,10 @@ export function UserInfoPage() {
                             <Col xs={12}>
                                 <Form.Label className='user-info-form-label'>Kurumsal</Form.Label>
                                 <Form.Group style={{marginRight: '20px'}} className='d-flex flex-row'>
-                                    <Form.Check value={corporateCampaigns} onChange={handleChangeCorporateCampaigns} style={{marginRight: '6px'}} type="checkbox"/>
+                                    <Form.Check
+                                        checked={corporateCampaigns===true}
+                                        onClick={() => corporateCampaigns ? setCorporateCampaigns(false) : setCorporateCampaigns(true)}
+                                        style={{marginRight: '6px'}} type="checkbox"/>
                                     <Form.Text style={{
                                         fontSize: '14px',
                                         lineHeight: '18px',
@@ -313,14 +330,16 @@ export function UserInfoPage() {
                             <Col xs={12}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Şu Anki Şifre</Form.Label>
-                                    <Form.Control value={oldPassword} onChange={handleChangeOldPassword} className='user-info-form-control' type="password"/>
+                                    <Form.Control value={oldPassword} onChange={handleChangeOldPassword}
+                                                  className='user-info-form-control' type="password"/>
                                     <div style={{height: '26px', marginTop: '4px'}}/>
                                 </Form.Group>
                             </Col>
                             <Col xs={12}>
                                 <Form.Group style={{marginBottom: '20px'}}>
                                     <Form.Label className='user-info-form-label'>Yeni Şifre</Form.Label>
-                                    <Form.Control value={newPassword} onChange={handleChangeNewPassword} className='user-info-form-control' type="password"/>
+                                    <Form.Control value={newPassword} onChange={handleChangeNewPassword}
+                                                  className='user-info-form-control' type="password"/>
                                     <Form.Text style={{
                                         fontSize: '13px',
                                         color: '#1b1b1b',
@@ -335,7 +354,8 @@ export function UserInfoPage() {
                             <Col xs={12}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Yeni Şifre (Tekrar)</Form.Label>
-                                    <Form.Control onChange={handleChangeNewPassword} className='user-info-form-control' type="password"/>
+                                    <Form.Control onChange={handleChangeNewPassword} className='user-info-form-control'
+                                                  type="password"/>
                                     <div style={{height: '16px', marginTop: '4px'}}/>
                                 </Form.Group>
                             </Col>
