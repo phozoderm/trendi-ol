@@ -38,21 +38,38 @@
     background-color: white;
     color: #f27a21;
 }
-.user-info-form-header-div{
+
+.user-info-form-header-div {
     margin-bottom: 20px;
 }
-.user-info-form-header-div span{
+
+.user-info-form-header-div span {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     color: #f27a21;
 }
-.user-info-form-label{
+
+.user-info-form-label {
     margin-bottom: 8px;
     color: #333333;
     font-size: 14px;
     font-weight: 900;
 }
-.user-info-form-control{
+
+.user-info-form-control {
     height: 44px;
+}
+
+.user-info-form-control-div {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.user-info-form-control-div i {
+    position: absolute;
+}
+.user-info-form-control-icon{
+    padding: 10px;
+    font-size: 18px;
 }

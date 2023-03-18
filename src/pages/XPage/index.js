@@ -79,7 +79,7 @@ export function XPage() {
             {
                 id: 1,
                 name: "Siparişlerim",
-                href: '#siparislerim',
+                href: 'hesabim/siparislerim',
                 icon: <i className="bi bi-box-fill me-2"/>
             },
             {
@@ -103,13 +103,13 @@ export function XPage() {
             {
                 id: 5,
                 name: "İndirim Kuponlarım",
-                href: '#indirim-kuponlarim',
+                href: 'hesabim/indirimKuponlari',
                 icon: <i className="bi bi-ticket-perforated-fill me-2"/>
             },
             {
                 id: 6,
                 name: "Kullanıcı Bilgilerim",
-                href: 'hesabim',
+                href: 'hesabim/kullaniciBilgileri',
                 icon: <i className="bi bi-person-fill me-2"/>
             },
             {

@@ -12,16 +12,28 @@ export function UserInfoPage() {
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [oldPassword, setOldPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('');
+    const [newPasswordAgain, setNewPasswordAgain] = useState('');
     const [phoneNumberCountryCode, setPhoneNumberCountryCode] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [gender, setGender] = useState(null);
     const [birthdayYear, setBirthdayYear] = useState(1990);
     const [birthdayMonth, setBirthdayMonth] = useState(1);
     const [birthdayDate, setBirthdayDate] = useState(1);
-    const [corporateCampaigns, setCorporateCampaigns] = useState(false)
+    const [corporateCampaigns, setCorporateCampaigns] = useState(false);
+    const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
+    const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
+    const [isAgainNewPasswordVisible, setIsAgainNewPasswordVisible] = useState(false)
 
-
+    const showOldPassword = () => {
+        setIsOldPasswordVisible(!isOldPasswordVisible)
+    }
+    const showNewPassword = () => {
+        setIsNewPasswordVisible(!isNewPasswordVisible)
+    }
+    const showAgainNewPassword = () => {
+        setIsAgainNewPasswordVisible(!isAgainNewPasswordVisible)
+    }
     const handleChangeName = (event) => {
         setName(event.target.value)
     }
@@ -36,6 +48,9 @@ export function UserInfoPage() {
     }
     const handleChangeNewPassword = (event) => {
         setNewPassword(event.target.value)
+    }
+    const handleChangeNewPasswordAgain = (event) => {
+        setNewPasswordAgain(event.target.value)
     }
     const handleChangePhoneNumberCountryCode = (event) => {
         setPhoneNumberCountryCode(event.target.value)
@@ -53,6 +68,13 @@ export function UserInfoPage() {
         setBirthdayDate(event.target.value)
     }
 
+    function passwordConfirm() {
+        let ok = true
+        if (newPassword !== newPasswordAgain) {
+            ok =false
+        }
+        return ok
+    }
 
     function callUserInfoGetAPI() {
         fetch(`http://localhost:1234/user/me`, {
@@ -160,7 +182,12 @@ export function UserInfoPage() {
 
     function onUserInfoPasswordSubmit(e) {
         e.preventDefault()
-        callUserInfoPasswordPutAPI()
+        if (passwordConfirm()){
+            callUserInfoPasswordPutAPI()
+        }
+        else{
+            console.log('do not match')
+        }
     }
 
     useEffect(() => {
@@ -297,7 +324,7 @@ export function UserInfoPage() {
                                 <Form.Label className='user-info-form-label'>Kurumsal</Form.Label>
                                 <Form.Group style={{marginRight: '20px'}} className='d-flex flex-row'>
                                     <Form.Check
-                                        checked={corporateCampaigns===true}
+                                        checked={corporateCampaigns === true}
                                         onClick={() => corporateCampaigns ? setCorporateCampaigns(false) : setCorporateCampaigns(true)}
                                         style={{marginRight: '6px'}} type="checkbox"/>
                                     <Form.Text style={{
@@ -330,16 +357,27 @@ export function UserInfoPage() {
                             <Col xs={12}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Şu Anki Şifre</Form.Label>
-                                    <Form.Control value={oldPassword} onChange={handleChangeOldPassword}
-                                                  className='user-info-form-control' type="password"/>
+                                    <div className='user-info-form-control-div'>
+                                        <i onClick={showOldPassword}
+                                           className={`bi user-info-form-control-icon ${isOldPasswordVisible ? ' bi-eye-slash' : 'bi-eye'}`}/>
+                                        <Form.Control value={oldPassword}
+                                                      onChange={handleChangeOldPassword}
+                                                      className='user-info-form-control'
+                                                      type={`${isOldPasswordVisible ? 'text' : 'password'}`}/>
+                                    </div>
                                     <div style={{height: '26px', marginTop: '4px'}}/>
                                 </Form.Group>
                             </Col>
                             <Col xs={12}>
                                 <Form.Group style={{marginBottom: '20px'}}>
                                     <Form.Label className='user-info-form-label'>Yeni Şifre</Form.Label>
-                                    <Form.Control value={newPassword} onChange={handleChangeNewPassword}
-                                                  className='user-info-form-control' type="password"/>
+                                    <div className='user-info-form-control-div'>
+                                        <i onClick={showNewPassword}
+                                           className={`bi user-info-form-control-icon ${isNewPasswordVisible ? ' bi-eye-slash' : 'bi-eye'}`}/>
+                                        <Form.Control value={newPassword} onChange={handleChangeNewPassword}
+                                                      className='user-info-form-control'
+                                                      type={`${isNewPasswordVisible ? 'text' : 'password'}`}/>
+                                    </div>
                                     <Form.Text style={{
                                         fontSize: '13px',
                                         color: '#1b1b1b',
@@ -354,8 +392,13 @@ export function UserInfoPage() {
                             <Col xs={12}>
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>Yeni Şifre (Tekrar)</Form.Label>
-                                    <Form.Control onChange={handleChangeNewPassword} className='user-info-form-control'
-                                                  type="password"/>
+                                    <div className='user-info-form-control-div'>
+                                        <i onClick={showAgainNewPassword}
+                                           className={`bi user-info-form-control-icon ${isAgainNewPasswordVisible ? ' bi-eye-slash' : 'bi-eye'}`}/>
+                                        <Form.Control value={newPasswordAgain} onChange={handleChangeNewPasswordAgain}
+                                                      className='user-info-form-control'
+                                                      type={`${isAgainNewPasswordVisible ? 'text' : 'password'}`}/>
+                                    </div>
                                     <div style={{height: '16px', marginTop: '4px'}}/>
                                 </Form.Group>
                             </Col>
