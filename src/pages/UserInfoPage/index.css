@@ -69,7 +69,48 @@
 .user-info-form-control-div i {
     position: absolute;
 }
-.user-info-form-control-icon{
+
+.user-info-form-control-icon {
     padding: 10px;
     font-size: 18px;
+}
+
+.user-info-form-control-validation {
+    border: 1px solid #b30000;
+    background-color: #fff1f1;
+}
+
+.user-info-form-control-validation:focus {
+    border: 1px solid #b30000;
+    background-color: #fff1f1;
+}
+
+.new-password-input-text {
+    font-size: 13px;
+    color: #1b1b1b;
+}
+
+.new-password-input-text-validation {
+    color: #b30000;
+}
+
+.user-info-alert {
+    border: 1px solid #f5eadf;
+    background-color: #FFF7F0;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.user-info-alert p {
+    margin-left: 10px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.user-info-alert i{
+    color: #f27a21;
 }

@@ -38,7 +38,7 @@ export function UserAddressInfo() {
 
 
     function userAddressCallGetAPI() {
-        fetch('http://localhost:1234/address', {
+        fetch('https://trendi-ol-backend.safiyeturk.com/address', {
             headers: {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
             }
@@ -54,7 +54,7 @@ export function UserAddressInfo() {
     }
 
     function userAddressCallDelAPI(id) {
-        fetch(`http://localhost:1234/address/${id}`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/address/${id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
@@ -69,7 +69,7 @@ export function UserAddressInfo() {
     }
 
     function singleUserAddressCallGetAPI(id) {
-        fetch(`http://localhost:1234/address/${id}`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/address/${id}`, {
             headers: {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
             }

@@ -65,7 +65,7 @@ export function AddressSaveModalComponent(props) {
     }
 
     function callUserAddressInfoPutAPI(id) {
-        fetch(`http://localhost:1234/address/${id}`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/address/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 title: title,
@@ -90,7 +90,7 @@ export function AddressSaveModalComponent(props) {
     }
 
     function callUserAddressInfoPostAPI() {
-        fetch('http://localhost:1234/address', {
+        fetch('https://trendi-ol-backend.safiyeturk.com/address', {
             method: 'POST',
             body: JSON.stringify({
                 title: title,
@@ -119,7 +119,7 @@ export function AddressSaveModalComponent(props) {
     }
 
     function callUserAddressInfoGetLocationAPI() {
-        fetch('http://localhost:1234/location')
+        fetch('https://trendi-ol-backend.safiyeturk.com/location')
             .then((res) => {
                 if (res.ok) {
                     res.json().then((responseBody) => {

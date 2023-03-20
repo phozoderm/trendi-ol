@@ -48,7 +48,7 @@ export function SignUpPage() {
     }
 
     function callSignUpPostAPI() {
-        fetch('http://localhost:1234/user', {
+        fetch('https://trendi-ol-backend.safiyeturk.com/user', {
             method: 'POST',
             body: JSON.stringify({
                 email: email,

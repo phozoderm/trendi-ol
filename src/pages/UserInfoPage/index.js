@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './index.css'
 import {useEffect, useState} from "react";
+import {Alert} from "react-bootstrap";
 
 export function UserInfoPage() {
 
@@ -24,6 +25,9 @@ export function UserInfoPage() {
     const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
     const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
     const [isAgainNewPasswordVisible, setIsAgainNewPasswordVisible] = useState(false)
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
+    const [show, setShow] = useState(false);
 
     const showOldPassword = () => {
         setIsOldPasswordVisible(!isOldPasswordVisible)
@@ -42,12 +46,14 @@ export function UserInfoPage() {
     }
     const handleChangeEmail = (event) => {
         setEmail(event.target.value)
+        setIsEmailValid(true)
     }
     const handleChangeOldPassword = (event) => {
         setOldPassword(event.target.value)
     }
     const handleChangeNewPassword = (event) => {
         setNewPassword(event.target.value)
+        setIsPasswordValid(true)
     }
     const handleChangeNewPasswordAgain = (event) => {
         setNewPasswordAgain(event.target.value)
@@ -68,16 +74,30 @@ export function UserInfoPage() {
         setBirthdayDate(event.target.value)
     }
 
+    const validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    const validatePassword = (password) => {
+        const re = /[a-zA-Z]+/;
+        const re2 = /[0-9]+/;
+        return re.test(password) && re2.test(password) && password.length >= 7
+    }
+
     function passwordConfirm() {
         let ok = true
         if (newPassword !== newPasswordAgain) {
-            ok =false
+            ok = false
+        }
+        if (!validatePassword(newPassword)) {
+            setIsPasswordValid(false)
+            ok = false
         }
         return ok
     }
 
     function callUserInfoGetAPI() {
-        fetch(`http://localhost:1234/user/me`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/user/me`, {
             headers: {
                 'authorization': `bearer ${localStorage.getItem('jwt')}`
             }
@@ -107,7 +127,7 @@ export function UserInfoPage() {
         birthday.setMonth(birthdayMonth)
         birthday.setDate(birthdayDate)
         const birthdayString = birthday.toISOString().slice(0, 10)
-        fetch(`http://localhost:1234/user/me`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/user/me`, {
             method: 'PUT',
             body: JSON.stringify({
                 name: name,
@@ -131,7 +151,7 @@ export function UserInfoPage() {
     }
 
     function callUserInfoPhoneNumberPutAPI() {
-        fetch(`http://localhost:1234/user/me/phoneNumber`, {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/user/me/phoneNumber`, {
             method: 'PUT',
             body: JSON.stringify({
                 phoneNumber: phoneNumber,
@@ -151,7 +171,7 @@ export function UserInfoPage() {
     }
 
     function callUserInfoPasswordPutAPI() {
-        fetch('http://localhost:1234/user/me/password', {
+        fetch('https://trendi-ol-backend.safiyeturk.com/user/me/password', {
             method: 'PUT',
             body: JSON.stringify({
                 oldPassword: oldPassword,
@@ -172,6 +192,10 @@ export function UserInfoPage() {
 
     function onUserInfoSubmit(e) {
         e.preventDefault()
+        if (!validateEmail(email)) {
+            setIsEmailValid(false)
+            return;
+        }
         callUserInfoPutAPI()
 
     }
@@ -182,11 +206,13 @@ export function UserInfoPage() {
 
     function onUserInfoPasswordSubmit(e) {
         e.preventDefault()
-        if (passwordConfirm()){
+        if (passwordConfirm()) {
             callUserInfoPasswordPutAPI()
-        }
-        else{
-            console.log('do not match')
+        } else {
+            setShow(true)
+            setTimeout(()=>{
+                setShow(false)
+            }, 5000)
         }
     }
 
@@ -203,6 +229,14 @@ export function UserInfoPage() {
                     <i className="bi bi-chevron-down"/>
                 </div>
             </div>
+
+            {show ?
+                <Alert className='user-info-alert' onClose={() => setShow(false)}>
+                    <i className="bi bi-exclamation-circle-fill"/>
+                    <p>Girdiğiniz şifreler eşleşmiyor. Lütfen kontrol ediniz.</p>
+                </Alert>
+                : null
+            }
             <div className='user-info-forms-container'>
                 <div className='w-100 user-info-form-info-update-div'>
                     <div className='user-info-form-header-div'>
@@ -231,7 +265,8 @@ export function UserInfoPage() {
                                 <Form.Group>
                                     <Form.Label className='user-info-form-label'>E-Mail</Form.Label>
                                     <Form.Control value={email} onChange={handleChangeEmail}
-                                                  className='user-info-form-control' type="email"/>
+                                                  className={`user-info-form-control ${!isEmailValid ? 'user-info-form-control-validation' : ''}`}
+                                                  type="email"/>
                                 </Form.Group>
                                 <div style={{height: '26px', marginTop: '4px'}}/>
                             </Col>
@@ -375,13 +410,12 @@ export function UserInfoPage() {
                                         <i onClick={showNewPassword}
                                            className={`bi user-info-form-control-icon ${isNewPasswordVisible ? ' bi-eye-slash' : 'bi-eye'}`}/>
                                         <Form.Control value={newPassword} onChange={handleChangeNewPassword}
-                                                      className='user-info-form-control'
+                                                      className={`user-info-form-control ${!isPasswordValid ? 'user-info-form-control-validation' : ''}`}
                                                       type={`${isNewPasswordVisible ? 'text' : 'password'}`}/>
                                     </div>
-                                    <Form.Text style={{
-                                        fontSize: '13px',
-                                        color: '#1b1b1b',
-                                    }}>Şifreniz <span
+                                    <Form.Text
+                                        className={`new-password-input-text ${!isPasswordValid ? 'new-password-input-text-validation' : ''}`}
+                                        style={{}}>Şifreniz <span
                                         style={{fontFamily: 'source_sans_prosemibold', fontWeight: 'bold'}}>en az 7 karakter</span> ve <span
                                         style={{
                                             fontFamily: 'source_sans_prosemibold',

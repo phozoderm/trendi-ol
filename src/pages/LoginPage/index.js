@@ -32,7 +32,7 @@ export function LoginPage() {
     }
 
     function callLoginPostAPI() {
-        fetch('http://localhost:1234/session', {
+        fetch('https://trendi-ol-backend.safiyeturk.com/session', {
             method: 'POST',
             body: JSON.stringify({
                 email: email,
