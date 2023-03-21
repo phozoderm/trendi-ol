@@ -28,6 +28,7 @@ export function UserInfoPage() {
     const [isEmailValid, setIsEmailValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const [show, setShow] = useState(false);
+    const [userInfoResponseBody, setUserInfoResponseBody] = useState(null)
 
     const showOldPassword = () => {
         setIsOldPasswordVisible(!isOldPasswordVisible)
@@ -74,6 +75,12 @@ export function UserInfoPage() {
         setBirthdayDate(event.target.value)
     }
 
+    const birthday = new Date()
+    birthday.setFullYear(birthdayYear)
+    birthday.setMonth(birthdayMonth)
+    birthday.setDate(birthdayDate)
+    const birthdayString = birthday.toISOString().slice(0, 10)
+
     const validateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
@@ -104,6 +111,7 @@ export function UserInfoPage() {
         }).then((res) => {
             if (res.ok) {
                 res.json().then((responseBody) => {
+                    setUserInfoResponseBody(responseBody)
                     setName(responseBody.name)
                     setSurname(responseBody.surname)
                     setEmail(responseBody.email)
@@ -122,11 +130,7 @@ export function UserInfoPage() {
     }
 
     function callUserInfoPutAPI() {
-        const birthday = new Date()
-        birthday.setFullYear(birthdayYear)
-        birthday.setMonth(birthdayMonth)
-        birthday.setDate(birthdayDate)
-        const birthdayString = birthday.toISOString().slice(0, 10)
+
         fetch(`https://trendi-ol-backend.safiyeturk.com/user/me`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -210,7 +214,7 @@ export function UserInfoPage() {
             callUserInfoPasswordPutAPI()
         } else {
             setShow(true)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setShow(false)
             }, 5000)
         }
@@ -219,6 +223,17 @@ export function UserInfoPage() {
     useEffect(() => {
         callUserInfoGetAPI()
     }, [])
+
+    const userInfoDisabledButton = userInfoResponseBody === null || (name === userInfoResponseBody.name &&
+        surname === userInfoResponseBody.surname &&
+        email === userInfoResponseBody.email &&
+        birthdayString === userInfoResponseBody.birthday &&
+        gender === userInfoResponseBody.gender &&
+        corporateCampaigns === userInfoResponseBody.wantsToKnowAboutCorporateCampaigns)
+
+    const userInfoDisabledButtonPhoneNumber = userInfoResponseBody === null || (
+        phoneNumberCountryCode === userInfoResponseBody.phoneNumberCountryCode && phoneNumber === userInfoResponseBody.phoneNumber
+    )
 
     return (
         <Container>
@@ -290,8 +305,10 @@ export function UserInfoPage() {
                                 <div style={{height: '26px', marginTop: '4px'}}/>
                             </Col>
                             <Col xs={3}>
-                                <Button onClick={onPhoneNumberClick} style={{height: '44px', marginTop: '29px'}}
-                                        variant="primary" type="submit">
+                                <Button disabled={userInfoDisabledButtonPhoneNumber} onClick={onPhoneNumberClick}
+                                        className='user-info-phone-button'
+                                        variant='danger'
+                                        type="submit">
                                     Güncelle
                                 </Button>
                             </Col>
@@ -374,7 +391,7 @@ export function UserInfoPage() {
                                 <div style={{height: '16px', marginTop: '4px'}}/>
                             </Col>
                             <Col xs={12}>
-                                <Button style={{height: '44px', marginBottom: '10px'}}
+                                <Button disabled={userInfoDisabledButton} style={{height: '44px', marginBottom: '10px'}}
                                         className='w-100 user-info-form-update-button' variant="primary" type="submit">
                                     GÜNCELLE
                                 </Button>
@@ -437,8 +454,10 @@ export function UserInfoPage() {
                                 </Form.Group>
                             </Col>
                             <Col xs={12}>
-                                <Button style={{height: '44px', marginBottom: '10px'}}
-                                        className='w-100 user-info-form-update-button' type="submit">
+                                <Button
+                                    disabled={newPassword.length === 0 && newPasswordAgain.length === 0 && oldPassword.length === 0}
+                                    style={{height: '44px', marginBottom: '10px'}}
+                                    className='w-100 user-info-form-update-button' type="submit">
                                     GÜNCELLE
                                 </Button>
                             </Col>

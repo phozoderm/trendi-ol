@@ -37,6 +37,7 @@
 .user-info-form-update-button {
     background-color: white;
     color: #f27a21;
+    font-size: 14px;
 }
 
 .user-info-form-header-div {
@@ -113,4 +114,10 @@
 }
 .user-info-alert i{
     color: #f27a21;
+}
+.user-info-phone-button{
+    margin-top: 29px;
+    height: 44px;
+    font-size: 14px;
+    width: 100%;
 }
