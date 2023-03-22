@@ -11,6 +11,7 @@ import {UserInfoPage} from "./pages/UserInfoPage";
 import {UserAddressInfo} from "./pages/UserAddressInfo";
 import {OrderPage} from "./pages/OrderPage";
 import {DiscountCouponsPage} from "./pages/DiscountCouponsPage";
+import {ElitePage} from "./pages/ElitePage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -35,6 +36,7 @@ export function App() {
                                 <Route path='adresBilgileri' element={<UserAddressInfo/>}/>
                                 <Route path='siparislerim' element={<OrderPage/>}/>
                                 <Route path='indirimKuponlari' element={<DiscountCouponsPage/>}/>
+                                <Route path='elite' element={<ElitePage/>}/>
                             </Route>
                     }
                     <Route path='home' element={<HomePage/>}/>

@@ -56,7 +56,7 @@ export function MyAccountPage() {
                                 <Nav.Link> <i className="bi bi-credit-card-fill me-2"/>Kayıtlı Kartlarım</Nav.Link>
                             </Nav.Item>
                             <Nav.Item className='my-account-sidebar-item'>
-                                <Nav.Link> <i className="bi bi-suit-diamond-fill me-2"/>Trendi-ol Elite</Nav.Link>
+                                <Nav.Link onClick={()=> navigate('elite')}> <i className="bi bi-suit-diamond-fill me-2"/>Trendi-ol Elite</Nav.Link>
                             </Nav.Item>
                             <Nav.Item className='my-account-sidebar-item'>
                                 <Nav.Link> <i className="bi bi-bell-fill me-2"/>Duyuru Tercihlerim</Nav.Link>
