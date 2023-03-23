@@ -1,5 +1,7 @@
 import './index.css'
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export function ElitePage() {
     return (
@@ -121,6 +123,142 @@ export function ElitePage() {
                                 <i className="bi bi-chevron-right"/>
                             </div>
                         </span>
+                    </div>
+                </div>
+                <div className='elite-points-container'>
+                    <div className='elite-points-items-div'>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon'>
+                                    <i className="bi bi-box-fill"/>
+                                </div>
+                                <div>
+                                    <span>
+                                        Her 100 TL'lik alışverişinde
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        15 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon-meal'>
+                                    <i className="bi bi-egg-fried"/>
+                                </div>
+                                <div>
+                                    <span>
+                                        Her 100 TL'lik Yemek alışverişinde
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        30 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon-bag'>
+                                    <i className="bi bi-basket2-fill"/>
+                                </div>
+                                <div>
+                                    <span>
+                                        Her 100 TL'lik Market alışverişinde
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        30 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon-closet'>
+                                    <i className="bi bi-palette2"/>
+                                </div>
+                                <div>
+                                    <span>
+                                        Her 100 TL'lik Dolap alışverişinde
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        30 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon-chat'>
+                                    <i className="bi bi-chat-fill"/>
+                                </div>
+                                <div>
+                                    <span>
+                                        Yorum yapma
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        10 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='elite-points-item'>
+                            <div className='elite-points-item-first'>
+                                <div className='elite-points-item-first-icon-camera'>
+                                    <i className="bi bi-camera-fill"/>
+                                </div>
+                                <div>
+                                <span>
+                                    Fotoğraflı yorum yapma
+                                </span>
+                                </div>
+                            </div>
+                            <div className='elite-points-item-second'>
+                                <div className='elite-points-item-second-icon'>
+                                    <i className="bi bi-star-fill"/>
+                                </div>
+                                <div className='elite-points-item-second-desc'>
+                                    <span>
+                                        20 Puan
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

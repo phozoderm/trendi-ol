@@ -248,6 +248,7 @@
     font-size: 15px;
     color: #666666;
 }
+
 .progress-bar-badge-item .bi-suit-diamond-fill {
     font-size: 15px;
     color: #666666;
@@ -273,16 +274,19 @@
     font-weight: 600;
     margin-bottom: 0;
 }
-.progress-bar-badge-item-info p:nth-child(2){
+
+.progress-bar-badge-item-info p:nth-child(2) {
     font-size: 12px;
     color: #666666;
     line-height: 15px;
     margin-bottom: 0;
 }
-.progress-bar-items-inner{
+
+.progress-bar-items-inner {
     position: relative;
 }
-.elite-point-calculator-container{
+
+.elite-point-calculator-container {
     display: flex;
     justify-content: space-between;
     background-color: #fff0f4;
@@ -290,35 +294,42 @@
     height: 64px;
     margin-top: 20px;
 }
-.elite-point-calculator-item-first{
+
+.elite-point-calculator-item-first {
     margin-left: 18px;
     display: flex;
     align-items: center;
 }
-.elite-point-calculator-item-first span{
+
+.elite-point-calculator-item-first span {
     margin-left: 6px;
     font-weight: 600;
     font-size: 16px;
     color: #333333;
 }
-.elite-point-calculator-item-first i{
+
+.elite-point-calculator-item-first i {
     margin-left: 7px;
     font-size: 12px;
     color: #ff4988;
 }
-.elite-point-calculator-item-second{
+
+.elite-point-calculator-item-second {
     display: flex;
     margin-right: 20px;
     cursor: pointer;
 }
-.elite-point-calculator-button{
+
+.elite-point-calculator-button {
     display: flex;
     align-items: center;
 }
-.elite-point-calculator-button span{
+
+.elite-point-calculator-button span {
     font-size: 14px;
 }
-.elite-point-calculator-button div{
+
+.elite-point-calculator-button div {
     height: 24px;
     width: 24px;
     display: flex;
@@ -328,7 +339,190 @@
     border-radius: 8px;
     background-color: white;
 }
-.elite-point-calculator-button .bi-chevron-right{
+
+.elite-point-calculator-button .bi-chevron-right {
     color: #ff4988;
     font-size: 12px;
 }
+
+.elite-points-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.elite-points-item-first {
+    display: flex;
+    align-items: center;
+}
+
+.elite-points-item {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    width: 520px;
+    height: 56px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border: 1px solid #e6e6e6;
+    padding: 12px;
+    margin-top: 15px;
+}
+.elite-points-item:nth-child(1){
+    margin-top: 0;
+}
+.elite-points-item:nth-child(2){
+    margin-top: 0;
+    margin-right: 0;
+}
+.elite-points-item:nth-child(4){
+    margin-right: 0;
+}
+.elite-points-item:nth-child(6){
+    margin-right: 0;
+}
+
+.elite-points-item-first-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #ffc000;
+    border-color: #ffc000;
+}
+
+.elite-points-item-first-icon i {
+    color: white;
+    font-size: 16px;
+}
+
+.elite-points-item-first span {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.elite-points-item-second {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    width: 103px;
+}
+
+.elite-points-item-second-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ffc000;
+    margin-right: 10px;
+}
+
+.elite-points-item-second-icon i {
+    color: white;
+    font-size: 12px;
+}
+
+.elite-points-item-second-desc {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.elite-points-item-second-desc span {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+}
+.elite-points-item-first-icon-meal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #f27a21;
+    border-color: #f27a21;
+}
+.elite-points-item-first-icon-meal i{
+    color: white;
+    font-size: 19px;
+}
+.elite-points-item-first-icon-bag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #0bc15c;
+    border-color: #0bc15c;
+}
+.elite-points-item-first-icon-bag{
+    color: white;
+    font-size: 16px;
+}
+.elite-points-item-first-icon-closet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #25d6a2;
+    border-color: #25d6a2;
+}
+.elite-points-item-first-icon-closet{
+    color: white;
+    font-size: 19px;
+}
+.elite-points-item-first-icon-chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #ff4988;
+    border-color: #ff4988;
+}
+.elite-points-item-first-icon-chat i{
+    color: white;
+    font-size: 17px;
+}
+.elite-points-item-first-icon-camera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    box-sizing: border-box;
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+}
+.elite-points-item-first-icon-camera i{
+    color: white;
+    font-size: 21px;
+}
+.elite-points-items-div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
