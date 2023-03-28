@@ -12,6 +12,8 @@ import {UserAddressInfo} from "./pages/UserAddressInfo";
 import {OrderPage} from "./pages/OrderPage";
 import {DiscountCouponsPage} from "./pages/DiscountCouponsPage";
 import {ElitePage} from "./pages/ElitePage";
+import {FavoritePage} from "./pages/FavoritePage";
+import {CollectionPage} from "./pages/CollectionPage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -38,6 +40,14 @@ export function App() {
                                 <Route path='indirimKuponlari' element={<DiscountCouponsPage/>}/>
                                 <Route path='elite' element={<ElitePage/>}/>
                             </Route>
+                    }
+                    {
+                        !isEmailLoggedIn ? null :
+                            <Route path='favoriler' element={<FavoritePage/>}/>
+                    }
+                    {
+                        !isEmailLoggedIn ? null :
+                            <Route path='koleksiyonlar' element={<CollectionPage/>}/>
                     }
                     <Route path='home' element={<HomePage/>}/>
                     <Route path='product-list' element={<ProductListPage/>}/>

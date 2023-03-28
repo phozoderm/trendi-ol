@@ -83,8 +83,7 @@ export function HomePage() {
 
     return (
         <>
-            <Container>
-
+            <Container className='mt-4'>
                 <Row md={2} lg={3}>
                     {homePageColList.map((colList)=>(
                         <Col onClick={navigateToProductList}>

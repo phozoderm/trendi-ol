@@ -151,7 +151,7 @@ export function XPage() {
 
     return (
         <>
-            <Navbar expand='lg' className='navbar-xpage mb-4'>
+            <Navbar expand='lg' className='navbar-xpage '>
                 <Container className='d-flex flex-column'>
                     <div className='w-100 d-flex justify-content-end'>
                         <Nav className='nav1'>
@@ -169,6 +169,7 @@ export function XPage() {
                     <div className='w-100 d-flex flex-row justify-content-between align-items-center'>
                         <Navbar.Brand>
                             <img
+                                alt='brand'
                                 width='146'
                                 src={logo}
                                 onClick={() => myFunction()}
@@ -207,7 +208,7 @@ export function XPage() {
                                             </div>
 
                                         </NavDropdown>
-                                        <Nav.Link href='#favorilerim' className='ms-3 navbar-items'>
+                                        <Nav.Link href='giris' className='ms-3 navbar-items'>
                                             <i className="bi bi-heart me-1 nav-icon"/>
                                             Favorilerim
                                         </Nav.Link>
@@ -240,7 +241,7 @@ export function XPage() {
                                                 Çıkış Yap
                                             </NavDropdown.Item>
                                         </NavDropdown>
-                                        <Nav.Link href='#favorilerim' className='ms-3 navbar-items'>
+                                        <Nav.Link href='/favoriler' className='ms-3 navbar-items'>
                                             <i className="bi bi-heart me-1 nav-icon"/>
                                             Favorilerim
                                         </Nav.Link>

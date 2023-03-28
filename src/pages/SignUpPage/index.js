@@ -105,7 +105,7 @@ export function SignUpPage() {
     }
 
     return (
-        <Container className='w-100 d-flex flex-column align-items-center'>
+        <Container className='w-100 mt-4 d-flex flex-column align-items-center'>
             <h2 className='w-25 mb-3 text-center'>Merhaba,</h2>
             <label className='label mb-3'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</label>
             <div className='nav-div'>

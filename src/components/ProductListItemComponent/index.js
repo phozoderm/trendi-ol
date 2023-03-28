@@ -19,6 +19,7 @@ export function ProductListItemComponent(props) {
                 </div>
             </Card.ImgOverlay>
             <Card.Img
+                alt='dress'
                 variant='top'
                 src={props.bgImage}/>
             <Card.Body>

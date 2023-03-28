@@ -10,7 +10,7 @@ export function MyAccountPage() {
 
     return (
         <>
-            <Container>
+            <Container className='mt-4'>
                 <style>{'body { background-color: white; }'}</style>
                 <Row>
                     <Col xs={2}>
