@@ -1,3 +1,8 @@
+.collection-page-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .collection-page-header-container {
     height: 70px;
     width: 100vw;
@@ -19,6 +24,10 @@
 .collection-header-item-first {
     display: flex;
     align-items: center;
+    height: 100%;
+}
+.collection-header-item-first i {
+    margin-right: 10px;
 }
 
 .collection-header-search-input {
@@ -52,17 +61,14 @@
 }
 
 .collection-header-my-favorite-nav-item {
-    display: flex;
-    align-items: center;
-    color: #666;
-    border-bottom: 4px solid transparent;
-    font-size: 18px;
     height: 100%;
-    margin-right: 30px;
-    box-sizing: border-box;
 }
 
 .collection-header-my-collection-nav-item {
+    height: 100%;
+}
+
+.collection-header-my-collection-nav-item-link {
     display: flex;
     align-items: center;
     color: #666;
@@ -71,7 +77,27 @@
     height: 100%;
     margin-right: 30px;
     box-sizing: border-box;
+    padding: 0;
+}
+
+.collection-header-my-favorite-nav-item-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #666;
+    border-bottom: 4px solid transparent;
+    font-size: 18px;
+    margin-right: 30px;
+    box-sizing: border-box;
+    padding: 0;
+}
+.collection-header-my-favorite-nav-item-link:hover{
+    color: #f27a21;
+}
+.collection-header-my-collection-nav-item-link:hover{
+    color: #f27a21;
 }
 .collection-header-item-first .active{
     color: #f27a21;
+    border-color: #f27a21;
 }
