@@ -39,6 +39,12 @@
     height: 43px;
     background: url('https://cdn.dsmcdn.com/web/production/favorite-heart.svg') no-repeat;
 }
+.product-favorite-icon-fill{
+    background: url('https://cdn.dsmcdn.com/web/assets/favorite-heart-active.svg') no-repeat;
+    float: right;
+    width: 43px;
+    height: 43px;
+}
 .product-favorite-icon:active{
     background: url('https://cdn.dsmcdn.com/web/assets/favorite-heart-active.svg') no-repeat;
 }
