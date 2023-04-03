@@ -7,10 +7,12 @@ import './index.css'
 import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
 import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
 import Modal from "react-bootstrap/Modal";
+import {ToastComponent} from "../../components/ToastComponent";
 
 export function UserAddressInfo() {
     const [errorMessage, setErrorMessage] = useState('')
     const [show, setShow] = useState(false)
+    const [showToast, setShowToast] = useState(false)
     const [addressList, setAddressList] = useState([])
     const [addressToEdit, setAddressToEdit] = useState(null)
     const [showSavedConfirmationModal, setShowSavedConfirmationModal] = useState(false)
@@ -49,6 +51,7 @@ export function UserAddressInfo() {
                 })
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -176,6 +179,11 @@ export function UserAddressInfo() {
                     </Button>
                 </Modal.Body>
             </Modal>
+            <ToastComponent
+            toastMessage={errorMessage}
+            showToast={showToast}
+            onClose={()=>setShowToast(false)}
+            />
         </>
     )
 }
