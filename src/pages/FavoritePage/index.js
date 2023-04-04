@@ -5,8 +5,8 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
-import Col from "react-bootstrap/Col";
-import {ProductListItemComponent} from "../../components/ProductListItemComponent";
+// import Col from "react-bootstrap/Col";
+// import {ProductListItemComponent} from "../../components/ProductListItemComponent";
 
 export function FavoritePage() {
     const navigate= useNavigate()

@@ -7,18 +7,20 @@ import Form from 'react-bootstrap/Form';
 import './index.css'
 import {useEffect, useState} from "react";
 import {ProductListItemComponent} from "../../components/ProductListItemComponent";
+import {ToastComponent} from "../../components/ToastComponent";
 
 export function ProductListPage() {
     const [productList, setProductList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [showToast, setShowToast]=useState(false)
 
     function callProductListPageGetAPI() {
         const jwt = localStorage.getItem('jwt')
         const headers = jwt ? {
                 'authorization':  `bearer ${jwt}`
-            } : {}
+            } : null
         fetch('https://trendi-ol-backend.safiyeturk.com/product', {
-            headers: headers
+            headers
         }).then((res) => {
             if (res.ok) {
                 res.json().then((responseBody) => {
@@ -26,6 +28,7 @@ export function ProductListPage() {
                 })
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -214,6 +217,11 @@ export function ProductListPage() {
                     </Col>
                 </Row>
             </Container>
+            <ToastComponent
+            showToast={showToast}
+            onClose={()=> setShowToast(false)}
+            toastMessage={errorMessage}
+            />
         </>
     )
 }

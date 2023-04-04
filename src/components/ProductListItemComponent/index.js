@@ -32,7 +32,8 @@ export function ProductListItemComponent(props) {
                     <i className="bi bi-star-fill star-icon"/>
                     <small style={{color: "#999", marginLeft: '5px'}}>(138401)</small>
                     <img style={{width: "15px", marginLeft: "5px"}}
-                         src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'/>
+                         src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'
+                    alt='kamera emoji'/>
                 </Card.Text>
                 <Card.Text style={{color: '#f27a1a', fontSize: '16px'}}>{props.price} TL</Card.Text>
             </Card.Body>

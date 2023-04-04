@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import './index.css'
 import {useEffect, useState} from "react";
+import {ToastComponent} from "../ToastComponent";
 
 export function AddressSaveModalComponent(props) {
 
@@ -26,6 +27,7 @@ export function AddressSaveModalComponent(props) {
     const [isCityIdValid, setIsCityIdValid] = useState(true);
     const [locationList, setLocationList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [showToast, setShowToast] = useState(false);
     const [selectedInvoiceType, setSelectedInvoiceType] = useState(props.address ? props.address.invoiceType : 'personal')
 
     const handleChangeModalName = (event) => {
@@ -85,6 +87,7 @@ export function AddressSaveModalComponent(props) {
                 props.onHide(true)
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -111,9 +114,11 @@ export function AddressSaveModalComponent(props) {
             if (res.ok) {
                 props.onHide(true)
             } else {
-                //todo errormessage gelcek
+                setShowToast(true)
+                setErrorMessage('Bir hata oluştu.')
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -126,7 +131,10 @@ export function AddressSaveModalComponent(props) {
                         setLocationList(responseBody)
                     })
                 }
-            })
+            }).catch(() => {
+            setShowToast(true)
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
+        })
     }
 
     function onAddressSaveModalSubmit(e) {
@@ -368,7 +376,11 @@ export function AddressSaveModalComponent(props) {
                     </Form>
                 </Modal.Body>
             </Modal>
-
+            <ToastComponent
+                showToast={showToast}
+                toastMessage={errorMessage}
+                onClose={() => setShowToast(false)}
+            />
         </>
     )
 }

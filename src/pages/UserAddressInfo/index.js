@@ -67,6 +67,7 @@ export function UserAddressInfo() {
                 userAddressCallGetAPI()
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
@@ -84,6 +85,7 @@ export function UserAddressInfo() {
                 })
             }
         }).catch(() => {
+            setShowToast(true)
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }

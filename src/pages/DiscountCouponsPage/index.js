@@ -11,7 +11,7 @@ export function DiscountCouponsPage(){
                 <div className='discount-div'>
                     <div className='discount-content-div'>
                         <div>
-                            <img src='https://cdn.dsmcdn.com/web/master/coupon.svg'/>
+                            <img alt='coupon' src='https://cdn.dsmcdn.com/web/master/coupon.svg'/>
                         </div>
                         <span>Kuponunuz Yok</span>
                         <p>Hesabınıza ait bir kupon bulunamadı</p>

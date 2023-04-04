@@ -79,7 +79,7 @@ export function HomePage() {
             },
 
         ]
-    })
+    },[])
 
     return (
         <>

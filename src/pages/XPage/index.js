@@ -125,7 +125,7 @@ export function XPage() {
                 icon: <i className="bi bi-chat-left-heart-fill me-2"/>
             },
         ]
-    })
+    },[])
 
     const showDropdown = () => {
         setShow(!show)
@@ -283,6 +283,7 @@ export function XPage() {
                                         src='https://cdn.dsmcdn.com/frontend/web/assets/images/troy-logo-transparent.png'
                                         width='56'
                                         height='26'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item className='social-media1'>
@@ -290,6 +291,7 @@ export function XPage() {
                                         src={master}
                                         width='62'
                                         height='35'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item className='social-media1'>
@@ -297,6 +299,7 @@ export function XPage() {
                                         src={visa}
                                         width='75'
                                         height='24'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item className='social-media1'>
@@ -304,6 +307,7 @@ export function XPage() {
                                         src={american}
                                         width='60'
                                         height='25'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                             </div>
@@ -321,6 +325,7 @@ export function XPage() {
                                 <ListGroup.Item>
                                     <img
                                         src='https://upload.wikimedia.org/wikipedia/commons/3/3b/Download_on_the_App_Store_Badge_TR_RGB_blk.svg'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item>
@@ -328,6 +333,7 @@ export function XPage() {
                                         src={google}
                                         width='151'
                                         height='40'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item>
@@ -335,6 +341,7 @@ export function XPage() {
                                         src='https://tachogram.com/public/badges/appgallery/app_gallery_tr.png'
                                         width='151'
                                         height='40'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                             </div>
@@ -378,6 +385,7 @@ export function XPage() {
                                         src='https://cdn.dsmcdn.com/web/production/etbis-qr.png'
                                         width='80'
                                         height='90'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                                 <ListGroup.Item>
@@ -385,6 +393,7 @@ export function XPage() {
                                         src='https://cdn.dsmcdn.com/frontend/web/assets/images/trust-stamp.png'
                                         width='50'
                                         height='50'
+                                        alt='social media'
                                     />
                                 </ListGroup.Item>
                             </div>
