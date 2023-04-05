@@ -51,6 +51,30 @@
 .product-favorite-icon:hover{
     background: url('https://cdn.dsmcdn.com/web/assets/favorite-heart-hover.svg') no-repeat;
 }
+.product-cross-icon{
+    position: absolute;
+    right: 7px;
+    top: 8px;
+    border: 1px solid #F0F0F0;
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.104988);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.product-cross-icon i{
+    margin-top: 3px;
+}
+.product-cross-icon:hover{
+   border: 1px solid #f27a21;
+}
+.product-cross-icon i:hover{
+    color: #f27a21;
+}
 .color-options{
     display: flex;
     align-items: center;
@@ -61,7 +85,7 @@
     right: 10px;
     bottom: 130px;
     cursor: pointer;
-    gap: 5px;
+    column-gap: 5px;
     justify-content: center;
     padding: 3px 6px;
     z-index: 5;
@@ -88,4 +112,33 @@
     border: solid 1px #ffffff;
     background-color: pink;
     border-radius: 50%;
+}
+.product-list-favorite-buttons-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 33px;
+}
+.product-list-favorite-size-button{
+    height: 32px;
+    width: 70px;
+    font-size: 14px;
+    line-height: 1.14;
+    padding: 0;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    color: #666666;
+}
+.product-list-favorite-add-cart-button{
+    border: 1px solid #f27a21;
+    width: 106px;
+    height: 32px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.14;
+    color: #f27a21;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 3px;
 }

@@ -208,6 +208,7 @@ export function ProductListPage() {
                                                 title={product.name}
                                                 price={product.price}
                                                 isFavorite={product.isFavorite}
+                                                id={product.id}
                                             />
                                         </Col>
                                     ))}
