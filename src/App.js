@@ -14,6 +14,7 @@ import {DiscountCouponsPage} from "./pages/DiscountCouponsPage";
 import {ElitePage} from "./pages/ElitePage";
 import {FavoritePage} from "./pages/FavoritePage";
 import {CollectionPage} from "./pages/CollectionPage";
+import {ProductDetailPage} from "./pages/ProductDetailPage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const isEmailLoggedIn = emailFromLocalStorage != null
@@ -51,6 +52,7 @@ export function App() {
                     }
                     <Route path='home' element={<HomePage/>}/>
                     <Route path='product-list' element={<ProductListPage/>}/>
+                    <Route path='product-detail' element={<ProductDetailPage/>}/>
                     <Route path='*' element={<Navigate to='/home' replace/>}/>
                 </Route>
             </Routes>

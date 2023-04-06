@@ -2,9 +2,14 @@ import Card from "react-bootstrap/Card";
 import './index.css'
 import {useState} from "react";
 import Button from "react-bootstrap/Button";
+import {ToastComponent} from "../ToastComponent";
+import {useNavigate} from "react-router-dom";
 
 export function ProductListItemComponent(props) {
+    const navigate = useNavigate()
     const [isFavorite, setIsFavorite] = useState(props.isFavorite);
+    const [showToast, setShowToast] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     function callProductListItemComponentCallPostAPI(id) {
@@ -18,7 +23,8 @@ export function ProductListItemComponent(props) {
                 setIsFavorite(true)
             }
         }).catch(() => {
-            //todo error message
+            setShowToast(true)
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
 
@@ -31,12 +37,13 @@ export function ProductListItemComponent(props) {
         }).then((res) => {
             if (res.ok) {
                 setIsFavorite(false)
-                if(props.onFavoriteDeleted){
+                if (props.onFavoriteDeleted) {
                     props.onFavoriteDeleted()
                 }
             }
         }).catch(() => {
-            //todo error message
+            setShowToast(true)
+            setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
 
@@ -49,58 +56,70 @@ export function ProductListItemComponent(props) {
     }
 
     return (
-        <Card className='product-list-card'>
-            <Card.ImgOverlay>
-                <div className='product-list-card-img-overlay'>
-                    <i className="bi bi-truck truck-icon-component"/>
-                    <span style={{fontSize: '10px', lineHeight: '9px', marginLeft: '4px', marginTop: '1px'}}>BUGÜN KARGODA</span>
+        <>
+            <Card className='product-list-card'>
+                <div onClick={() => navigate('/product-detail')}>
+                    <Card.ImgOverlay>
+                        <div className='product-list-card-img-overlay'>
+                            <i className="bi bi-truck truck-icon-component"/>
+                            <span style={{fontSize: '10px', lineHeight: '9px', marginLeft: '4px', marginTop: '1px'}}>BUGÜN KARGODA</span>
+                        </div>
+                        {
+                            !props.isButtonVisible ?
+                                <div className='color-options'>
+                                    <div>
+                                        <span className='color-option'> </span>
+                                        <span className='color-option'> </span>
+                                    </div>
+                                    <span>14</span>
+                                </div> : null
+                        }
+                    </Card.ImgOverlay>
+                    <div>
+                        <Card.Img
+                            alt='dress'
+                            variant='top'
+                            src={props.bgImage}/>
+                        <Card.Body>
+                            <Card.Title>{props.title}</Card.Title>
+                            <Card.Text>
+                                <i className="bi bi-star-fill"/>
+                                <i className="bi bi-star-fill"/>
+                                <i className="bi bi-star-fill"/>
+                                <i className="bi bi-star-fill"/>
+                                <i className="bi bi-star-fill star-icon"/>
+                                <small style={{color: "#999", marginLeft: '5px'}}>(138401)</small>
+                                <img style={{width: "15px", marginLeft: "5px"}}
+                                     src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'
+                                     alt='kamera emoji'/>
+                            </Card.Text>
+                            <Card.Text style={{color: '#f27a1a', fontSize: '16px'}}>{props.price} TL</Card.Text>
+                            {
+                                props.isButtonVisible
+                                    ?
+                                    <div className='product-list-favorite-buttons-div'>
+                                        <Button className='product-list-favorite-size-button'>Tek Beden</Button>
+                                        <Button className='product-list-favorite-add-cart-button'>Sepete Ekle</Button>
+                                    </div> : null
+                            }
+                        </Card.Body>
+                    </div>
                 </div>
                 {
                     props.isCrossIconVisible ?
                         <div onClick={handleChangeFavoriteButton} className='product-cross-icon'>
                             <i className="bi bi-x"/>
                         </div> :
-                        <i onClick={handleChangeFavoriteButton}
-                           className={`${isFavorite ? 'product-favorite-icon-fill' : 'product-favorite-icon'}`}/>
+                        <div className='product-favorite-icon-div'>
+                            <i onClick={handleChangeFavoriteButton}
+                               className={`${isFavorite ? 'product-favorite-icon-fill' : 'product-favorite-icon'}`}/>
+                        </div>
                 }
-                {
-                    !props.isButtonVisible ?
-                        <div className='color-options'>
-                            <div>
-                                <span className='color-option'> </span>
-                                <span className='color-option'> </span>
-                            </div>
-                            <span>14</span>
-                        </div>  : null
-                }
-            </Card.ImgOverlay>
-            <Card.Img
-                alt='dress'
-                variant='top'
-                src={props.bgImage}/>
-            <Card.Body>
-                <Card.Title>{props.title}</Card.Title>
-                <Card.Text>
-                    <i className="bi bi-star-fill"/>
-                    <i className="bi bi-star-fill"/>
-                    <i className="bi bi-star-fill"/>
-                    <i className="bi bi-star-fill"/>
-                    <i className="bi bi-star-fill star-icon"/>
-                    <small style={{color: "#999", marginLeft: '5px'}}>(138401)</small>
-                    <img style={{width: "15px", marginLeft: "5px"}}
-                         src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'
-                         alt='kamera emoji'/>
-                </Card.Text>
-                <Card.Text style={{color: '#f27a1a', fontSize: '16px'}}>{props.price} TL</Card.Text>
-                {
-                    props.isButtonVisible
-                        ?
-                        <div className='product-list-favorite-buttons-div'>
-                            <Button className='product-list-favorite-size-button'>Tek Beden</Button>
-                            <Button className='product-list-favorite-add-cart-button'>Sepete Ekle</Button>
-                        </div> : null
-                }
-            </Card.Body>
-        </Card>
+            </Card>
+            <ToastComponent
+                showToast={showToast}
+                toastMessage={errorMessage}
+                onClose={() => setShowToast(false)}/>
+        </>
     )
 }

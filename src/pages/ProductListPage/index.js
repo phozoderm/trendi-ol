@@ -12,13 +12,13 @@ import {ToastComponent} from "../../components/ToastComponent";
 export function ProductListPage() {
     const [productList, setProductList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
-    const [showToast, setShowToast]=useState(false)
+    const [showToast, setShowToast] = useState(false)
 
     function callProductListPageGetAPI() {
         const jwt = localStorage.getItem('jwt')
         const headers = jwt ? {
-                'authorization':  `bearer ${jwt}`
-            } : null
+            'authorization': `bearer ${jwt}`
+        } : null
         fetch('https://trendi-ol-backend.safiyeturk.com/product', {
             headers
         }).then((res) => {
@@ -199,7 +199,7 @@ export function ProductListPage() {
                                 </span>
                                 <Button variant='warning'>Uygula</Button>
                             </div>
-                            <div className='product-item-card-container'>
+                            <div  className='product-item-card-container'>
                                 <Row md={3} lg={4}>
                                     {productList.map((product) => (
                                         <Col key={`product_${product.id}_${product.name}`}>
@@ -219,9 +219,9 @@ export function ProductListPage() {
                 </Row>
             </Container>
             <ToastComponent
-            showToast={showToast}
-            onClose={()=> setShowToast(false)}
-            toastMessage={errorMessage}
+                showToast={showToast}
+                onClose={() => setShowToast(false)}
+                toastMessage={errorMessage}
             />
         </>
     )
