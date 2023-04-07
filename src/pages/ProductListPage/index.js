@@ -5,19 +5,20 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 import './index.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ProductListItemComponent} from "../../components/ProductListItemComponent";
 import {ToastComponent} from "../../components/ToastComponent";
+import {UserContext} from "../../App";
 
 export function ProductListPage() {
     const [productList, setProductList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [showToast, setShowToast] = useState(false)
+    const userInfo = useContext(UserContext)
 
     function callProductListPageGetAPI() {
-        const jwt = localStorage.getItem('jwt')
-        const headers = jwt ? {
-            'authorization': `bearer ${jwt}`
+        const headers = userInfo.jwt ? {
+            'authorization': `bearer ${userInfo.jwt}`
         } : {}
         fetch('https://trendi-ol-backend.safiyeturk.com/product', {
             headers
@@ -199,7 +200,7 @@ export function ProductListPage() {
                                 </span>
                                 <Button variant='warning'>Uygula</Button>
                             </div>
-                            <div  className='product-item-card-container'>
+                            <div className='product-item-card-container'>
                                 <Row md={3} lg={4}>
                                     {productList.map((product) => (
                                         <Col key={`product_${product.id}_${product.name}`}>

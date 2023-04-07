@@ -4,9 +4,10 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './index.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Alert} from "react-bootstrap";
 import {ToastComponent} from "../../components/ToastComponent";
+import {UserContext} from "../../App";
 
 export function UserInfoPage() {
 
@@ -32,6 +33,7 @@ export function UserInfoPage() {
     const [userInfoResponseBody, setUserInfoResponseBody] = useState(null)
     const [errorMessage, setErrorMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
+    const userInfo=useContext(UserContext)
 
     const showOldPassword = () => {
         setIsOldPasswordVisible(!isOldPasswordVisible)
@@ -109,7 +111,7 @@ export function UserInfoPage() {
     function callUserInfoGetAPI() {
         fetch(`https://trendi-ol-backend.safiyeturk.com/user/me`, {
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -147,7 +149,7 @@ export function UserInfoPage() {
             }),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -168,7 +170,7 @@ export function UserInfoPage() {
             }),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -189,7 +191,7 @@ export function UserInfoPage() {
             }),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -229,7 +231,8 @@ export function UserInfoPage() {
 
     useEffect(() => {
         callUserInfoGetAPI()
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     const userInfoDisabledButton = userInfoResponseBody === null || (name === userInfoResponseBody.name &&
         surname === userInfoResponseBody.surname &&

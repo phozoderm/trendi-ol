@@ -5,21 +5,23 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ToastComponent} from "../../components/ToastComponent";
 import {ProductListItemComponent} from "../../components/ProductListItemComponent";
 import './index.css'
+import {UserContext} from "../../App";
 
 export function FavoritePage() {
     const navigate = useNavigate()
     const [productList, setProductList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
+    const userInfo = useContext(UserContext);
 
     function callFavoritePageGetAPI() {
         fetch('https://trendi-ol-backend.safiyeturk.com/product/favorite', {
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {

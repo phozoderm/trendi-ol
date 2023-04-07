@@ -2,12 +2,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import './index.css'
 import {AddressSaveModalComponent} from "../../components/AddressSaveModalComponent";
 import {UserAddressInfoItemComponent} from "../../components/UserAddressInfoItemComponent";
 import Modal from "react-bootstrap/Modal";
 import {ToastComponent} from "../../components/ToastComponent";
+import {UserContext} from "../../App";
 
 export function UserAddressInfo() {
     const [errorMessage, setErrorMessage] = useState('')
@@ -16,6 +17,7 @@ export function UserAddressInfo() {
     const [addressList, setAddressList] = useState([])
     const [addressToEdit, setAddressToEdit] = useState(null)
     const [showSavedConfirmationModal, setShowSavedConfirmationModal] = useState(false)
+    const userInfo = useContext(UserContext)
 
     const handleCloseSavedConfirmation = () => setShowSavedConfirmationModal(false)
     const handleShowSavedConfirmation = () => setShowSavedConfirmationModal(true)
@@ -42,7 +44,7 @@ export function UserAddressInfo() {
     function userAddressCallGetAPI() {
         fetch('https://trendi-ol-backend.safiyeturk.com/address', {
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -60,7 +62,7 @@ export function UserAddressInfo() {
         fetch(`https://trendi-ol-backend.safiyeturk.com/address/${id}`, {
             method: 'DELETE',
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             },
         }).then((res) => {
             if (res.ok) {
@@ -75,7 +77,7 @@ export function UserAddressInfo() {
     function singleUserAddressCallGetAPI(id) {
         fetch(`https://trendi-ol-backend.safiyeturk.com/address/${id}`, {
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -182,9 +184,9 @@ export function UserAddressInfo() {
                 </Modal.Body>
             </Modal>
             <ToastComponent
-            toastMessage={errorMessage}
-            showToast={showToast}
-            onClose={()=>setShowToast(false)}
+                toastMessage={errorMessage}
+                showToast={showToast}
+                onClose={() => setShowToast(false)}
             />
         </>
     )

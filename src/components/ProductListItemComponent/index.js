@@ -1,22 +1,23 @@
 import Card from "react-bootstrap/Card";
 import './index.css'
-import {useState} from "react";
+import {useContext, useState} from "react";
 import Button from "react-bootstrap/Button";
 import {ToastComponent} from "../ToastComponent";
 import {useNavigate} from "react-router-dom";
+import {UserContext} from "../../App";
 
 export function ProductListItemComponent(props) {
     const navigate = useNavigate()
     const [isFavorite, setIsFavorite] = useState(props.isFavorite);
     const [showToast, setShowToast] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-
+    const userInfo = useContext(UserContext)
 
     function callProductListItemComponentCallPostAPI(id) {
         fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/favorite`, {
             method: 'POST',
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -32,7 +33,7 @@ export function ProductListItemComponent(props) {
         fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/favorite`, {
             method: 'DELETE',
             headers: {
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {

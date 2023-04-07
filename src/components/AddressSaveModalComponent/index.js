@@ -4,8 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import './index.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ToastComponent} from "../ToastComponent";
+import {UserContext} from "../../App";
 
 export function AddressSaveModalComponent(props) {
 
@@ -29,6 +30,7 @@ export function AddressSaveModalComponent(props) {
     const [errorMessage, setErrorMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
     const [selectedInvoiceType, setSelectedInvoiceType] = useState(props.address ? props.address.invoiceType : 'personal')
+    const userInfo = useContext(UserContext)
 
     const handleChangeModalName = (event) => {
         setName(event.target.value)
@@ -80,7 +82,7 @@ export function AddressSaveModalComponent(props) {
             }),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             }
         }).then((res) => {
             if (res.ok) {
@@ -108,7 +110,7 @@ export function AddressSaveModalComponent(props) {
             }),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${localStorage.getItem('jwt')}`
+                'authorization': `bearer ${userInfo.jwt}`
             },
         }).then((res) => {
             if (res.ok) {
