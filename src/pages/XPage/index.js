@@ -145,6 +145,7 @@ export function XPage() {
     }
 
     function signOut() {
+        localStorage.removeItem('jwt')
         localStorage.removeItem('email')
         window.location.reload()
     }

@@ -18,7 +18,7 @@ export function ProductListPage() {
         const jwt = localStorage.getItem('jwt')
         const headers = jwt ? {
             'authorization': `bearer ${jwt}`
-        } : null
+        } : {}
         fetch('https://trendi-ol-backend.safiyeturk.com/product', {
             headers
         }).then((res) => {
