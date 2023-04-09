@@ -59,7 +59,7 @@ export function ProductListItemComponent(props) {
     return (
         <>
             <Card className='product-list-card'>
-                <div onClick={() => navigate('/product-detail')}>
+                <div onClick={() => navigate(`/product-detail/${props.id}`)}>
                     <Card.ImgOverlay>
                         <div className='product-list-card-img-overlay'>
                             <i className="bi bi-truck truck-icon-component"/>
@@ -94,7 +94,12 @@ export function ProductListItemComponent(props) {
                                      src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'
                                      alt='kamera emoji'/>
                             </Card.Text>
-                            <Card.Text style={{color: '#f27a1a', fontSize: '16px'}}>{props.price} TL</Card.Text>
+                            <Card.Text style={{
+                                color: '#f27a1a',
+                                fontSize: '16px'
+                            }}>
+                                {new Intl.NumberFormat('tr-TR',{style:'currency', currency: 'TRY'}).format(props.price)} TL
+                            </Card.Text>
                             {
                                 props.isButtonVisible
                                     ?

@@ -56,7 +56,7 @@ export function App() {
                         }
                         <Route path='home' element={<HomePage/>}/>
                         <Route path='product-list' element={<ProductListPage/>}/>
-                        <Route path='product-detail' element={<ProductDetailPage/>}/>
+                        <Route path='product-detail/:id' element={<ProductDetailPage/>}/>
                         <Route path='*' element={<Navigate to='/home' replace/>}/>
                     </Route>
                 </Routes>

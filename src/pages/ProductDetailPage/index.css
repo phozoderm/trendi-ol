@@ -1,0 +1,27 @@
+.product-detail-breadcrumbs-div{
+    width: 1200px;
+    display: flex;
+    margin: 20px auto 15px auto;
+}
+.product-detail-breadcrumbs-nav-link{
+    font-size: 14px;
+    height: 18px;
+    max-width: 210px;
+    display: block;
+    line-height: 18px;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0;
+}
+.product-detail-breadcrumbs-nav-link i{
+    margin: 0 10px;
+    font-size: 11px;
+    color: #f27a21;
+    font-weight: 600;
+}
+.product-detail-container{
+    width: 1200px;
+    margin: 20px auto;
+}
