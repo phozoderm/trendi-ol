@@ -98,7 +98,7 @@ export function ProductListItemComponent(props) {
                                 color: '#f27a1a',
                                 fontSize: '16px'
                             }}>
-                                {new Intl.NumberFormat('tr-TR',{style:'currency', currency: 'TRY'}).format(props.price)} TL
+                                {new Intl.NumberFormat('tr-TR',{style:'currency', currency: 'TRY'}).format(props.price).slice(1)} TL
                             </Card.Text>
                             {
                                 props.isButtonVisible

@@ -5,11 +5,13 @@ import Nav from "react-bootstrap/Nav";
 import {useContext, useEffect, useState} from "react";
 import {UserContext} from "../../App";
 import {useParams} from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export function ProductDetailPage() {
-    const {id}= useParams()
+    const {id} = useParams()
     const userInfo = useContext(UserContext);
     const [product, setProduct] = useState({});
+
     //todo if null loading
 
     function callProductDetailGetAPI(id) {
@@ -51,7 +53,96 @@ export function ProductDetailPage() {
                         </Nav>
                     </div>
                     <div className='product-detail-container'>
-
+                        <div className='product-detail-div'>
+                            <div>
+                                <div className='product-detail-div-fist-item'>
+                                    <div>
+                                        <img src={product.imageURL}/>
+                                    </div>
+                                </div>
+                                <div className='product-detail-div-second-item'>
+                                    <div style={{marginBottom: '5px'}}>
+                                        <span className='product-detail-category-name'>Kadın Giyim kategorisinde</span>
+                                    </div>
+                                    <div className='product-detail-second-item-header-div'>
+                                        <div>
+                                            <h1 className='product-header'>
+                                                {product.name}
+                                            </h1>
+                                        </div>
+                                        <div className='product-seller-div'>
+                                            <span>Satıcı :</span>
+                                            <span>Trendi-ol</span>
+                                            <div>
+                                                <img
+                                                    src='https://cdn.dsmcdn.com/indexing-sticker-stamp/stage/4b0d7ef1-8e8f-4c8f-b1c7-637e432ea2b4.png'/>
+                                            </div>
+                                        </div>
+                                        <div className='product-rating-div'>
+                                            <div>
+                                                <i className="bi bi-star-fill"/>
+                                                <i className="bi bi-star-fill"/>
+                                                <i className="bi bi-star-fill"/>
+                                                <i className="bi bi-star-fill"/>
+                                                <i className="bi bi-star-fill"/>
+                                            </div>
+                                            <span className='product-review-count'>
+                                                15 Değerlendirme
+                                                <img
+                                                    src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'/>
+                                            </span>
+                                            <span className='product-rating-separator'>|</span>
+                                            <span className='product-question'> 12 Soru & Cevap</span>
+                                        </div>
+                                        <div className='product-price-div'>
+                                            <div className='product-price'>
+                                                <span>
+                                                    {new Intl.NumberFormat('tr-TR', {
+                                                        style: 'currency',
+                                                        currency: 'TRY'
+                                                    }).format(product.price).slice(1)} TL
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className='product-add-collection-div'>
+                                            <i className="bi bi-bookmark-fill"/>
+                                            <span>Koleksiyona Ekle</span>
+                                        </div>
+                                    </div>
+                                    <div className='product-size-variant-div'>
+                                        <div className='product-chosen-size-div'>
+                                            <span> Beden: <span>M</span> </span>
+                                            <div className='product-size-table'>
+                                                <i className="bi bi-rulers"/>
+                                                <span>
+                                                    Beden Tablosu
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className='product-size-variants-div'>
+                                            <div>S</div>
+                                            <div>M</div>
+                                            <div>L</div>
+                                            <div>XL</div>
+                                        </div>
+                                    </div>
+                                    <div className='product-size-suggestion'>
+                                        <i className="bi bi-rulers"/>
+                                        <span>
+                                            Kullanıcıların çoğu kendi bedeninizi almanızı öneriyor.
+                                        </span>
+                                    </div>
+                                    <div className='product-add-to-cart-button-div'>
+                                        <Button className='product-add-to-cart-button'>Sepete Ekle</Button>
+                                        <div>
+                                            <Button className='product-favorite-button'>
+                                                <i className="bi bi-heart"></i>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </Row>
             </Container>
