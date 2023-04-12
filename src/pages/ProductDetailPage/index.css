@@ -265,8 +265,13 @@
     background-color: white !important;
     border: 1px solid #e6e6e6 !important;
 }
-.product-favorite-button i {
+.heart-button {
     color: #8c8c8c;
+    font-size: 22px;
+    margin-top: 9px;
+}
+.favorited-heart-button{
+    color: #f27a21;
     font-size: 22px;
     margin-top: 9px;
 }

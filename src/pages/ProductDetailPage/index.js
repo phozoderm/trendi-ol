@@ -11,8 +11,16 @@ export function ProductDetailPage() {
     const {id} = useParams()
     const userInfo = useContext(UserContext);
     const [product, setProduct] = useState({});
-
     //todo if null loading
+
+
+    function handleChangeFavoriteButton() {
+        if (product.isFavorite) {
+            callProductDetailFavoriteDelAPI(id)
+        } else {
+            callProductDetailFavoritePostAPI(id)
+        }
+    }
 
     function callProductDetailGetAPI(id) {
         const headers = userInfo.jwt ? {'authorization': `bearer ${userInfo.jwt}`} : {}
@@ -22,6 +30,42 @@ export function ProductDetailPage() {
             if (res.ok) {
                 res.json().then((responseBody) => {
                     setProduct(responseBody)
+                })
+            }
+        }).catch(() => {
+            //todo error message
+        })
+    }
+
+    function callProductDetailFavoritePostAPI(id) {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/favorite`, {
+            method: 'POST',
+            headers: {
+                'authorization': `bearer ${userInfo.jwt}`
+            }
+        }).then((res) => {
+            if (res.ok) {
+                setProduct({
+                    ...product, // spread operator
+                    isFavorite: true
+                })
+            }
+        }).catch(() => {
+            //todo error message
+        })
+    }
+
+    function callProductDetailFavoriteDelAPI(id) {
+        fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/favorite`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `bearer ${userInfo.jwt}`
+            }
+        }).then((res) => {
+            if (res.ok) {
+                setProduct({
+                    ...product,
+                    isFavorite: false
                 })
             }
         }).catch(() => {
@@ -57,7 +101,9 @@ export function ProductDetailPage() {
                             <div>
                                 <div className='product-detail-div-fist-item'>
                                     <div>
-                                        <img src={product.imageURL}/>
+                                        <img
+                                            alt='women'
+                                            src={product.imageURL}/>
                                     </div>
                                 </div>
                                 <div className='product-detail-div-second-item'>
@@ -75,6 +121,7 @@ export function ProductDetailPage() {
                                             <span>Trendi-ol</span>
                                             <div>
                                                 <img
+                                                    alt='approved'
                                                     src='https://cdn.dsmcdn.com/indexing-sticker-stamp/stage/4b0d7ef1-8e8f-4c8f-b1c7-637e432ea2b4.png'/>
                                             </div>
                                         </div>
@@ -89,6 +136,7 @@ export function ProductDetailPage() {
                                             <span className='product-review-count'>
                                                 15 Değerlendirme
                                                 <img
+                                                    alt='camera'
                                                     src='https://cdn.dsmcdn.com/mobile/reviewrating/kamera-emoji6x.png'/>
                                             </span>
                                             <span className='product-rating-separator'>|</span>
@@ -135,8 +183,9 @@ export function ProductDetailPage() {
                                     <div className='product-add-to-cart-button-div'>
                                         <Button className='product-add-to-cart-button'>Sepete Ekle</Button>
                                         <div>
-                                            <Button className='product-favorite-button'>
-                                                <i className="bi bi-heart"></i>
+                                            <Button onClick={handleChangeFavoriteButton}
+                                                    className='product-favorite-button'>
+                                                <i className={`${product.isFavorite ? 'bi bi-heart-fill favorited-heart-button' : 'bi bi-heart heart-button'}`}/>
                                             </Button>
                                         </div>
                                     </div>
