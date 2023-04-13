@@ -1,0 +1,122 @@
+.cart-page-container{
+    display: flex;
+    justify-content: center;
+    margin:20px 0;
+    min-height: 600px;
+}
+.cart-page-empty-div{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e2e2;
+    padding: 15px 25px;
+    width: 1200px;
+}
+.cart-page-empty-first-item{
+    display: flex;
+    align-items: center;
+}
+.cart-page-empty-first-item div{
+    background-color: #fff1e6;
+    padding: 20px;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+}
+.cart-page-empty-first-item i {
+    color: #f27a21;
+    font-size: 24px;
+}
+.cart-page-empty-first-item span{
+    color: #333333;
+    font-size: 18px;
+    font-weight: 900;
+    margin-left: 20px;
+}
+.cart-page-empty-second-item{
+    display: flex;
+    align-items: center;
+}
+.cart-page-empty-button{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 0;
+    width: 250px;
+}
+.cart-page-div{
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+.cart-page-product-container {
+    font-size: 12px;
+    width: 928px;
+}
+.cart-page-product-header-div{
+    display: flex;
+}
+.cart-page-product-header-div{
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.cart-page-product-div{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+.cart-page-seller-div{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #e2e2e2;
+}
+.cart-page-seller-div span{
+    color: #999999;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+.cart-page-seller-div p {
+    color: #333333;
+    font-size: 14px;
+    margin: 0;
+}
+.cart-page-free-shipping-div{
+    background-color: #ebfff4;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+    height: 28px;
+    color: #333333;
+    font-weight: 700;
+    border-bottom: 1px solid #e6e6e6;
+}
+.cart-page-seller-point{
+    width: 22px;
+    height: 16px;
+    font-size: 11px;
+    color: white;
+    background: rgb(8, 180, 73);
+    border-radius: 3px;
+    text-align: center;
+    margin-left: 3px;
+}
+.cart-page-seller-div i{
+    font-size: 13px;
+    margin-left: 6px;
+}
+.cart-page-free-shipping-div i{
+    color: #0BC15C;
+    font-size: 13px;
+    margin-right: 6px;
+}
+
+
+
+

@@ -15,6 +15,7 @@ import {ElitePage} from "./pages/ElitePage";
 import {FavoritePage} from "./pages/FavoritePage";
 import {CollectionPage} from "./pages/CollectionPage";
 import {ProductDetailPage} from "./pages/ProductDetailPage";
+import {CartPage} from "./pages/CartPage";
 
 const emailFromLocalStorage = localStorage.getItem('email')
 const jwt = localStorage.getItem('jwt')
@@ -53,6 +54,10 @@ export function App() {
                         {
                             !isEmailLoggedIn ? null :
                                 <Route path='koleksiyonlar' element={<CollectionPage/>}/>
+                        }
+                        {
+                            !isEmailLoggedIn ? null :
+                                <Route path='sepetim' element={<CartPage/>}/>
                         }
                         <Route path='home' element={<HomePage/>}/>
                         <Route path='product-list' element={<ProductListPage/>}/>

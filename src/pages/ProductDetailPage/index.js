@@ -72,6 +72,23 @@ export function ProductDetailPage() {
             //todo error message
         })
     }
+    function callProductDetailCartPostAPI(id){
+        fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/cart`, {
+            method:'POST',
+            headers:{
+                'authorization':`bearer ${userInfo.jwt}`
+            }
+        }).then((res)=>{
+            if (res.ok){
+
+            }
+        }).catch(()=>{
+            //todo error message
+        })
+    }
+    function addToCart(){
+        callProductDetailCartPostAPI(id)
+    }
 
     useEffect(() => {
         callProductDetailGetAPI(id)
@@ -181,7 +198,7 @@ export function ProductDetailPage() {
                                         </span>
                                     </div>
                                     <div className='product-add-to-cart-button-div'>
-                                        <Button className='product-add-to-cart-button'>Sepete Ekle</Button>
+                                        <Button onClick={addToCart} className='product-add-to-cart-button'>Sepete Ekle</Button>
                                         <div>
                                             <Button onClick={handleChangeFavoriteButton}
                                                     className='product-favorite-button'>

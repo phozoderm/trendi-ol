@@ -213,7 +213,7 @@ export function XPage() {
                                             <i className="bi bi-heart me-1 nav-icon"/>
                                             Favorilerim
                                         </Nav.Link>
-                                        <Nav.Link href='#sepetim' className='ms-3 navbar-items'>
+                                        <Nav.Link href='giris' className='ms-3 navbar-items'>
                                             <i className="bi bi-cart3 me-1 nav-icon"/>
                                             Sepetim
                                         </Nav.Link>
@@ -246,7 +246,7 @@ export function XPage() {
                                             <i className="bi bi-heart me-1 nav-icon"/>
                                             Favorilerim
                                         </Nav.Link>
-                                        <Nav.Link href='#sepetim' className='ms-3 navbar-items'>
+                                        <Nav.Link href='/sepetim' className='ms-3 navbar-items'>
                                             <i className="bi bi-cart3 me-1 nav-icon"/>
                                             Sepetim
                                         </Nav.Link>
