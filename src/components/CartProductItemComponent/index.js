@@ -17,32 +17,36 @@ export function CartProductItemComponent(props) {
             }
         }).then((res) => {
             if (res.ok) {
-                setQuantity(quantity-1)
+                setQuantity(quantity - 1)
             }
         }).catch(() => {
             //todo error message
         })
     }
-    function callProductDetailCartPostAPI(id){
+
+    function callProductDetailCartPostAPI(id) {
         fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/cart`, {
-            method:'POST',
-            headers:{
-                'authorization':`bearer ${userInfo.jwt}`
+            method: 'POST',
+            headers: {
+                'authorization': `bearer ${userInfo.jwt}`
             }
-        }).then((res)=>{
-            if (res.ok){
-                setQuantity(quantity+1)
+        }).then((res) => {
+            if (res.ok) {
+                setQuantity(quantity + 1)
             }
-        }).catch(()=>{
+        }).catch(() => {
             //todo error message
         })
     }
-    function productQuantityDecrease(){
+
+    function productQuantityDecrease() {
         callProductDetailCartDelAPI(props.id)
     }
-    function productQuantityIncrease(){
+
+    function productQuantityIncrease() {
         callProductDetailCartPostAPI(props.id)
     }
+
 
     return (
         <div className='cart-page-product-detail-div'>
@@ -75,11 +79,14 @@ export function CartProductItemComponent(props) {
                     <div className='cart-page-item-action-info'>
                         <div className='cart-page-counter-div'>
                             <div className='cart-page-counter'>
-                                <Button onClick={productQuantityDecrease}>-</Button>
-                                <div>
-                                    {props.quantity}
+                                <Button className='cart-page-button-decrease'
+                                        disabled={quantity < 2}
+                                        onClick={productQuantityDecrease}>-</Button>
+                                <div className='cart-page-quantity'>
+                                    {quantity}
                                 </div>
-                                <Button onClick={productQuantityIncrease}>+</Button>
+                                <Button className='cart-page-button-increase'
+                                        onClick={productQuantityIncrease}>+</Button>
                             </div>
                         </div>
                         <div className='cart-page-price-info-div'>
@@ -88,7 +95,7 @@ export function CartProductItemComponent(props) {
                             </div>
                         </div>
                     </div>
-                    <Button>
+                    <Button className='cart-page-delete-button'>
                         <i className="bi bi-trash"/>
                     </Button>
                 </div>

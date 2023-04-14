@@ -37,56 +37,93 @@ export function CartPage() {
         <Container>
             <div className='cart-page-container'>
                 <div className='cart-page-div'>
-                    {/*<div>*/}
-                    {/*    <div className='cart-page-empty-div'>*/}
-                    {/*        <div className='cart-page-empty-first-item'>*/}
-                    {/*            <div>*/}
-                    {/*                <i className="bi bi-cart3"/>*/}
-                    {/*            </div>*/}
-                    {/*            <span>Sepetinde ürün bulunmamaktadır.</span>*/}
-                    {/*        </div>*/}
-                    {/*        <div className='cart-page-empty-second-item'>*/}
-                    {/*            <Button onClick={()=> navigate('/home')} className='cart-page-empty-button'>Alışverişe Başla</Button>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    <div className='cart-page-product-container'>
-                        <div className='cart-page-product-header-div'>
-                            <span>Sepetim (1 Ürün)</span>
-                        </div>
-                        <div className='cart-page-product-div'>
-                            <div className='cart-page-seller-div'>
-                                <Form>
-                                    <Form.Check
-                                        checked
-                                        type="checkbox"
-                                    />
-                                </Form>
-                                <span>
-                                   Satıcı:
-                                </span>
-                                <p>
-                                    Trendi-olkilla
-                                </p>
-                                <div className='cart-page-seller-point'>
-                                    8.2
+                    {
+                        cartProduct.length === 0 ?
+                            <div>
+                                <div className='cart-page-empty-div'>
+                                    <div className='cart-page-empty-first-item'>
+                                        <div>
+                                            <i className="bi bi-cart3"/>
+                                        </div>
+                                        <span>Sepetinde ürün bulunmamaktadır.</span>
+                                    </div>
+                                    <div className='cart-page-empty-second-item'>
+                                        <Button onClick={() => navigate('/home')} className='cart-page-empty-button'>Alışverişe
+                                            Başla</Button>
+                                    </div>
                                 </div>
-                                <i className="bi bi-chevron-right"/>
                             </div>
-                            <div className='cart-page-free-shipping-div'>
-                                <i className="bi bi-box"/>
-                                <span>Kargo Bedava!</span>
-                            </div>
-                            {cartProduct.map((product) => (
-                                <CartProductItemComponent
-                                    bgImage={product.imageURL}
-                                    title={product.name}
-                                    price={product.price}
-                                    id={product.id}
-                                    quantity={product.quantity}/>
-                            ))}
-                        </div>
-                    </div>
+                            :
+                            <>
+                                <div className='cart-page-product-container'>
+                                    <div className='cart-page-product-header-div'>
+                                        <span>Sepetim (1 Ürün)</span>
+                                        {/*reduce*/}
+                                    </div>
+                                    <div className='cart-page-product-div'>
+                                        <div className='cart-page-seller-div'>
+                                            <Form>
+                                                <Form.Check
+                                                    checked
+                                                    type="checkbox"
+                                                />
+                                            </Form>
+                                            <span>
+                                                Satıcı:
+                                            </span>
+                                            <p>
+                                                Trendi-olkilla
+                                            </p>
+                                            <div className='cart-page-seller-point'>
+                                                8.2
+                                            </div>
+                                            <i className="bi bi-chevron-right"/>
+                                        </div>
+                                        <div className='cart-page-free-shipping-div'>
+                                            <i className="bi bi-box"/>
+                                            <span>Kargo Bedava!</span>
+                                        </div>
+                                        {cartProduct.map((product) => (
+                                            <CartProductItemComponent
+                                                bgImage={product.imageURL}
+                                                title={product.name}
+                                                price={product.price}
+                                                id={product.id}
+                                                quantity={product.quantity}/>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='cart-page-approve-order-container'>
+                                    <div className='cart-page-approve-order-div'>
+                                        <Button className='cart-page-approve-button'>
+                                            Sepeti Onayla <i className="bi bi-chevron-right"/>
+                                        </Button>
+                                        <div className='cart-page-summary-div'>
+                                            <h1>Sipariş Özeti</h1>
+                                            <div className='cart-page-product-price'>
+                                                <span>Ürünün Toplamı</span>
+                                                <strong>89 TL</strong>
+                                            </div>
+                                            <div className='cart-page-product-price'>
+                                                <span>Kargo Toplam</span>
+                                                <strong>19,99 TL</strong>
+                                            </div>
+                                            <hr/>
+                                            <p>127 TL</p>
+                                        </div>
+                                        <div className='cart-page-discount'>
+                                            <i className="bi bi-plus-lg"/>
+                                            <span>
+                                                İNDİRİM KODU GİR
+                                            </span>
+                                        </div>
+                                        <Button className='cart-page-approve-button'>
+                                            Sepeti Onayla <i className="bi bi-chevron-right"/>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </>
+                    }
                 </div>
             </div>
         </Container>
