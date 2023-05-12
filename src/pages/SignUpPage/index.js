@@ -58,8 +58,7 @@ export function SignUpPage() {
             headers: {
                 'content-type': 'application/json',
             },
-        })
-            .then(res => {
+        }).then(res => {
                 if (res.ok) {
                     navigate('/giris')
                 } else {

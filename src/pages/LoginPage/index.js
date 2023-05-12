@@ -49,7 +49,6 @@ export function LoginPage() {
                     window.location.reload()
                     navigate('/home')
                 })
-
             } else {
                 if (res.status === 401) {
                     setErrorMessage('E-posta adresiniz ve/veya şifreniz hatalı.')

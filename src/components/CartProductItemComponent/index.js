@@ -18,8 +18,27 @@ export function CartProductItemComponent(props) {
         }).then((res) => {
             if (res.ok) {
                 setQuantity(quantity - 1)
+                if(props.onCartChanged){
+                    props.onCartChanged()
+                }
             }
         }).catch(() => {
+            //todo error message
+        })
+    }
+    function callProductCartEmptyDelAPI(id){
+        fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/cart/empty`,{
+            method:'DELETE',
+            headers:{
+                'authorization':`bearer ${userInfo.jwt}`
+            }
+        }).then((res)=>{
+            if (res.ok){
+                if(props.onCartChanged){
+                    props.onCartChanged()
+                }
+            }
+        }).catch(()=>{
             //todo error message
         })
     }
@@ -33,6 +52,9 @@ export function CartProductItemComponent(props) {
         }).then((res) => {
             if (res.ok) {
                 setQuantity(quantity + 1)
+                if(props.onCartChanged){
+                    props.onCartChanged()
+                }
             }
         }).catch(() => {
             //todo error message
@@ -41,12 +63,15 @@ export function CartProductItemComponent(props) {
 
     function productQuantityDecrease() {
         callProductDetailCartDelAPI(props.id)
+
     }
 
     function productQuantityIncrease() {
         callProductDetailCartPostAPI(props.id)
     }
-
+    function productEmpty(){
+        callProductCartEmptyDelAPI(props.id)
+    }
 
     return (
         <div className='cart-page-product-detail-div'>
@@ -95,7 +120,7 @@ export function CartProductItemComponent(props) {
                             </div>
                         </div>
                     </div>
-                    <Button className='cart-page-delete-button'>
+                    <Button onClick={productEmpty} className='cart-page-delete-button'>
                         <i className="bi bi-trash"/>
                     </Button>
                 </div>

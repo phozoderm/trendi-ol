@@ -4,6 +4,7 @@
     border: 1px solid #e6e6e6;
     box-sizing: border-box;
     border-radius: 8px;
+    height: 496px;
 }
 
 .product-list-card-img-overlay {
@@ -134,11 +135,15 @@
     justify-content: space-between;
     align-items: center;
     height: 33px;
+    position: absolute;
+    bottom: 10px;
+    padding: 0 9px;
+    width: 100%;
 }
 
-.product-list-favorite-size-button {
+.product-list-favorite-size-button:disabled {
     height: 32px;
-    width: 70px;
+    width: 80px;
     font-size: 14px;
     line-height: 1.14;
     padding: 0;
@@ -150,7 +155,7 @@
 
 .product-list-favorite-add-cart-button {
     border: 1px solid #f27a21;
-    width: 106px;
+    width: 116px;
     height: 32px;
     padding: 0;
     font-size: 14px;

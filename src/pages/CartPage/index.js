@@ -5,13 +5,12 @@ import {UserContext} from "../../App";
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
 import {CartProductItemComponent} from "../../components/CartProductItemComponent";
 
 export function CartPage() {
     const navigate = useNavigate()
     const userInfo = useContext(UserContext);
-    const [cartProduct, setCartProduct] = useState([])
+    const [cart, setCart] = useState({})
 
     function callCartPageGetAPI() {
         fetch('https://trendi-ol-backend.safiyeturk.com/product/cart', {
@@ -21,7 +20,7 @@ export function CartPage() {
         }).then((res) => {
             if (res.ok) {
                 res.json().then((responseBody) => {
-                    setCartProduct(responseBody)
+                    setCart(responseBody)
                 })
             }
         }).catch(() => {
@@ -38,7 +37,7 @@ export function CartPage() {
             <div className='cart-page-container'>
                 <div className='cart-page-div'>
                     {
-                        cartProduct.length === 0 ?
+                        cart.products == null || cart.products.length === 0 ?
                             <div>
                                 <div className='cart-page-empty-div'>
                                     <div className='cart-page-empty-first-item'>
@@ -57,8 +56,7 @@ export function CartPage() {
                             <>
                                 <div className='cart-page-product-container'>
                                     <div className='cart-page-product-header-div'>
-                                        <span>Sepetim (1 Ürün)</span>
-                                        {/*reduce*/}
+                                        <span>Sepetim ({cart.products.reduce((previous, current) => previous + current.quantity, 0)} Ürün)</span>
                                     </div>
                                     <div className='cart-page-product-div'>
                                         <div className='cart-page-seller-div'>
@@ -83,13 +81,14 @@ export function CartPage() {
                                             <i className="bi bi-box"/>
                                             <span>Kargo Bedava!</span>
                                         </div>
-                                        {cartProduct.map((product) => (
+                                        {cart.products?.map((product) => (
                                             <CartProductItemComponent
                                                 bgImage={product.imageURL}
                                                 title={product.name}
                                                 price={product.price}
                                                 id={product.id}
-                                                quantity={product.quantity}/>
+                                                quantity={product.quantity}
+                                                onCartChanged={() => callCartPageGetAPI()}/>
                                         ))}
                                     </div>
                                 </div>
@@ -102,14 +101,14 @@ export function CartPage() {
                                             <h1>Sipariş Özeti</h1>
                                             <div className='cart-page-product-price'>
                                                 <span>Ürünün Toplamı</span>
-                                                <strong>89 TL</strong>
+                                                <strong>{cart.productTotalPrice} TL</strong>
                                             </div>
                                             <div className='cart-page-product-price'>
                                                 <span>Kargo Toplam</span>
-                                                <strong>19,99 TL</strong>
+                                                <strong>{cart.shippingCost} TL</strong>
                                             </div>
                                             <hr/>
-                                            <p>127 TL</p>
+                                            <p>{cart.totalPrice} TL</p>
                                         </div>
                                         <div className='cart-page-discount'>
                                             <i className="bi bi-plus-lg"/>

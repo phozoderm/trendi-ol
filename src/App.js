@@ -26,7 +26,7 @@ const userInfo = {email: emailFromLocalStorage, jwt}
 export function App() {
     return (
         <UserContext.Provider value={userInfo}>
-            <BrowserRouter>
+            <BrowserRouter>`
                 <Routes>
                     <Route path='*' element={<XPage/>}>
                         {

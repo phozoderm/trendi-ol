@@ -47,6 +47,23 @@ export function ProductListItemComponent(props) {
             setErrorMessage('Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.')
         })
     }
+    function callProductCartPostAPI(id){
+        fetch(`https://trendi-ol-backend.safiyeturk.com/product/${id}/cart`,{
+            method:'POST',
+            headers:{
+                'authorization':`bearer ${userInfo.jwt}`
+            }
+        }).then((res)=>{
+            if (res.ok){
+
+            }
+        }).catch(()=>{
+            //todo error message
+        })
+    }
+    function addToCart(){
+        callProductCartPostAPI(props.id)
+    }
 
     function handleChangeFavoriteButton() {
         if (isFavorite) {
@@ -100,17 +117,18 @@ export function ProductListItemComponent(props) {
                             }}>
                                 {new Intl.NumberFormat('tr-TR',{style:'currency', currency: 'TRY'}).format(props.price).slice(1)} TL
                             </Card.Text>
-                            {
-                                props.isButtonVisible
-                                    ?
-                                    <div className='product-list-favorite-buttons-div'>
-                                        <Button className='product-list-favorite-size-button'>Tek Beden</Button>
-                                        <Button className='product-list-favorite-add-cart-button'>Sepete Ekle</Button>
-                                    </div> : null
-                            }
+
                         </Card.Body>
                     </div>
                 </div>
+                {
+                    props.isButtonVisible
+                        ?
+                        <div className='product-list-favorite-buttons-div'>
+                            <Button disabled className='product-list-favorite-size-button'>Tek Beden</Button>
+                            <Button onClick={addToCart} className='product-list-favorite-add-cart-button'>Sepete Ekle</Button>
+                        </div> : null
+                }
                 {
                     props.isCrossIconVisible ?
                         <div onClick={handleChangeFavoriteButton} className='product-cross-icon'>

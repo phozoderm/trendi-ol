@@ -136,7 +136,7 @@ export function XPage() {
     const emailFromLocalStorage = localStorage.getItem('email')
     const isEmailLoggedIn = emailFromLocalStorage != null
 
-    function myFunction() {
+    function navigateToHome() {
         navigate('/home')
     }
 
@@ -173,7 +173,7 @@ export function XPage() {
                                 alt='brand'
                                 width='146'
                                 src={logo}
-                                onClick={() => myFunction()}
+                                onClick={() => navigateToHome()}
                             />
                         </Navbar.Brand>
                         <Form>

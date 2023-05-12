@@ -101,16 +101,25 @@
     color: #f27a21;
     font-size: 20px;
 }
-.cart-page-button-decrease:hover{
+
+.cart-page-button-decrease:disabled {
+    color: #e6e6e6;
+    background-color: #fafafa;
+    border: 1px solid #e6e6e6;
+}
+
+.cart-page-button-decrease:hover {
     background-color: #e6e6e6;
     border: 1px solid #e6e6e6;
     color: #f27a21;
 }
-.cart-page-button-decrease:active{
+
+.cart-page-button-decrease:active {
     background-color: #e6e6e6 !important;
     color: #f27a21 !important;
     border-color: #e6e6e6 !important;
 }
+
 .cart-page-button-increase {
     display: flex;
     justify-content: center;
@@ -123,17 +132,20 @@
     color: #f27a21;
     font-size: 20px;
 }
-.cart-page-button-increase:hover{
+
+.cart-page-button-increase:hover {
     background-color: #e6e6e6;
     border: 1px solid #e6e6e6;
     color: #f27a21;
 }
-.cart-page-button-increase:active{
+
+.cart-page-button-increase:active {
     background-color: #e6e6e6 !important;
     color: #f27a21 !important;
     border-color: #e6e6e6 !important;
 }
-.cart-page-quantity{
+
+.cart-page-quantity {
     width: 42px;
     height: 34px;
     display: flex;
@@ -146,18 +158,21 @@
     font-size: 14px;
     color: #4a4a4a;
 }
-.cart-page-delete-button{
+
+.cart-page-delete-button {
     font-size: 16px;
-    border:none;
+    border: none;
     background: transparent;
     color: #4a4a4a;
 }
-.cart-page-delete-button:hover{
-    border:none;
+
+.cart-page-delete-button:hover {
+    border: none;
     background: transparent;
     color: #f27a21;
 }
-.cart-page-delete-button:active{
+
+.cart-page-delete-button:active {
     border-color: white !important;
     background-color: transparent !important;
     color: #f27a21 !important;
